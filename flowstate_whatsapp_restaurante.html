@@ -452,8 +452,8 @@ body{
     <div class="header-status" id="hStatus">en línea</div>
   </div>
   <div class="header-actions">
-    <span onclick="toast('Llamada no disponible')">📹</span>
-    <span onclick="showProfile()">ℹ️</span>
+    <span onclick="toast('Videollamada no disponible')">📹</span>
+    <span onclick="showProfile()">ℹ</span>
   </div>
 </div>
 
@@ -577,7 +577,7 @@ function addMsg(text,sender){
   div.className='msg '+sender;
   const b=document.createElement('div');
   b.className='bubble '+sender;
-  b.innerHTML=`${text}<span class="time">${getTime()}<span class="check">✓✓</span></span>`;
+  b.innerHTML=`${text}<span class="time">${getTime()}<span class="check" style="font-size:10px">✓✓</span></span>`;
   div.appendChild(b);
   document.getElementById('chat').appendChild(div);
   scrollChat();
@@ -681,7 +681,7 @@ function showCatalog(){
   });
   h+='</div></div>';
   
-  b.innerHTML=h+`<span class="time">${getTime()}<span class="check">✓✓</span></span>`;
+  b.innerHTML=h+`<span class="time">${getTime()}<span class="check" style="font-size:10px">✓✓</span></span>`;
   d.appendChild(b);
   document.getElementById('chat').appendChild(d);
   scrollChat();
