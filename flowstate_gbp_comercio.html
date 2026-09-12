@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#202124;max-width:412px;margin:0 auto;min-height:100vh;overflow-x:hidden}
+body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#202124;max-width:412px;margin:0 auto;min-height:100vh;overflow-x:hidden;position:relative}
 .badge-disclaimer{background:#202124;color:#fff;text-align:center;padding:8px 12px;font-size:11px;font-weight:500;letter-spacing:.5px;position:sticky;top:0;z-index:100}
 .badge-disclaimer span{color:#00bcd4}
 .cover-photo{position:relative;width:100%;height:180px;background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800') center/cover}
@@ -84,7 +84,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#20
 </head>
 <body>
 
-<div class="badge-disclaimer">📁 PORTAFOLIO INTERACTIVO — <span>Información ficticia</span></div>
+<div class="badge-disclaimer">PORTAFOLIO INTERACTIVO — <span>Información ficticia</span></div>
 
 <div class="cover-photo">
   <div class="profile-logo">M</div>
@@ -92,10 +92,10 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#20
 
 <div class="header">
   <h1>Tienda Moda Palermo <span class="verified-badge">✓</span></h1>
-  <div class="category">Tienda de ropa</div>
+  <div class="category">Tienda de ropa femenina · Palermo, Buenos Aires</div>
   <div class="rating-row">
     <span class="stars">
-      <svg class="star-svg" viewBox="0 0 24 24"><defs><linearGradient id="sg"><stop offset="100%" stop-color="#fbbc04"/><stop offset="100%" stop-color="#dadce0"/></linearGradient></defs><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -125,21 +125,21 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#20
 <div id="overview" class="tab-content active">
   <div class="info-row" onclick="showToast('Abriendo mapa...')">
     <span class="material-icons">location_on</span>
-    <div class="info-text"><div class="info-label">Av. Santa Fe 1820, Palermo</div><div class="info-sub">CABA, Buenos Aires</div></div>
+    <div class="info-text"><div class="info-label">Av. Santa Fe 1850, Palermo, Buenos Aires</div><div class="info-sub">CABA, Buenos Aires</div></div>
     <span class="material-icons arrow">chevron_right</span>
   </div>
   <div class="info-row" onclick="showToast('Horarios')">
     <span class="material-icons">schedule</span>
-    <div class="info-text"><div class="info-label">Abierto hasta las 20:00</div></div>
+    <div class="info-text"><div class="info-label">Abierto hasta las 19:00</div></div>
     <span class="material-icons arrow">expand_more</span>
   </div>
   <table class="hours-table">
-    <tr><td>Lunes</td><td>10:00–20:00</td></tr>
-    <tr><td>Martes</td><td>10:00–20:00</td></tr>
-    <tr><td>Miércoles</td><td>10:00–20:00</td></tr>
-    <tr class="today"><td>Hoy</td><td>10:00–20:00</td></tr>
-    <tr><td>Viernes</td><td>10:00–20:00</td></tr>
-    <tr><td>Sábado</td><td>10:00–21:00</td></tr>
+    <tr><td>Lunes</td><td>9:00–19:00</td></tr>
+    <tr><td>Martes</td><td>9:00–19:00</td></tr>
+    <tr><td>Miércoles</td><td>9:00–19:00</td></tr>
+    <tr class="today"><td>Hoy</td><td>9:00–19:00</td></tr>
+    <tr><td>Viernes</td><td>9:00–19:00</td></tr>
+    <tr><td>Sábado</td><td>10:00–14:00</td></tr>
     <tr><td>Domingo</td><td>Cerrado</td></tr>
   </table>
   <div class="info-row" onclick="showToast('Llamando...')">
