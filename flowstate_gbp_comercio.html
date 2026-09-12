@@ -3,459 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Tienda Moda Palermo — Google Business Profile</title>
+<title>Tienda Moda Palermo - Google Business Profile</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Google Sans','Roboto',Arial,sans-serif;background:#f8f9fa;color:#202124;font-size:14px;max-width:430px;margin:0 auto}
-
-/* BADGE PORTAFOLIO */
-.badge{background:#1a1a2e;padding:8px 16px;text-align:center}
-.badge-title{color:#00e5ff;font-size:12px;font-weight:700;letter-spacing:1.5px}
-.badge-sub{color:#999;font-size:10px;margin-top:2px}
-
-/* COVER PHOTO */
-.cover{height:180px;background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80') center/cover no-repeat;position:relative}
-.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,.5))}
-.logo{position:absolute;bottom:-24px;left:16px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);border:3px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.logo span{color:#fff;font-size:26px;font-weight:700}
-
-/* HEADER INFO */
-.header{padding:30px 16px 14px;background:#fff;border-bottom:1px solid #e0e0e0;position:relative}
-.name-row{display:flex;align-items:center;gap:8px;margin-bottom:2px}
-.name{font-size:22px;font-weight:500;color:#202124}
-.verified{color:#1a73e8;font-size:16px;font-weight:700;background:#e8f0fe;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center}
-.category{font-size:13px;color:#5f6368;margin-top:2px}
-.rating-row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.stars{display:flex;gap:1px}
-.star-icon{width:16px;height:16px;fill:#fbbc04}
-.rating-num{font-weight:700;font-size:14px;color:#202124}
-.rating-count{font-size:13px;color:#5f6368}
-.open-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:13px}
-.open-dot{width:7px;height:7px;border-radius:50%;background:#1e8e3e}
-.open-now{color:#1e8e3e;font-weight:500}
-.close-time{color:#5f6368;margin-left:4px}
-
-/* ACTION BUTTONS */
-.actions{display:flex;gap:8px;overflow-x:auto;padding:14px 16px;background:#fff;border-bottom:1px solid #e0e0e0;scrollbar-width:none}
-.actions::-webkit-scrollbar{display:none}
-.action-btn{display:flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid #dadce0;border-radius:24px;color:#1a73e8;font-size:13px;font-weight:500;white-space:nowrap;cursor:pointer;background:#fff;flex-shrink:0;text-decoration:none}
-.action-btn:hover{background:#f8f9fa}
-.action-btn .mi{font-size:18px}
-
-/* TABS */
-.tabs-wrapper{background:#fff;border-bottom:1px solid #dadce0;position:sticky;top:0;z-index:10;box-shadow:0 2px 4px rgba(0,0,0,.04)}
-.tabs{display:flex;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:14px 16px;font-size:14px;font-weight:500;color:#5f6368;white-space:nowrap;cursor:pointer;border-bottom:2px solid transparent;text-align:center}
+body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#fff;color:#202124;max-width:412px;margin:0 auto;min-height:100vh;overflow-x:hidden}
+.badge-disclaimer{background:#202124;color:#fff;text-align:center;padding:8px 12px;font-size:11px;font-weight:500;letter-spacing:.5px;position:sticky;top:0;z-index:100}
+.badge-disclaimer span{color:#00bcd4}
+.cover-photo{position:relative;width:100%;height:180px;background:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800') center/cover}
+.profile-logo{width:72px;height:72px;border-radius:50%;border:3px solid #fff;background:#1a73e8;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;font-weight:700;position:absolute;bottom:-36px;left:16px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.header{padding:44px 16px 12px}
+.header h1{font-size:22px;font-weight:500;display:flex;align-items:center;gap:6px}
+.verified-badge{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#e8f0fe;font-size:11px;color:#1a73e8;font-weight:700}
+.category{font-size:14px;color:#5f6368;margin-top:2px}
+.rating-row{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:14px;color:#5f6368}
+.stars{display:inline-flex;gap:1px}
+.star-svg{width:16px;height:16px}
+.rating-num{font-weight:500;color:#202124}
+.open-badge{display:inline-flex;align-items:center;gap:4px;color:#1e8e3e;font-weight:500;font-size:13px;margin-top:4px}
+.open-dot{width:8px;height:8px;border-radius:50%;background:#1e8e3e}
+.actions-scroll{display:flex;overflow-x:auto;gap:8px;padding:12px 16px;scrollbar-width:none;-ms-overflow-style:none}
+.actions-scroll::-webkit-scrollbar{display:none}
+.action-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px;border:1px solid #dadce0;border-radius:20px;background:#fff;min-width:72px;cursor:pointer;font-family:inherit;font-size:11px;color:#1a73e8;font-weight:500;white-space:nowrap;transition:background .2s}
+.action-btn:hover{background:#e8f0fe}
+.action-btn .material-icons{font-size:22px;color:#5f6368}
+.tabs{display:flex;border-bottom:1px solid #dadce0;position:sticky;top:35px;background:#fff;z-index:90}
+.tab{flex:1;padding:12px 8px;text-align:center;font-size:14px;font-weight:500;color:#5f6368;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s}
 .tab.active{color:#1a73e8;border-bottom-color:#1a73e8}
-
-/* CONTENT SECTIONS */
-.section{display:none;background:#fff;margin-top:8px;padding:0 16px}
-.section.active{display:block}
-.section-title{font-size:16px;font-weight:500;color:#202124;padding:16px 0 10px}
-
-/* INFO ROWS */
-.info-row{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #f1f3f4;cursor:pointer}
+.tab-content{display:none;padding:16px}
+.tab-content.active{display:block}
+.info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f1f3f4;cursor:pointer}
 .info-row:last-child{border-bottom:none}
-.info-icon{color:#5f6368;font-size:20px;margin-right:14px;width:20px;text-align:center}
-.info-label{font-size:14px;color:#202124}
-.info-sub{font-size:12px;color:#5f6368;margin-top:1px}
-.chevron{margin-left:auto;color:#5f6368;font-size:20px}
-
-/* HOURS TABLE */
-.hours-table{width:100%;font-size:14px;margin-top:4px}
-.hours-row{display:flex;justify-content:space-between;padding:9px 0}
-.hours-row.today{background:#e8f0fe;margin:0 -16px;padding:9px 16px;border-radius:0}
-.hours-day{color:#202124;font-weight:500}
-.hours-hours{color:#5f6368}
-.hours-row.today .hours-day,.hours-row.today .hours-hours{color:#1a73e8;font-weight:500}
-
-/* SERVICE TAGS */
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:16px}
-.tag{display:flex;align-items:center;gap:5px;padding:6px 12px;background:#e8f0fe;color:#1a73e8;border-radius:16px;font-size:13px;font-weight:500}
-.tag .mi{font-size:16px}
-
-/* GOOGLE POSTS */
-.post-card{border:1px solid #dadce0;border-radius:8px;overflow:hidden;margin-bottom:14px}
-.post-img{width:100%;height:160px;object-fit:cover}
-.post-body{padding:12px}
-.post-type{font-size:10px;color:#1a73e8;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-.post-title{font-size:15px;font-weight:500;color:#202124;margin-top:4px}
-.post-desc{font-size:13px;color:#5f6368;margin-top:4px;line-height:18px}
-.post-cta{display:inline-block;margin-top:10px;padding:8px 18px;background:#1a73e8;color:#fff;border-radius:4px;font-size:14px;font-weight:500;cursor:pointer}
-
-/* Q&A */
-.qa-item{border-bottom:1px solid #f1f3f4;padding:12px 0}
-.qa-item:last-child{border-bottom:none}
-.qa-question{display:flex;align-items:center;gap:8px;cursor:pointer}
-.qa-question .mi{color:#5f6368}
-.qa-text{font-size:14px;color:#202124;flex:1}
-.qa-answer{display:none;margin-top:8px;margin-left:28px;padding-left:12px;border-left:3px solid #1a73e8;font-size:13px;color:#5f6368;line-height:18px}
-.qa-answer.show{display:block}
-
-/* REVIEWS */
-.review{border-bottom:1px solid #f1f3f4;padding:14px 0}
-.review:last-child{border-bottom:none}
+.info-row .material-icons{color:#5f6368;font-size:20px;flex-shrink:0;margin-top:1px}
+.info-row .info-text{flex:1}
+.info-row .info-label{font-size:14px;color:#202124}
+.info-row .info-sub{font-size:12px;color:#5f6368;margin-top:2px}
+.info-row .material-icons.arrow{color:#dadce0;font-size:20px}
+.hours-table{width:100%;font-size:13px;margin-top:8px}
+.hours-table td{padding:6px 0;border-bottom:1px solid #f1f3f4}
+.hours-table td:first-child{color:#5f6368;width:100px}
+.hours-table tr.today td{font-weight:700;color:#1a73e8}
+.hours-table tr.today td:first-child{color:#1a73e8}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#e8f0fe;color:#1a73e8;border-radius:16px;font-size:12px;font-weight:500}
+.tag .material-icons{font-size:14px}
+.post-card{border:1px solid #dadce0;border-radius:12px;overflow:hidden;margin-bottom:16px}
+.post-card img{width:100%;height:180px;object-fit:cover}
+.post-card .post-body{padding:12px}
+.post-type{font-size:11px;font-weight:700;color:#1a73e8;text-transform:uppercase;letter-spacing:.5px}
+.post-title{font-size:15px;font-weight:500;margin:4px 0;color:#202124}
+.post-desc{font-size:13px;color:#5f6368;line-height:1.5}
+.post-cta{display:inline-block;margin-top:8px;font-size:13px;font-weight:500;color:#1a73e8;cursor:pointer}
+.qa-item{border-left:3px solid #1a73e8;background:#f8f9fa;padding:12px 16px;margin-bottom:8px;border-radius:0 8px 8px 0;cursor:pointer}
+.qa-question{font-size:14px;font-weight:500;color:#202124;display:flex;align-items:center;justify-content:space-between}
+.qa-answer{font-size:13px;color:#5f6368;margin-top:8px;display:none;line-height:1.5}
+.qa-item.open .qa-answer{display:block}
+.review-card{padding:12px 0;border-bottom:1px solid #f1f3f4}
 .review-header{display:flex;align-items:center;gap:10px}
-.reviewer-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:14px}
-.reviewer-name{font-size:14px;font-weight:500;color:#202124}
-.reviewer-meta{font-size:12px;color:#5f6368}
-.review-stars{display:flex;gap:1px;margin-top:6px}
-.review-stars .star-icon{width:14px;height:14px}
-.review-text{font-size:13px;color:#202124;line-height:18px;margin-top:6px}
-.owner-response{margin-top:10px;margin-left:16px;padding:8px 12px;border-left:3px solid #1a73e8;background:#f8f9fa;font-size:13px;color:#5f6368;line-height:18px;border-radius:0 6px 6px 0}
-
-/* PHOTO GRID */
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-bottom:16px}
-.photo-grid img{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer}
-
-/* LIGHTBOX */
-.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}
-.lightbox.show{display:flex}
-.lightbox img{max-width:92%;max-height:80%;object-fit:contain}
-.lightbox-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:16px;user-select:none}
-.lightbox-prev{left:8px}
-.lightbox-next{right:8px}
-.lightbox-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;background:rgba(0,0,0,.5);padding:4px 12px;border-radius:12px}
-
-/* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#323232;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:2000;opacity:0;transition:all .3s}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* PRODUCTS LIST */
-.products{display:flex;flex-direction:column;gap:2px;padding-bottom:4px}
-.product-item{display:flex;align-items:center;gap:10px;padding:6px 0}
-.product-item .mi{color:#5f6368;font-size:18px}
-.product-item span{font-size:14px;color:#202124}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:#1a73e8;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
+.review-name{font-size:14px;font-weight:500;color:#202124}
+.review-meta{font-size:12px;color:#5f6368}
+.review-stars{display:flex;gap:1px;margin:6px 0}
+.review-text{font-size:13px;color:#202124;line-height:1.5}
+.review-reply{border-left:3px solid #dadce0;padding:8px 12px;margin-top:8px;background:#f8f9fa;border-radius:0 6px 6px 0}
+.review-reply-label{font-size:11px;color:#5f6368;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.review-reply-text{font-size:13px;color:#202124;margin-top:4px;line-height:1.5}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.photo-grid img{width:100%;height:100px;object-fit:cover;cursor:pointer;border-radius:2px}
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000;max-width:412px;left:50%;transform:translateX(-50%)}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90%;max-height:80%;object-fit:contain}
+.lightbox .lb-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer}
+.lightbox .lb-prev,.lightbox .lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:16px}
+.lightbox .lb-prev{left:8px}
+.lb-next{right:8px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:1001;display:none;animation:fadeIn .3s}
+.toast.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 </style>
 </head>
 <body>
 
-<div class="badge">
-  <div class="badge-title">PORTAFOLIO INTERACTIVO</div>
-  <div class="badge-sub">Información ficticia con fines de demostración</div>
-</div>
+<div class="badge-disclaimer">📁 PORTAFOLIO INTERACTIVO — <span>Información ficticia</span></div>
 
-<div class="cover"><div class="logo"><span>M</span></div></div>
+<div class="cover-photo">
+  <div class="profile-logo">M</div>
+</div>
 
 <div class="header">
-  <div class="name-row">
-    <span class="name">Tienda Moda Palermo</span>
-    <span class="verified">✓</span>
-  </div>
-  <div class="category">Tienda de ropa femenina · Palermo, Buenos Aires</div>
+  <h1>Tienda Moda Palermo <span class="verified-badge">✓</span></h1>
+  <div class="category">Tienda de ropa</div>
   <div class="rating-row">
-    <div class="stars">
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24">
-      <defs>
-        <linearGradient id="half_grad">
-          <stop offset="50%" stop-color="#fbbc04"/>
-          <stop offset="50%" stop-color="#e0e0e0"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#half_grad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-    </svg>
-    </div>
+    <span class="stars">
+      <svg class="star-svg" viewBox="0 0 24 24"><defs><linearGradient id="sg"><stop offset="100%" stop-color="#fbbc04"/><stop offset="100%" stop-color="#dadce0"/></linearGradient></defs><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><defs><linearGradient id="half"><stop offset="50%" stop-color="#fbbc04"/><stop offset="50%" stop-color="#dadce0"/></linearGradient></defs><path fill="url(#half)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </span>
     <span class="rating-num">4,7</span>
-    <span class="rating-count">(198 reseñas)</span>
+    <span>(198 reseñas)</span>
   </div>
-  <div class="open-status">
-    <span class="open-dot"></span>
-    <span class="open-now">Abierto ahora</span>
-    <span class="close-time">· Cierra a las 19:00</span>
-  </div>
+  <div class="open-badge"><span class="open-dot"></span> Abierto ahora</div>
 </div>
 
-<div class="actions">
-  <div class="action-btn" onclick="toast('Llamando a Tienda Moda Palermo...')"><span class="mi">call</span>Llamar</div>
-  <div class="action-btn" onclick="toast('Abriendo WhatsApp...')"><span class="mi">chat</span>WhatsApp</div>
-  <div class="action-btn" onclick="toast('Abriendo mapa...')"><span class="mi">directions</span>Cómo llegar</div>
-  <div class="action-btn" onclick="toast('Abriendo tiendamodapalermo.com.ar...')"><span class="mi">language</span>Sitio web</div>
-  <div class="action-btn" onclick="toast('Guardando en favoritos...')"><span class="mi">bookmark</span>Guardar</div>
-  <div class="action-btn" onclick="toast('Compartiendo...')"><span class="mi">share</span>Compartir</div>
+<div class="actions-scroll">
+  <button class="action-btn" onclick="showToast('Llamando...')"><span class="material-icons">call</span>Llamar</button>
+  <button class="action-btn" onclick="showToast('Abriendo WhatsApp...')"><span class="material-icons">chat</span>WhatsApp</button>
+  <button class="action-btn" onclick="showToast('Cómo llegar...')"><span class="material-icons">directions</span>Cómo llegar</button>
+  <button class="action-btn" onclick="showToast('Abriendo sitio web...')"><span class="material-icons">language</span>Sitio web</button>
+  <button class="action-btn" onclick="showToast('Guardado')"><span class="material-icons">bookmark_border</span>Guardar</button>
+  <button class="action-btn" onclick="showToast('Compartir...')"><span class="material-icons">share</span>Compartir</button>
 </div>
 
-<div class="tabs-wrapper">
-  <div class="tabs">
-    <div class="tab active" data-tab="overview" onclick="switchTab('overview')">Descripción general</div>
-    <div class="tab" data-tab="reviews" onclick="switchTab('reviews')">Reseñas</div>
-    <div class="tab" data-tab="photos" onclick="switchTab('photos')">Fotos</div>
-  </div>
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('overview')">Descripción general</div>
+  <div class="tab" onclick="switchTab('reviews')">Reseñas</div>
+  <div class="tab" onclick="switchTab('photos')">Fotos</div>
 </div>
 
-<!-- OVERVIEW -->
-<div class="section active" id="tab-overview">
-  <div class="info-row" onclick="toast('Abriendo mapa...')">
-    <span class="mi info-icon">place</span>
-    <div><div class="info-label">Av. Santa Fe 1850, Palermo, Buenos Aires</div></div>
-    <span class="mi chevron">chevron_right</span>
+<div id="overview" class="tab-content active">
+  <div class="info-row" onclick="showToast('Abriendo mapa...')">
+    <span class="material-icons">location_on</span>
+    <div class="info-text"><div class="info-label">Av. Santa Fe 1820, Palermo</div><div class="info-sub">CABA, Buenos Aires</div></div>
+    <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="toast('Abriendo horarios...')">
-    <span class="mi info-icon">schedule</span>
-    <div><div class="info-label">Abierto hasta 19:00</div><div class="info-sub">Ver horarios de la semana</div></div>
-    <span class="mi chevron">chevron_right</span>
+  <div class="info-row" onclick="showToast('Horarios')">
+    <span class="material-icons">schedule</span>
+    <div class="info-text"><div class="info-label">Abierto hasta las 20:00</div></div>
+    <span class="material-icons arrow">expand_more</span>
   </div>
-  <div class="info-row" onclick="toast('Llamando +54 11 4832-1950...')">
-    <span class="mi info-icon">phone</span>
-    <div><div class="info-label">+54 11 4832-1950</div></div>
-    <span class="mi chevron">chevron_right</span>
+  <table class="hours-table">
+    <tr><td>Lunes</td><td>10:00–20:00</td></tr>
+    <tr><td>Martes</td><td>10:00–20:00</td></tr>
+    <tr><td>Miércoles</td><td>10:00–20:00</td></tr>
+    <tr class="today"><td>Hoy</td><td>10:00–20:00</td></tr>
+    <tr><td>Viernes</td><td>10:00–20:00</td></tr>
+    <tr><td>Sábado</td><td>10:00–21:00</td></tr>
+    <tr><td>Domingo</td><td>Cerrado</td></tr>
+  </table>
+  <div class="info-row" onclick="showToast('Llamando...')">
+    <span class="material-icons">call</span>
+    <div class="info-text"><div class="info-label">+54 11 4567-8901</div></div>
+    <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="toast('Abriendo tiendamodapalermo.com.ar...')">
-    <span class="mi info-icon">language</span>
-    <div><div class="info-label">tiendamodapalermo.com.ar</div></div>
-    <span class="mi chevron">chevron_right</span>
-  </div>
-
-  <div class="section-title">Horarios de atención</div>
-  <div class="hours-table">
-    <div class="hours-row today"><span class="hours-day">Hoy (Viernes)</span><span class="hours-hours">9:00–19:00</span></div>
-    <div class="hours-row"><span class="hours-day">Sábado</span><span class="hours-hours">10:00–14:00</span></div>
-    <div class="hours-row"><span class="hours-day">Domingo</span><span class="hours-hours">Cerrado</span></div>
-    <div class="hours-row"><span class="hours-day">Lunes</span><span class="hours-hours">9:00–19:00</span></div>
-    <div class="hours-row"><span class="hours-day">Martes</span><span class="hours-hours">9:00–19:00</span></div>
-    <div class="hours-row"><span class="hours-day">Miércoles</span><span class="hours-hours">9:00–19:00</span></div>
-    <div class="hours-row"><span class="hours-day">Jueves</span><span class="hours-hours">9:00–19:00</span></div>
+  <div class="info-row" onclick="showToast('Abriendo web...')">
+    <span class="material-icons">language</span>
+    <div class="info-text"><div class="info-label">www.tiendamodapalermo.com.ar</div></div>
+    <span class="material-icons arrow">chevron_right</span>
   </div>
 
-  <div class="section-title">Servicios</div>
-  <div class="tags">
-    <div class="tag"><span class="mi">wifi</span>WiFi gratis</div>
-    <div class="tag"><span class="mi">accessible</span>Accesible</div>
-    <div class="tag"><span class="mi">local_parking</span>Estacionamiento</div>
-    <div class="tag"><span class="mi">ac_unit</span>Aire acondicionado</div>
-    <div class="tag"><span class="mi">credit_card</span>Tarjeta de crédito</div>
-    <div class="tag"><span class="mi">checkroom</span>Probador</div>
+  <div class="tags" style="margin-top:20px">
+    <span class="tag"><span class="material-icons">wifi</span> WiFi</span>
+    <span class="tag"><span class="material-icons">accessible</span> Accesible</span>
+    <span class="tag"><span class="material-icons">local_parking</span> Estacionamiento</span>
+    <span class="tag"><span class="material-icons">ac_unit</span> Aire acondicionado</span>
+    <span class="tag"><span class="material-icons">credit_card</span> Tarjeta</span>
+    <span class="tag"><span class="material-icons">checkroom</span> Probador</span>
   </div>
 
-  <div class="section-title">Publicaciones de Google</div>
+  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Publicaciones de Google</h3>
+
   <div class="post-card">
-    <img class="post-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600" alt="Colección verano">
     <div class="post-body">
       <div class="post-type">Oferta</div>
-      <div class="post-title">🔥 30% OFF en toda la ropa femenina</div>
-      <div class="post-desc">Aprovechá nuestra promo de temporada. Válido hasta agotar stock.</div>
-      <div class="post-cta" onclick="toast('Redirigiendo a la tienda...')">Comprar ahora</div>
+      <div class="post-title">🔥 Colección Verano 2025</div>
+      <div class="post-desc">Descubrí las nuevas tendencias de verano con hasta 30% OFF en selección de prendas.</div>
+      <span class="post-cta" onclick="showToast('Ver oferta')">Ver más →</span>
     </div>
   </div>
+
   <div class="post-card">
-    <img class="post-img" src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600" alt="Nuevo local">
     <div class="post-body">
       <div class="post-type">Novedad</div>
-      <div class="post-title">✨ Nueva colección Otoño-Invierno 2026</div>
-      <div class="post-desc">Descubrí las últimas tendencias en moda sustentable.</div>
-      <div class="post-cta" onclick="toast('Ver catálogo...')">Ver catálogo</div>
-    </div>
-  </div>
-  <div class="post-card">
-    <img class="post-img" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="">
-    <div class="post-body">
-      <div class="post-type">Evento</div>
-      <div class="post-title">🎉 Personal Shopping gratis — Sábado 15</div>
-      <div class="post-desc">Reservá tu turno con nuestras expertas. Sin cargo.</div>
-      <div class="post-cta" onclick="toast('Abriendo reservas...')">Reservar turno</div>
+      <div class="post-title">✨ Nuevo horario extendido</div>
+      <div class="post-desc">Ahora los sábados abrimos hasta las 21:00. ¡Te esperamos!</div>
+      <span class="post-cta" onclick="showToast('Más info')">Más info →</span>
     </div>
   </div>
 
-  <div class="section-title">Preguntas y respuestas</div>
-  <div class="qa-item">
-    <div class="qa-question" onclick="this.nextElementSibling.classList.toggle('show')">
-      <span class="mi">help_outline</span>
-      <span class="qa-text">¿Tienen ropa de fiesta o de noche?</span>
-    </div>
-    <div class="qa-answer">¡Sí! Tenemos vestidos de fiesta, conjuntos de noche y accesorios especiales. Consultá en tienda.</div>
+  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Preguntas y respuestas</h3>
+
+  <div class="qa-item" onclick="this.classList.toggle('open')">
+    <div class="qa-question">¿Tienen talles grandes? <span class="material-icons">expand_more</span></div>
+    <div class="qa-answer">Sí, disponemos de talles desde el XS hasta el 4XL en la mayoría de nuestras prendas. Consultá disponibilidad por WhatsApp.</div>
   </div>
-  <div class="qa-item">
-    <div class="qa-question" onclick="this.nextElementSibling.classList.toggle('show')">
-      <span class="mi">help_outline</span>
-      <span class="qa-text">¿Aceptan devoluciones?</span>
-    </div>
-    <div class="qa-answer">Sí, 15 días con ticket original y etiquetas puestas. Producto sin uso.</div>
+  <div class="qa-item" onclick="this.classList.toggle('open')">
+    <div class="qa-question">¿Aceptan devoluciones? <span class="material-icons">expand_more</span></div>
+    <div class="qa-answer">Sí, tenés 30 días para devolver tu compra con ticket y etiquetas. El reintegro es por nota de crédito o cambio directo.</div>
   </div>
-  <div class="qa-item">
-    <div class="qa-question" onclick="this.nextElementSibling.classList.toggle('show')">
-      <span class="mi">help_outline</span>
-      <span class="qa-text">¿Hacen envíos al interior?</span>
-    </div>
-    <div class="qa-answer">Sí, envíos a todo el país por correo argentino. 3-7 días hábiles.</div>
-  </div>
-  <div class="qa-item">
-    <div class="qa-question" onclick="this.nextElementSibling.classList.toggle('show')">
-      <span class="mi">help_outline</span>
-      <span class="qa-text">¿Cuánto sale el envío a Córdoba?</span>
-    </div>
-    <div class="qa-answer">$2.500 ARS a Córdoba Capital. 3-5 días hábiles.</div>
+  <div class="qa-item" onclick="this.classList.toggle('open')">
+    <div class="qa-question">¿Hacen envíos al interior? <span class="material-icons">expand_more</span></div>
+    <div class="qa-answer">Sí, enviamos a todo el país por OCA o correo argentino. Envío gratis en compras superiores a $30.000.</div>
   </div>
 </div>
 
-<!-- REVIEWS -->
-<div class="section" id="tab-reviews">
-  <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #f1f3f4">
-    <span style="font-size:40px;font-weight:700;color:#202124">4,7</span>
-    <div>
-      <div class="stars" style="gap:2px">
-        <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg class="star-icon" viewBox="0 0 24 24">
-      <defs>
-        <linearGradient id="half_grad">
-          <stop offset="50%" stop-color="#fbbc04"/>
-          <stop offset="50%" stop-color="#e0e0e0"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#half_grad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-    </svg>
-      </div>
-      <span style="font-size:13px;color:#5f6368">198 reseñas en Google</span>
+<div id="reviews" class="tab-content">
+  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Reseñas de clientes</h3>
+
+  <div class="review-card">
+    <div class="review-header">
+      <div class="review-avatar">M</div>
+      <div><div class="review-name">María González</div><div class="review-meta">Hace 2 días</div></div>
+    </div>
+    <div class="review-stars">
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div class="review-text">Excelente atención y variedad. Encontré justo lo que buscaba y la calidad es increíble. El probador es cómodo y bien iluminado.</div>
+    <div class="review-reply">
+      <div class="review-reply-label">Respuesta del dueño</div>
+      <div class="review-reply-text">¡Gracias María! Nos encanta que hayas tenido una gran experiencia. Te esperamos de vuelta ❤️</div>
     </div>
   </div>
 
-  <div class="review">
+  <div class="review-card">
     <div class="review-header">
-      <div class="reviewer-avatar" style="background:#764ba2">MC</div>
-      <div><div class="reviewer-name">María Castro</div><div class="reviewer-meta">Hace 3 días</div></div>
+      <div class="review-avatar">L</div>
+      <div><div class="review-name">Lucas Martínez</div><div class="review-meta">Hace 1 semana</div></div>
     </div>
     <div class="review-stars">
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#dadce0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
-    <div class="review-text">Excelente atención y calidad de ropa. Los talles son precisos y tienen variedad. ¡Totalmente recomendado!</div>
-    <div class="owner-response">¡Gracias María! Nos encanta que disfrutes tu experiencia. ¡Te esperamos pronto! — Dueño</div>
+    <div class="review-text">Muy buena la ropa, precios accesibles. Lo único que mejoraría es que los fines de semana hay bastante gente y hay que hacer fila en el probador.</div>
+    <div class="review-reply">
+      <div class="review-reply-label">Respuesta del dueño</div>
+      <div class="review-reply-text">Gracias por el feedback Lucas! Estamos ampliando los probadores para mejorar la experiencia los fines de semana 👍</div>
+    </div>
   </div>
 
-  <div class="review">
+  <div class="review-card">
     <div class="review-header">
-      <div class="reviewer-avatar" style="background:#3a86ff">LV</div>
-      <div><div class="reviewer-name">Lucía Valdez</div><div class="reviewer-meta">Hace 1 semana</div></div>
+      <div class="review-avatar">A</div>
+      <div><div class="review-name">Andrea Silva</div><div class="review-meta">Hace 2 semanas</div></div>
     </div>
     <div class="review-stars">
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24">
-      <defs>
-        <linearGradient id="half_grad">
-          <stop offset="50%" stop-color="#fbbc04"/>
-          <stop offset="50%" stop-color="#e0e0e0"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#half_grad)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-    </svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#dadce0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
-    <div class="review-text">Buena variedad de ropa. Las carteras son divinas. Único punto: el estacionamiento es chico los fines de semana.</div>
-    <div class="owner-response">Gracias por el feedback. Tomamos nota sobre el estacionamiento. — Dueño</div>
-  </div>
-
-  <div class="review">
-    <div class="review-header">
-      <div class="reviewer-avatar" style="background:#e63946">AG</div>
-      <div><div class="reviewer-name">Andrea García</div><div class="reviewer-meta">Hace 2 semanas</div></div>
-    </div>
-    <div class="review-stars">
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-    </div>
-    <div class="review-text">Excelente tienda! Mejores marcas, siempre hay novedades. Personal amable y sabe de moda. Precios justos.</div>
-    <div class="owner-response">Gracias Andrea! Nuestro equipo siempre está actualizado. ¡Gracias por confiar! — Dueño</div>
+    <div class="review-text">Hermosa tienda, mucha variedad y buena atención de las vendedoras. Volveré seguro.</div>
   </div>
 </div>
 
-<!-- PHOTOS -->
-<div class="section" id="tab-photos">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0 12px">
-    <span style="font-size:16px;font-weight:500;color:#202124">Fotos del negocio</span>
-    <span style="font-size:13px;color:#5f6368">8 fotos</span>
-  </div>
+<div id="photos" class="tab-content">
+  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Fotos</h3>
   <div class="photo-grid">
-    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&q=80" onclick="openLB(0)">
-    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&q=80" onclick="openLB(1)">
-    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80" onclick="openLB(2)">
-    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" onclick="openLB(3)">
-    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" onclick="openLB(4)">
-    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&q=80" onclick="openLB(5)">
-    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" onclick="openLB(6)">
-    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80" onclick="openLB(7)">
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300" onclick="openLightbox(0)" alt="Tienda">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=300" onclick="openLightbox(1)" alt="Interior">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300" onclick="openLightbox(2)" alt="Ropa">
+    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300" onclick="openLightbox(3)" alt="Prendas">
+    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300" onclick="openLightbox(4)" alt="Accesorios">
+    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=300" onclick="openLightbox(5)" alt="Vitrina">
+    <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=300" onclick="openLightbox(6)" alt="Exterior">
+    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=300" onclick="openLightbox(7)" alt="Estantes">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300" onclick="openLightbox(8)" alt="Moda">
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <span class="lightbox-close" onclick="closeLB()">✕</span>
-  <span class="lightbox-nav lightbox-prev" onclick="navLB(-1)">‹</span>
-  <img id="lb-img" src="" alt="">
-  <span class="lightbox-nav lightbox-next" onclick="navLB(1)">›</span>
-  <div class="lightbox-counter" id="lb-count">1 / 8</div>
+  <span class="material-icons lb-close" onclick="closeLightbox()">close</span>
+  <span class="material-icons lb-prev" onclick="navigateLB(-1)">chevron_left</span>
+  <img id="lb-img" src="" alt="Foto ampliada">
+  <span class="material-icons lb-next" onclick="navigateLB(1)">chevron_right</span>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 const photos=[
-'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80',
-'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=80',
-'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
-'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
-'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80',
-'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80',
-'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
-'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80'
+  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800',
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800',
+  'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800',
+  'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800',
+  'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800',
+  'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800',
+  'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800',
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800'
 ];
-let curP=0;
+let currentLB=0;
 
-function switchTab(t){
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
-  document.querySelector(`.tab[data-tab="${t}"]`).classList.add('active');
-  document.getElementById('tab-'+t).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('active', ['overview','reviews','photos'][i]===id)});
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-function toast(m){
+function showToast(msg){
   const t=document.getElementById('toast');
-  t.textContent=m;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
 }
 
-function openLB(i){
-  curP=i;
+function openLightbox(i){
+  currentLB=i;
   document.getElementById('lb-img').src=photos[i];
-  document.getElementById('lb-count').textContent=(i+1)+' / '+photos.length;
-  document.getElementById('lightbox').classList.add('show');
-  document.body.style.overflow='hidden';
+  document.getElementById('lightbox').classList.add('active');
 }
 
-function closeLB(){
-  document.getElementById('lightbox').classList.remove('show');
-  document.body.style.overflow='';
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active')}
+
+function navigateLB(dir){
+  currentLB=(currentLB+dir+photos.length)%photos.length;
+  document.getElementById('lb-img').src=photos[currentLB];
 }
 
-function navLB(d){
-  curP=(curP+d+photos.length)%photos.length;
-  document.getElementById('lb-img').src=photos[curP];
-  document.getElementById('lb-count').textContent=(curP+1)+' / '+photos.length;
-}
+let touchStartX=0;
+document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-touchStartX;
+  if(Math.abs(dx)>50&&document.getElementById('lightbox').classList.contains('active')){
+    navigateLB(dx<0?1:-1);
+  }
+});
 
-document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB()});
-document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('show'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')navLB(-1);if(e.key==='ArrowRight')navLB(1)});
-
-let tStart=0;
-document.getElementById('lightbox').addEventListener('touchstart',e=>tStart=e.touches[0].clientX);
-document.getElementById('lightbox').addEventListener('touchend',e=>{if(e.changedTouches[0].clientX<tStart-50)navLB(1);if(e.changedTouches[0].clientX>tStart+50)navLB(-1)});
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('lightbox').classList.contains('active')){
+    if(e.key==='ArrowLeft')navigateLB(-1);
+    if(e.key==='ArrowRight')navigateLB(1);
+    if(e.key==='Escape')closeLightbox();
+  }
+});
 </script>
 </body>
 </html>
