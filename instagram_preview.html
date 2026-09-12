@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowState Digital — Instagram Profesional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-heading: #061b31;
+      --color-body: #64748d;
+      --color-accent: #1a3a6b;
+      --color-accent-light: #00d4ff;
+      --color-border: #e5edf5;
+      --color-surface: #f8fafc;
+      --shadow-standard: rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px;
+      --shadow-ambient: rgba(23,23,23,0.08) 0px 15px 35px 0px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: var(--color-body);
+      background: var(--color-bg);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--color-heading);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .header {
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.95);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--color-accent-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-heading);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .cta-button {
+      background: var(--color-accent);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #0d253d;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      letter-spacing: -0.96px;
+      margin-bottom: 16px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 span {
+      color: var(--color-accent);
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      color: var(--color-body);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #0d253d;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-accent);
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      border: 1px solid var(--color-border);
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(26,58,107,0.05);
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      letter-spacing: -0.64px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      font-size: 16px;
+      color: var(--color-body);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 32px 24px;
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-standard);
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-surface);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      letter-spacing: -0.22px;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--color-body);
+      margin-bottom: 16px;
+    }
+
+    .service-price {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-accent);
+    }
+
+    .service-price span {
+      font-size: 12px;
+      color: var(--color-body);
+      font-weight: 300;
+    }
+
+    /* Portfolio Section */
+    .portfolio {
+      padding: 80px 0;
+      background: var(--color-surface);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .portfolio-card {
+      background: var(--color-bg);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.3s;
+    }
+
+    .portfolio-card:hover {
+      box-shadow: var(--shadow-standard);
+      transform: translateY(-2px);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 48px;
+    }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .portfolio-content h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .portfolio-content p {
+      font-size: 13px;
+      color: var(--color-body);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 0;
+    }
+
+    .testimonial-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: var(--shadow-ambient);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .testimonial-text {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--color-heading);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .testimonial-author {
+      font-size: 14px;
+      color: var(--color-body);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 80px 0;
+      background: var(--color-accent);
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .cta-section h2 {
+      color: #ffffff;
+      font-size: 32px;
+      letter-spacing: -0.64px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+
+    .btn-white {
+      background: #ffffff;
+      color: var(--color-accent);
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-white:hover {
+      background: var(--color-surface);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 40px 0;
+      background: #0d253d;
+      color: #ffffff;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .footer-logo span {
+      color: var(--color-accent-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Instagram Grid Preview */
+    .instagram-preview {
+      padding: 80px 0;
+      background: var(--color-surface);
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .instagram-post {
+      aspect-ratio: 1;
+      background: var(--color-bg);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: var(--shadow-ambient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .instagram-post:hover {
+      box-shadow: var(--shadow-standard);
+      transform: scale(1.02);
+    }
+
+    .post-1 { background: linear-gradient(135deg, #1a3a6b 0%, #00d4ff 100%); color: #ffffff; }
+    .post-2 { background: var(--color-bg); border: 1px solid var(--color-border); }
+    .post-3 { background: linear-gradient(135deg, #061b31 0%, #1a3a6b 100%); color: #ffffff; }
+    .post-4 { background: var(--color-surface); }
+    .post-5 { background: linear-gradient(135deg, #00d4ff 0%, #1a3a6b 100%); color: #ffffff; }
+    .post-6 { background: var(--color-bg); border: 1px solid var(--color-border); }
+    .post-7 { background: linear-gradient(135deg, #1a3a6b 0%, #061b31 100%); color: #ffffff; }
+    .post-8 { background: var(--color-surface); }
+    .post-9 { background: linear-gradient(135deg, #00d4ff 0%, #1a3a6b 100%); color: #ffffff; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .services-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+        letter-spacing: -0.64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">FlowState<span>.</span></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a href="#contacto" class="cta-button">Consultar</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Presencia digital que <span>atrae clientes</span></h1>
+      <p>Optimizamos la presencia online de hoteles, comercios y profesionales para que sean encontrados, recordados y elegidos.</p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn-primary">Consultar ahora</a>
+        <a href="#servicios" class="btn-ghost">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-title">
+        <h2>Servicios</h2>
+        <p>Soluciones digitales para negocios locales</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Google Business Profile</h3>
+          <p>Optimización profesional de tu perfil de Google para que aparezcas primero cuando buscan tu rubro.</p>
+          <div class="service-price">$150 USD <span>setup</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>WhatsApp Business</h3>
+          <p>Configuración completa con catálogo, mensajes automáticos y respuestas que convierten.</p>
+          <div class="service-price">$100 USD <span>setup</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏨</div>
+          <h3>Presencia Digital Hoteles</h3>
+          <p>Gestión integral de presencia digital para hospedajes: Google, TripAdvisor, WhatsApp.</p>
+          <div class="service-price">$300 USD <span>setup</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Casos de éxito</h2>
+        <p>Resultados reales para nuestros clientes</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <div class="portfolio-image">🏨</div>
+          <div class="portfolio-content">
+            <h4>Hotel Boutique — Buenos Aires</h4>
+            <p>+40% consultas por WhatsApp</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-image">🍽️</div>
+          <div class="portfolio-content">
+            <h4>Restaurant — Palermo</h4>
+            <p>+35% visibilidad en Google Maps</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-image">⚖️</div>
+          <div class="portfolio-content">
+            <h4>Estudio Jurídico — CABA</h4>
+            <p>+50% llamadas desde Google</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Desde que optimizamos nuestro Google Business, recibimos un 40% más de consultas por WhatsApp. El retorno de inversión fue inmediato."</p>
+        <p class="testimonial-author">— Hotel Boutique, Buenos Aires</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contacto">
+    <div class="container">
+      <h2>¿Listo para que tu negocio aparezca primero?</h2>
+      <p>Consulta gratuita y sin compromiso. Te respondemos en menos de 24 horas.</p>
+      <a href="https://wa.me/5491123456789" class="btn-white">Contactar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">FlowState<span>.</span></div>
+      <nav>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Instagram Grid Preview -->
+  <section class="instagram-preview">
+    <div class="container">
+      <div class="section-title">
+        <h2>Vista previa — Grid de Instagram</h2>
+        <p>9 posts iniciales para tu perfil profesional</p>
+      </div>
+      <div class="instagram-grid">
+        <div class="instagram-post post-1">📊</div>
+        <div class="instagram-post post-2">📱</div>
+        <div class="instagram-post post-3">🏨</div>
+        <div class="instagram-post post-4">💡</div>
+        <div class="instagram-post post-5">📈</div>
+        <div class="instagram-post post-6">⭐</div>
+        <div class="instagram-post post-7">🎯</div>
+        <div class="instagram-post post-8">👨‍💻</div>
+        <div class="instagram-post post-9">📩</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

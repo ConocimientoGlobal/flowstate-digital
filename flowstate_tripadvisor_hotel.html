@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hotel Boutique Palermo — TripAdvisor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f2f2f2;color:#333;font-size:14px;max-width:430px;margin:0 auto;min-height:100vh}
+
+/* BADGE */
+.badge{
+  position:fixed;top:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:430px;
+  background:#1a1a2e;color:#00e5ff;
+  text-align:center;padding:8px;font-size:10px;font-weight:600;letter-spacing:1px;
+  z-index:1000;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:28px;left:50%;transform:translateX(-50%);
+  width:100%;max-width:430px;height:52px;
+  background:#fff;display:flex;align-items:center;padding:0 12px;z-index:999;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.nav-back{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-back svg{width:22px;height:22px;fill:#333}
+.nav-title{flex:1;text-align:center;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.nav-actions{display:flex;gap:4px}
+.nav-action{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-action svg{width:20px;height:20px;fill:#333}
+
+/* HERO */
+.hero{margin-top:80px;position:relative;width:100%;height:260px;overflow:hidden;background:#e0e0e0}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero-gradient{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.hero-photos{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:500;padding:5px 10px;border-radius:16px;display:flex;align-items:center;gap:4px;cursor:pointer}
+
+/* HOTEL CARD */
+.hotel-card{background:#fff;padding:16px;margin-bottom:2px}
+.hotel-name{font-size:22px;font-weight:700;color:#1a1a1a;line-height:1.2;margin-bottom:6px}
+.location-row{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.location-row svg{width:14px;height:14px;fill:#00aa6c}
+.location-row span{font-size:13px;color:#00aa6c;font-weight:500}
+
+.rating-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.bubbles{display:flex;gap:2px}
+.bubble-rating{width:12px;height:12px;background:#34e0a1;border-radius:2px}
+.rating-text{font-size:14px;font-weight:600;color:#1a1a1a}
+.review-count{font-size:13px;color:#545454}
+.award{display:flex;align-items:center;gap:5px;background:#fef3e0;border:1px solid #f5c542;border-radius:8px;padding:5px 10px}
+.award span{font-size:11px;font-weight:700;color:#b2832b}
+
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.action-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 12px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:none}
+.action-btn.primary{background:#34e0a1;color:#1a1a1a;grid-column:1/-1}
+.action-btn.secondary{background:#fff;color:#1a1a1a;border:1.5px solid #d6d6d6}
+
+/* TABS */
+.tabs-container{background:#fff;position:sticky;top:80px;z-index:100;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tabs{display:flex;border-bottom:1px solid #e0e0e0}
+.tab{flex:1;text-align:center;padding:14px 0;font-size:13px;font-weight:600;color:#545454;cursor:pointer;position:relative}
+.tab.active{color:#1a1a1a}
+.tab.active::after{content:'';position:absolute;bottom:0;left:15%;right:15%;height:3px;background:#34e0a1;border-radius:3px 3px 0 0}
+
+/* SECTIONS */
+.section{display:none;background:#fff;padding:16px;margin-bottom:8px}
+.section.active{display:block}
+.section-title{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+
+.desc-text{font-size:14px;line-height:1.6;color:#333;margin-bottom:14px}
+
+/* AMENITIES */
+.amenities{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.amenity{display:flex;align-items:center;gap:8px;padding:8px 0}
+.amenity-icon{width:28px;height:28px;background:#f0faf5;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.amenity-icon svg{width:16px;height:16px;fill:#00aa6c}
+.amenity-text{font-size:13px;color:#333}
+
+/* ROOMS */
+.room-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer}
+.room-card img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+.room-name{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.room-details{font-size:12px;color:#545454;margin-bottom:8px}
+.room-price-row{display:flex;align-items:baseline;justify-content:space-between}
+.room-price{font-size:20px;font-weight:700;color:#1a1a1a}
+.room-price-note{font-size:11px;color:#545454}
+.room-cta{background:#34e0a1;color:#1a1a1a;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;border:none;cursor:pointer}
+
+/* REVIEWS */
+.reviews-header{background:#fff;padding:16px;margin-bottom:8px}
+.reviews-summary{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.reviews-big{font-size:48px;font-weight:800;color:#1a1a1a;line-height:1}
+.reviews-stars{display:flex;gap:2px;margin-bottom:4px}
+.reviews-stars .star{width:14px;height:14px;fill:#34e0a1}
+.reviews-total{font-size:13px;color:#545454}
+
+.review-card{background:#fff;padding:16px;margin-bottom:2px}
+.review-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:#34e0a1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+.review-author{font-size:14px;font-weight:700;color:#1a1a1a}
+.review-meta{font-size:11px;color:#888;margin-top:2px}
+.review-bubbles{display:flex;gap:1px;margin-bottom:8px}
+.review-bubbles .b{width:11px;height:11px;background:#34e0a1;border-radius:2px}
+.review-title{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:6px}
+.review-text{font-size:13px;line-height:1.55;color:#333;margin-bottom:10px}
+.review-date{font-size:11px;color:#888;margin-bottom:8px}
+.review-trip{display:inline-flex;align-items:center;gap:4px;background:#f0faf5;padding:3px 8px;border-radius:10px;font-size:11px;color:#00aa6c;margin-bottom:10px}
+.owner-response{background:#f8f9fa;border-left:3px solid #00aa6c;padding:10px 12px;border-radius:0 8px 8px 0;margin-top:8px}
+.owner-response-label{font-size:11px;font-weight:700;color:#00aa6c;margin-bottom:4px}
+.owner-response-text{font-size:12px;line-height:1.5;color:#545454}
+
+/* PHOTOS */
+.gallery{background:#fff;padding:16px;margin-bottom:8px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:8px;overflow:hidden}
+.gallery-item{aspect-ratio:1;background:#e0e0e0;cursor:pointer;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+
+/* LOCATION */
+.location-section{background:#fff;padding:16px;margin-bottom:8px}
+.location-address{font-size:14px;color:#333;margin-bottom:4px}
+.location-neighborhood{font-size:12px;color:#888;margin-bottom:12px}
+.map-placeholder{width:100%;height:140px;background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 50%,#a5d6a7 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.map-pin{position:absolute;font-size:28px;animation:bounce 1.5s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.map-label{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.9);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;color:#00aa6c}
+
+/* SPECS TABLE */
+.specs-table{width:100%;border-collapse:collapse}
+.specs-table td{padding:8px 0;font-size:13px;border-bottom:1px solid #f0f0f0}
+.specs-table td:first-child{color:#888;width:45%}
+.specs-table td:last-child{color:#333;font-weight:500}
+
+.footer-space{height:40px}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:3000;flex-direction:column;align-items:center;justify-content:center}
+.lightbox.show{display:flex}
+.lightbox-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer}
+.lightbox-counter{position:absolute;top:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;font-weight:500}
+.lightbox-image{width:100%;max-height:70vh;object-fit:contain}
+.lightbox-caption{color:#fff;font-size:13px;margin-top:12px;text-align:center;padding:0 20px}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:32px;cursor:pointer;padding:16px}
+.lightbox-prev{left:0}
+.lightbox-next{right:0}
+</style>
+</head>
+<body>
+
+<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración</div>
+
+<div class="nav">
+  <div class="nav-back"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
+  <div class="nav-title">Hotel Boutique Palermo</div>
+  <div class="nav-actions">
+    <div class="nav-action"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></div>
+    <div class="nav-action"><svg viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></div>
+  </div>
+</div>
+
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hotel">
+  <div class="hero-gradient"></div>
+  <div class="hero-photos">📷 9 fotos</div>
+</div>
+
+<div class="hotel-card">
+  <h1 class="hotel-name">Hotel Boutique Palermo</h1>
+  <div class="location-row">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    <span>Honduras 5680, Palermo Hollywood, Buenos Aires</span>
+  </div>
+  <div class="rating-row">
+    <div class="bubbles"><div class="bubble-rating"></div><div class="bubble-rating"></div><div class="bubble-rating"></div><div class="bubble-rating"></div><div class="bubble-rating"></div></div>
+    <span class="rating-text">4,8</span>
+    <span class="review-count">(312 reseñas)</span>
+    <div class="award"><span>🏆 Travellers' Choice 2026</span></div>
+  </div>
+  <div class="actions">
+    <button class="action-btn primary">Ver tarifas</button>
+    <button class="action-btn secondary">📍 Cómo llegar</button>
+    <button class="action-btn secondary">📤 Compartir</button>
+    <button class="action-btn secondary">✏️ Escribir reseña</button>
+  </div>
+</div>
+
+<div class="tabs-container">
+  <div class="tabs">
+    <div class="tab active" data-tab="info" onclick="switchTab('info')">Información</div>
+    <div class="tab" data-tab="reviews" onclick="switchTab('reviews')">Reseñas</div>
+    <div class="tab" data-tab="photos" onclick="switchTab('photos')">Fotos</div>
+  </div>
+</div>
+
+<!-- INFO TAB -->
+<div class="section active" id="tab-info">
+  <h2 class="section-title">Descripción</h2>
+  <p class="desc-text">Hotel boutique de 15 habitaciones en Palermo Hollywood. Arquitectura moderna, servicio personalizado, desayuno buffet incluido, pileta climatizada y terraza panorámica con vistas al barrio.</p>
+  <p class="desc-text">A pasos de los mejores bares, restaurantes y vida nocturna de Buenos Aires. Perfecto para viajeros que buscan confort, estilo y ubicación privilegiada.</p>
+
+  <h2 class="section-title">Servicios y comodidades</h2>
+  <div class="amenities">
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div><span>WiFi gratuito</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M22 21c-1.11 0-1.73-.37-2.18-.64-.37-.22-.6-.36-1.15-.36-.55 0-.78.13-1.15.36-.46.27-1.07.64-2.18.64s-1.73-.37-2.18-.64c-.37-.22-.6-.36-1.15-.36-.55 0-.78.14-1.15.36-.46.27-1.07.64-2.18.64s-1.73-.37-2.18-.64c-.37-.23-.6-.36-1.15-.36s-.78.13-1.15.36c-.46.27-1.07.64-2.18.64v-2c.55 0 .78-.13 1.15-.36.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.23.6.36 1.15.36s.78-.13 1.15-.36c.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.22.6.36 1.15.36.55 0 .78-.14 1.15-.36.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.23.6.36 1.15.36v2z"/></svg></div><span>Pileta climatizada</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div><span>Estacionamiento</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span>Recepción 24hs</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg></div><span>Restaurante</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z"/></svg></div><span>Bar & Lounge</span></div>
+    <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg></div><span>Spa & Wellness</span></div>
+  </div>
+
+  <h2 class="section-title">Tipos de habitación</h2>
+  <div class="room-card">
+    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="">
+    <div class="room-name">Habitación Standard</div>
+    <div class="room-details">28m² · Cama king · Vista al jardín</div>
+    <div class="room-price-row"><div><div class="room-price">$45.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
+  </div>
+  <div class="room-card">
+    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80" alt="">
+    <div class="room-name">Habitación Deluxe</div>
+    <div class="room-details">38m² · Cama king premium · Balcón privado</div>
+    <div class="room-price-row"><div><div class="room-price">$65.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
+  </div>
+  <div class="room-card">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="">
+    <div class="room-name">Suite Premium</div>
+    <div class="room-details">62m² · Sala de estar · Jacuzzi · Terraza</div>
+    <div class="room-price-row"><div><div class="room-price">$85.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
+  </div>
+
+  <h2 class="section-title">Ubicación</h2>
+  <div class="location-section">
+    <div class="location-address">Honduras 5680, Palermo Hollywood</div>
+    <div class="location-neighborhood">Buenos Aires, C1414 Argentina</div>
+    <div class="map-placeholder">
+      <svg width="100%" height="100%" viewBox="0 0 400 140" preserveAspectRatio="none">
+        <rect width="400" height="140" fill="#e8f5e9"/>
+        <rect x="20" y="30" width="360" height="80" rx="4" fill="#c8e6c9"/>
+        <rect x="80" y="50" width="40" height="40" rx="2" fill="#a5d6a7"/>
+        <rect x="140" y="60" width="60" height="30" rx="2" fill="#81c784"/>
+        <rect x="220" y="45" width="50" height="45" rx="2" fill="#a5d6a7"/>
+        <rect x="290" y="55" width="70" height="35" rx="2" fill="#66bb6a"/>
+        <path d="M0 80 Q100 60 200 90 T400 70 V140 H0Z" fill="#b9dfbd" opacity=".6"/>
+        <line x1="50" y1="120" x2="350" y2="120" stroke="#7cb342" stroke-width="2" stroke-dasharray="6,3"/>
+      </svg>
+      <div class="map-pin">📍</div>
+      <div class="map-label">Palermo Hollywood · 500m</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Información del hotel</h2>
+  <table class="specs-table">
+    <tr><td>Check-in</td><td>15:00 hrs</td></tr>
+    <tr><td>Check-out</td><td>11:00 hrs</td></tr>
+    <tr><td>Habitaciones</td><td>42</td></tr>
+    <tr><td>Pisos</td><td>6</td></tr>
+    <tr><td>Año construcción</td><td>2019</td></tr>
+    <tr><td>Última renovación</td><td>2024</td></tr>
+  </table>
+</div>
+
+<!-- REVIEWS TAB -->
+<div class="section" id="tab-reviews">
+  <div class="reviews-header">
+    <div class="reviews-summary">
+      <div class="reviews-big">4,8</div>
+      <div>
+        <div class="reviews-stars"><svg class="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star" viewBox="0 0 24 24" style="fill:#e0e0e0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div class="reviews-total">Basado en 312 reseñas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-card">
+    <div class="review-header">
+      <div class="review-avatar">MG</div>
+      <div><div class="review-author">María García</div><div class="review-meta">Buenos Aires · 12 reseñas</div></div>
+    </div>
+    <div class="review-bubbles"><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div></div>
+    <div class="review-title">¡Experiencia inolvidable!</div>
+    <div class="review-text">El hotel superó todas mis expectativas. La habitación Deluxe es espectacular, con acabados de primera y una cama increíblemente cómoda. El desayuno es variado y delicioso. El personal es sumamente atento.</div>
+    <div class="review-trip">💑 Viaje en pareja</div>
+    <div class="review-date">Septiembre 2026 · 3 noches</div>
+    <div class="owner-response"><div class="owner-response-label">Respuesta del establecimiento</div><div class="owner-response-text">¡Muchas gracias, María! Nos alegra saber que disfrutó su estadía. Esperamos recibirle nuevamente pronto. Equipo Hotel Boutique Palermo.</div></div>
+  </div>
+
+  <div class="review-card">
+    <div class="review-header">
+      <div class="review-avatar">CL</div>
+      <div><div class="review-author">Carlos López</div><div class="review-meta">Madrid, España · 28 reseñas</div></div>
+    </div>
+    <div class="review-bubbles"><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div></div>
+    <div class="review-title">Excelente ubicación y servicio</div>
+    <div class="review-text">Ubicado en una zona espectacular de Palermo. El restaurante del hotel es muy bueno y el spa es un lujo. La pileta climatizada es perfecta para relajarse.</div>
+    <div class="review-trip">💼 Viaje de negocios</div>
+    <div class="review-date">Agosto 2026 · 5 noches</div>
+    <div class="owner-response"><div class="owner-response-label">Respuesta del establecimiento</div><div class="owner-response-text">Gracias Carlos por sus amables palabras. Nos enorgullece ofrecer un servicio que combine confort y funcionalidad.</div></div>
+  </div>
+
+  <div class="review-card">
+    <div class="review-header">
+      <div class="review-avatar">AP</div>
+      <div><div class="review-author">Ana Pérez</div><div class="review-meta">Santiago, Chile · 5 reseñas</div></div>
+    </div>
+    <div class="review-bubbles"><div class="b"></div><div class="b"></div><div class="b"></div><div class="b" style="background:#e0e0e0"></div></div>
+    <div class="review-title">Muy lindo hotel, algunos detalles</div>
+    <div class="review-text">El hotel es precioso y muy bien mantenido. El único punto a mejorar es el tiempo de espera del check-in. Fuera de eso, todo impecable.</div>
+    <div class="review-trip">👨‍👩‍👧 Familia con niños</div>
+    <div class="review-date">Agosto 2026 · 4 noches</div>
+    <div class="owner-response"><div class="owner-response-label">Respuesta del establecimiento</div><div class="owner-response-text">Gracias por su feedback, Ana. Lamentamos la demora y ya estamos trabajando para mejorar los tiempos.</div></div>
+  </div>
+</div>
+
+<!-- PHOTOS TAB -->
+<div class="section" id="tab-photos">
+  <div class="gallery">
+    <h2 class="section-title">Galería de fotos</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLB(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(1)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(2)"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(3)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(4)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(5)"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(6)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(7)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(8)"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&q=80" alt=""></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-space"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLB()">✕</span>
+  <div class="lightbox-counter" id="lbCount">1 / 9</div>
+  <span class="lightbox-nav lightbox-prev" onclick="navLB(-1)">‹</span>
+  <img class="lightbox-image" id="lbImg" src="" alt="">
+  <span class="lightbox-nav lightbox-next" onclick="navLB(1)">›</span>
+  <div class="lightbox-caption" id="lbCaption"></div>
+</div>
+
+<script>
+const photos=[
+{src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',cap:'Fachada principal al atardecer'},
+{src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',cap:'Habitación Standard'},
+{src:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',cap:'Habitación Deluxe'},
+{src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',cap:'Suite Premium'},
+{src:'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80',cap:'Pileta climatizada'},
+{src:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',cap:'Spa & Wellness'},
+{src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',cap:'Restaurante gourmet'},
+{src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',cap:'Bar & Lounge'},
+{src:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',cap:'Lobby y recepción'}
+];
+let curP=0;
+
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${t}"]`).classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+  window.scrollTo({top:80,behavior:'smooth'});
+}
+
+function openLB(i){
+  curP=i;
+  document.getElementById('lbImg').src=photos[i].src;
+  document.getElementById('lbCaption').textContent=photos[i].cap;
+  document.getElementById('lbCount').textContent=(i+1)+' / '+photos.length;
+  document.getElementById('lightbox').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+
+function closeLB(){
+  document.getElementById('lightbox').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+function navLB(d){
+  curP=(curP+d+photos.length)%photos.length;
+  document.getElementById('lbImg').src=photos[curP].src;
+  document.getElementById('lbCaption').textContent=photos[curP].cap;
+  document.getElementById('lbCount').textContent=(curP+1)+' / '+photos.length;
+}
+
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB()});
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('show'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')navLB(-1);if(e.key==='ArrowRight')navLB(1)});
+
+let tStart=0;
+document.getElementById('lightbox').addEventListener('touchstart',e=>tStart=e.touches[0].clientX);
+document.getElementById('lightbox').addEventListener('touchend',e=>{if(e.changedTouches[0].clientX<tStart-50)navLB(1);if(e.changedTouches[0].clientX>tStart+50)navLB(-1)});
+</script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowState Digital — Portfolio Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f5;
+      color: #202124;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+
+    /* Header con badge */
+    .portfolio-badge {
+      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .portfolio-badge .logo {
+      font-size: 16px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portfolio-badge .logo span {
+      background: #fff;
+      color: #1a73e8;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .portfolio-badge .label {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Hero del negocio */
+    .hero {
+      height: 200px;
+      background: linear-gradient(135deg, #1a3a6b 0%, #0d253d 50%, #00d4ff 100%);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .business-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      flex-shrink: 0;
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .business-name {
+      font-size: 28px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .business-category {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+
+    .business-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stars {
+      color: #fbbc04;
+      font-size: 14px;
+    }
+
+    .rating-text {
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+    }
+
+    .status {
+      background: #34a853;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* Acciones */
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e0e0e0;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: #5f6368;
+      font-size: 12px;
+      min-width: 72px;
+    }
+
+    .action-btn:hover {
+      border-color: #1a73e8;
+      color: #1a73e8;
+    }
+
+    .action-btn .icon {
+      font-size: 20px;
+    }
+
+    /* Contenido principal */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Información de contacto */
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5f6368;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: #5f6368;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 14px;
+      color: #202124;
+    }
+
+    .info-value a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .info-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* Horarios */
+    .hours-table {
+      font-size: 13px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+
+    .hours-day {
+      color: #5f6368;
+      font-weight: 500;
+      min-width: 80px;
+    }
+
+    .hours-time {
+      color: #202124;
+    }
+
+    .hours-row.today .hours-day {
+      color: #1a73e8;
+      font-weight: 700;
+    }
+
+    /* Reseñas */
+    .reviews-summary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .reviews-score {
+      font-size: 48px;
+      font-weight: 400;
+      color: #202124;
+      line-height: 1;
+    }
+
+    .reviews-stars {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .reviews-stars .stars {
+      font-size: 18px;
+    }
+
+    .reviews-count {
+      font-size: 13px;
+      color: #5f6368;
+    }
+
+    .review-card {
+      padding: 16px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .review-card:last-child {
+      border-bottom: none;
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .reviewer-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a73e8, #00d4ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .reviewer-info {
+      flex: 1;
+    }
+
+    .reviewer-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #202124;
+    }
+
+    .review-date {
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    .review-stars {
+      color: #fbbc04;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: #5f6368;
+      line-height: 1.5;
+    }
+
+    .review-response {
+      margin-top: 8px;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #5f6368;
+    }
+
+    .review-response strong {
+      color: #202124;
+    }
+
+    /* Publicaciones de Google */
+    .post-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .post-image {
+      height: 180px;
+      background: linear-gradient(135deg, #1a3a6b, #00d4ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 48px;
+    }
+
+    .post-content {
+      padding: 16px;
+    }
+
+    .post-label {
+      font-size: 11px;
+      color: #5f6368;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .post-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 8px;
+    }
+
+    .post-description {
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 12px;
+    }
+
+    .post-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #1a73e8;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .post-cta:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar */
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+
+    .update-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      background: #e8f0fe;
+      color: #1a73e8;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    /* Separador de secciones */
+    .section-divider {
+      height: 8px;
+      background: #f5f5f5;
+      margin: 0 -24px;
+    }
+
+    /* Footer del mockup */
+    .mockup-footer {
+      background: #f8f9fa;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .mockup-footer-text {
+      font-size: 12px;
+      color: #5f6368;
+    }
+
+    .mockup-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a73e8;
+    }
+
+    .mockup-footer-brand span {
+      background: linear-gradient(135deg, #1a73e8, #00d4ff);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero {
+        height: auto;
+        padding: 16px;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .business-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+      }
+
+      .business-name {
+        font-size: 22px;
+      }
+
+      .business-meta {
+        justify-content: center;
+      }
+
+      .main-content {
+        padding: 16px;
+      }
+
+      .actions-bar {
+        padding: 12px 16px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Portfolio Badge -->
+  <div class="portfolio-badge">
+    <div class="logo">
+      <span>FS</span>
+      FlowState Digital — Portafolio de Proyectos
+    </div>
+    <div class="label">Proyecto ficticio de muestra</div>
+  </div>
+
+  <!-- Hero del Negocio -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="business-avatar">🏨</div>
+      <div class="hero-info">
+        <h1 class="business-name">Hotel Boutique Palermo</h1>
+        <p class="business-category">Hotel boutique · Palermo, Buenos Aires</p>
+        <div class="business-meta">
+          <div class="rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">4.8 (312 reseñas)</span>
+          </div>
+          <span class="status">Abierto ahora</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de acciones -->
+  <div class="actions-bar">
+    <a class="action-btn">
+      <span class="icon">📞</span>
+      <span>Llamar</span>
+    </a>
+    <a class="action-btn">
+      <span class="icon">💬</span>
+      <span>WhatsApp</span>
+    </a>
+    <a class="action-btn">
+      <span class="icon">🧭</span>
+      <span>Cómo llegar</span>
+    </a>
+    <a class="action-btn">
+      <span class="icon">🌐</span>
+      <span>Sitio web</span>
+    </a>
+    <a class="action-btn">
+      <span class="icon">📤</span>
+      <span>Compartir</span>
+    </a>
+    <a class="action-btn">
+      <span class="icon">✏️</span>
+      <span>Editar perfil</span>
+    </a>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+
+    <!-- Columna izquierda -->
+    <div class="left-column">
+
+      <!-- Descripción -->
+      <div class="sidebar-section">
+        <h2 class="section-title">Descripción</h2>
+        <p style="font-size: 14px; color: #5f6368; line-height: 1.6;">
+          Hotel boutique de 15 habitaciones en el corazón de Palermo Hollywood. Arquitectura moderna, servicio personalizado y experiencias únicas para huéspedes que buscan algo más que una habitación.
+        </p>
+      </div>
+
+      <!-- Información de contacto -->
+      <div class="sidebar-section">
+        <h2 class="section-title">Información de contacto</h2>
+
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <div class="info-label">Dirección</div>
+            <div class="info-value">
+              <a href="#">Honduras 5680, Palermo, Buenos Aires, C1414</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div class="info-text">
+            <div class="info-label">Teléfono</div>
+            <div class="info-value">
+              <a href="tel:+541145678900">+54 11 4567-8900</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div class="info-text">
+            <div class="info-label">WhatsApp Business</div>
+            <div class="info-value">
+              <a href="#">Enviar mensaje</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <div class="info-text">
+            <div class="info-label">Sitio web</div>
+            <div class="info-value">
+              <a href="#">www.hotelboutiquepalermo.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div class="info-text">
+            <div class="info-label">Correo electrónico</div>
+            <div class="info-value">
+              <a href="mailto:reservas@hotelboutiquepalermo.com">reservas@hotelboutiquepalermo.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horarios -->
+      <div class="sidebar-section">
+        <h2 class="section-title">Horarios</h2>
+        <div class="hours-table">
+          <div class="hours-row today">
+            <span class="hours-day">Lunes</span>
+            <span class="hours-time">9:00–18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Martes</span>
+            <span class="hours-time">9:00–18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Miércoles</span>
+            <span class="hours-time">9:00–18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Jueves</span>
+            <span class="hours-time">9:00–18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Viernes</span>
+            <span class="hours-time">9:00–18:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sábado</span>
+            <span class="hours-time">10:00–14:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Domingo</span>
+            <span class="hours-time">Cerrado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reseñas -->
+      <div class="sidebar-section">
+        <h2 class="section-title">Reseñas de clientes</h2>
+
+        <div class="reviews-summary">
+          <div class="reviews-score">4.8</div>
+          <div class="reviews-stars">
+            <div class="stars">★★★★★</div>
+            <div class="reviews-count">312 reseñas de Google</div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">MG</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">María García</div>
+              <div class="review-date">Hace 2 semanas</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Excelente atención y ubicación perfecta. Las habitaciones son hermosas y el desayuno espectacular. El proceso de reserva por WhatsApp fue rapidísimo. ¡Volveremos!"
+          </p>
+          <div class="review-response">
+            <strong>Respuesta del negocio:</strong> ¡Muchas gracias María! Nos encantó recibirte. Tu opinión nos ayuda a seguir mejorando. ¡Te esperamos de vuelta pronto!
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">JP</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Juan Pérez</div>
+              <div class="review-date">Hace 1 mes</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Me encontré con este hotel por Google Maps y la verdad que superó todas mis expectativas. El personal muy atento y las instalaciones de primer nivel. Recomendadísimo para parejas."
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">LC</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Laura Castillo</div>
+              <div class="review-date">Hace 2 meses</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "La mejor experiencia en Buenos Aires. Reservamos todo por WhatsApp en minutos, sin complicaciones. El hotel es tal como se ve en las fotos, incluso mejor. No duden en elegirlo."
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Columna derecha (Publicaciones de Google) -->
+    <div class="right-column">
+
+      <div class="update-badge">🆕 Últimas actualizaciones</div>
+
+      <!-- Publicación 1 -->
+      <div class="post-card">
+        <div class="post-image">🎉</div>
+        <div class="post-content">
+          <div class="post-label">Oferta especial</div>
+          <h3 class="post-title">¡20% OFF en reservas de última hora!</h3>
+          <p class="post-description">
+            Aprovechá esta semana con un 20% de descuento en reservas realizadas directamente por WhatsApp. Válido para estadías de 2 noches o más.
+          </p>
+          <a href="#" class="post-cta">Reservar ahora →</a>
+        </div>
+      </div>
+
+      <!-- Publicación 2 -->
+      <div class="post-card">
+        <div class="post-image">🌟</div>
+        <div class="post-content">
+          <div class="post-label">Novedad</div>
+          <h3 class="post-title">Nueva terraza panorámica inaugurada</h3>
+          <p class="post-description">
+            Les presentamos nuestra nueva terraza en el piso 5 con vistas a Palermo. Ideal para desayunos al aire libre y cócteles al atardecer.
+          </p>
+          <a href="#" class="post-cta">Ver más fotos →</a>
+        </div>
+      </div>
+
+      <!-- Publicación 3 -->
+      <div class="post-card">
+        <div class="post-image">☕</div>
+        <div class="post-content">
+          <div class="post-label">Servicio</div>
+          <h3 class="post-title">Desayuno buffet incluido</h3>
+          <p class="post-description">
+            Todas nuestras tarifas incluyen desayuno buffet con productos frescos de productores locales. Opciones veganas y sin gluten disponibles.
+          </p>
+          <a href="#" class="post-cta">Conocer más →</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer del mockup -->
+  <div class="mockup-footer">
+    <div class="mockup-footer-text">
+      Portafolio de proyectos ficticios — FlowState Digital © 2026
+    </div>
+    <div class="mockup-footer-brand">
+      <span>FS</span>
+      FlowState Digital
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

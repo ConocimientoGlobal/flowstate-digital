@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Restaurante Soho — WhatsApp Business</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b141a;
+  --bg2:#111b21;
+  --bg3:#202c33;
+  --bubble-out:#005c4b;
+  --bubble-in:#202c33;
+  --secondary:#8696a0;
+  --text:#e9edef;
+  --accent:#00a884;
+  --accent2:#53bdeb;
+  --border:#222d34;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+/* PATRÓN FONDO WHATSAPP */
+.chat-bg{
+  background-color:#0b141a;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.badge{
+  background:#0a1a20;
+  color:var(--accent2);
+  text-align:center;
+  padding:8px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:1px;
+  flex-shrink:0;
+}
+
+/* HEADER EXACTO */
+.header{
+  background:var(--bg3);
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+.avatar{
+  width:40px;height:40px;border-radius:50%;
+  object-fit:cover;
+  background:#2a3942;
+}
+.header-info{flex:1}
+.header-name{font-size:16px;font-weight:500;line-height:1.3}
+.header-status{font-size:12px;color:var(--accent);margin-top:1px}
+.header-actions{display:flex;gap:18px;color:var(--secondary);font-size:21px}
+.header-actions span{cursor:pointer;display:flex;align-items:center}
+
+/* CHAT AREA */
+.chat{
+  flex:1;
+  overflow-y:auto;
+  padding:8px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.chat::-webkit-scrollbar{width:3px}
+.chat::-webkit-scrollbar-thumb{background:#37404b;border-radius:2px}
+
+/* ENCRYPTION MSG */
+.encryption{
+  background:rgba(255,209,102,.08);
+  text-align:center;
+  padding:6px 12px;
+  font-size:11px;
+  color:rgba(255,255,255,.5);
+  border-radius:6px;
+  margin:4px auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+}
+
+/* DATE SEP */
+.date-sep{
+  text-align:center;
+  margin:8px 0;
+}
+.date-sep span{
+  background:rgba(134,150,160,.15);
+  color:rgba(255,255,255,.7);
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:6px;
+}
+
+/* MESSAGES */
+.msg{display:flex;margin-bottom:3px;animation:msgIn .25s ease-out}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.in{justify-content:flex-start}
+.msg.out{justify-content:flex-end}
+.bubble{
+  max-width:85%;
+  padding:5px 8px 6px 9px;
+  border-radius:7.5px;
+  font-size:13px;
+  line-height:18px;
+  position:relative;
+  word-wrap:break-word;
+  box-shadow:0 1px 1px rgba(0,0,0,.1);
+}
+.bubble.in{background:var(--bubble-in);border-top-left-radius:0}
+.bubble.out{background:var(--bubble-out);border-top-right-radius:0}
+.bubble .time{
+  font-size:10px;
+  color:rgba(255,255,255,.45);
+  float:right;
+  margin-left:8px;
+  margin-top:2px;
+}
+.bubble .check{font-size:14px;vertical-align:bottom;margin-left:1px;color:var(--accent2)}
+
+/* TYPING */
+.typing{display:flex;gap:3px;padding:10px 14px;align-self:flex-start}
+.typing span{
+  width:5px;height:5px;
+  background:var(--secondary);
+  border-radius:50%;
+  animation:typing 1.4s infinite;
+}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+
+/* QUICK REPLIES */
+.quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:4px 8%}
+.quick-reply{
+  background:rgba(0,168,132,.08);
+  border:1px solid rgba(0,168,132,.3);
+  color:var(--accent);
+  padding:5px 12px;
+  border-radius:16px;
+  font-size:11px;
+  cursor:pointer;
+  transition:all .2s;
+}
+.quick-reply:hover{background:rgba(0,168,132,.15)}
+
+/* CATALOG - WhatsApp Business Style */
+.catalog-section{
+  background:var(--bg2);
+  border-radius:8px;
+  overflow:hidden;
+  margin:3px 0;
+}
+.catalog-header{
+  background:var(--bg3);
+  padding:10px 12px;
+  font-weight:600;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.catalog-tabs{
+  display:flex;
+  background:var(--bg3);
+  border-bottom:1px solid var(--border);
+}
+.catalog-tab{
+  flex:1;
+  padding:9px;
+  text-align:center;
+  font-size:11px;
+  cursor:pointer;
+  color:var(--secondary);
+  border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.catalog-tab.active{
+  border-bottom-color:var(--accent);
+  color:var(--accent);
+  font-weight:600;
+}
+.catalog-items{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  padding:6px;
+}
+.catalog-item{
+  background:var(--bg3);
+  border-radius:6px;
+  overflow:hidden;
+}
+.catalog-item img{
+  width:100%;
+  height:70px;
+  object-fit:cover;
+}
+.catalog-item .info{padding:5px}
+.catalog-item .name{font-weight:600;font-size:11px}
+.catalog-item .desc{font-size:9px;color:var(--secondary);margin:1px 0}
+.catalog-item .price{font-size:11px;font-weight:700;color:var(--accent)}
+.catalog-item .add-btn{
+  display:block;
+  width:100%;
+  background:var(--accent);
+  color:#0b141a;
+  border:none;
+  padding:5px;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:4px;
+  border-radius:4px;
+}
+
+/* CART BAR */
+.cart-bar{
+  display:none;
+  background:var(--bubble-out);
+  padding:10px 16px;
+  align-items:center;
+  justify-content:space-between;
+  flex-shrink:0;
+  cursor:pointer;
+}
+.cart-bar.show{display:flex}
+.cart-bar .cart-text{font-size:13px;font-weight:500}
+.cart-bar .cart-qty{
+  background:#fff;color:var(--bubble-out);
+  border-radius:50%;
+  width:18px;height:18px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;font-weight:700;
+  margin-right:6px;
+}
+
+/* INPUT AREA */
+.input-area{
+  background:var(--bg3);
+  padding:8px 10px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-shrink:0;
+}
+.input-area input{
+  flex:1;
+  background:#2a3942;
+  border:none;
+  border-radius:20px;
+  padding:9px 14px;
+  color:var(--text);
+  font-size:14px;
+  outline:none;
+}
+.input-area input::placeholder{color:var(--secondary)}
+.input-area .icon-btn{
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--secondary);
+  cursor:pointer;
+  font-size:22px;
+  border-radius:50%;
+}
+.input-area .send-btn{
+  width:38px;height:38px;
+  background:var(--accent);
+  border:none;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#0b141a;
+  font-size:18px;
+}
+
+/* OVERLAY SCREENS */
+.overlay-screen{
+  display:none;
+  flex:1;
+  overflow-y:auto;
+  background:var(--bg);
+}
+.overlay-screen.show{display:block}
+.overlay-back{
+  background:var(--bg3);
+  color:var(--accent);
+  border:none;
+  padding:8px 16px;
+  font-size:14px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+/* PROFILE */
+.profile-avatar{
+  width:90px;height:90px;border-radius:50%;
+  object-fit:cover;
+  margin:16px auto 8px;
+  display:block;
+  border:3px solid var(--accent);
+}
+.profile-name{text-align:center;font-size:20px;font-weight:600}
+.profile-desc{text-align:center;font-size:13px;color:var(--secondary);margin-top:4px}
+.profile-stats{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin-top:12px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.stat{text-align:center}
+.stat .val{font-size:18px;font-weight:700}
+.stat .lbl{font-size:11px;color:var(--secondary)}
+.profile-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+}
+.profile-row .mi{color:var(--accent);font-size:18px}
+.profile-row .text{font-size:13px}
+.profile-row .sub{font-size:11px;color:var(--secondary)}
+
+/* FORMS */
+.form-group{margin:12px 16px}
+.form-group label{display:block;font-size:11px;color:var(--secondary);margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;
+  background:var(--bg3);
+  border:none;
+  border-bottom:2px solid var(--accent);
+  border-radius:4px 4px 0 0;
+  padding:10px 12px;
+  color:var(--text);
+  font-size:14px;
+  outline:none;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--secondary)}
+.form-group textarea{resize:vertical;min-height:50px}
+.submit-btn{
+  background:var(--accent);
+  color:#0b141a;
+  border:none;
+  padding:10px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:700;
+  width:calc(100% - 32px);
+  margin:16px;
+  cursor:pointer;
+}
+
+/* CART */
+.cart-item{
+  display:flex;
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  align-items:center;
+  gap:10px;
+}
+.cart-item img{width:44px;height:44px;border-radius:6px;object-fit:cover}
+.cart-item .info{flex:1}
+.cart-item .name{font-size:13px;font-weight:500}
+.cart-item .price{font-size:12px;color:var(--accent)}
+.cart-item .qty{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.cart-item .qty button{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  color:var(--text);
+  width:24px;height:24px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:14px;
+}
+.cart-total{
+  padding:14px;
+  font-size:16px;
+  font-weight:700;
+  text-align:center;
+  color:var(--accent);
+}
+
+.payment-option{
+  padding:10px 16px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin:6px 16px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.payment-option.selected{border-color:var(--accent);background:rgba(0,168,132,.1)}
+.payment-option input{accent-color:var(--accent)}
+
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#323232;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  font-size:13px;
+  z-index:999;
+  opacity:0;
+  transition:all .3s;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración</div>
+
+<div class="header">
+  <img class="avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop" alt="">
+  <div class="header-info">
+    <div class="header-name" id="hName">Restaurante Soho</div>
+    <div class="header-status" id="hStatus">en línea</div>
+  </div>
+  <div class="header-actions">
+    <span onclick="toast('Llamada no disponible')">📹</span>
+    <span onclick="showProfile()">ℹ️</span>
+  </div>
+</div>
+
+<div class="chat chat-bg" id="chat"></div>
+
+<div class="cart-bar" id="cartBar" onclick="showCart()">
+  <div class="cart-text">
+    <span class="cart-qty" id="cartCount">0</span>
+    Ver carrito — $<span id="cartTotalBar">0</span> ARS
+  </div>
+  <span style="font-size:18px">🛒</span>
+</div>
+
+<div class="input-area" id="inputArea">
+  <span class="icon-btn">😊</span>
+  <span class="icon-btn">📎</span>
+  <input type="text" id="msgInput" placeholder="Escribí un mensaje..." onkeypress="if(event.key==='Enter')sendMsg()">
+  <button class="send-btn" onclick="sendMsg()">➤</button>
+</div>
+
+<!-- PROFILE -->
+<div class="overlay-screen" id="profileScreen">
+  <button class="overlay-back" onclick="goBack()">← Volver</button>
+  <div style="text-align:center;padding:16px">
+    <img class="profile-avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=200&fit=crop" alt="">
+    <div class="profile-name">Restaurante Soho</div>
+    <div class="profile-desc">🍽️ Cocina de autor en Palermo</div>
+    <div class="profile-stats">
+      <div class="stat"><div class="val">4.6</div><div class="lbl">★ Rating</div></div>
+      <div class="stat"><div class="val">248</div><div class="lbl">Reseñas</div></div>
+    </div>
+  </div>
+  <div class="profile-row"><span class="material-icons-outlined mi">place</span><div><div class="text">Paraguayo 4501, Palermo</div><div class="sub">Buenos Aires, Argentina</div></div></div>
+  <div class="profile-row"><span class="material-icons-outlined mi">schedule</span><div><div class="text">Lun-Dom 12:00-00:00</div><div class="sub">Abierto ahora</div></div></div>
+  <div class="profile-row"><span class="material-icons-outlined mi">phone</span><div><div class="text">+54 9 11 5678-4321</div><div class="sub">WhatsApp Business</div></div></div>
+</div>
+
+<!-- CART -->
+<div class="overlay-screen" id="cartScreen">
+  <button class="overlay-back" onclick="goBack()">← Volver</button>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">🛒 Tu Carrito</h3>
+  <div id="cartItems"></div>
+  <div class="cart-total" id="cartTotal">Total: $0 ARS</div>
+  <button class="submit-btn" onclick="goToDelivery()">Continuar al pedido →</button>
+</div>
+
+<!-- RESERVATION -->
+<div class="overlay-screen" id="reservationScreen">
+  <button class="overlay-back" onclick="goBack()">← Volver</button>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">📅 Reservar Mesa</h3>
+  <div class="form-group"><label>Nombre completo</label><input type="text" id="resName" placeholder="Tu nombre"></div>
+  <div class="form-group"><label>Fecha</label><input type="date" id="resDate"></div>
+  <div class="form-group"><label>Hora</label><input type="time" id="resTime"></div>
+  <div class="form-group"><label>Comensales</label>
+    <select id="resGuests">
+      <option value="">Seleccionar...</option>
+      <option>1 persona</option><option>2 personas</option>
+      <option>3 personas</option><option>4 personas</option>
+      <option>5 personas</option><option>6+ personas</option>
+    </select>
+  </div>
+  <div class="form-group"><label>Notas especiales</label><textarea id="resNotes" placeholder="Alergias, celebraciones..."></textarea></div>
+  <button class="submit-btn" onclick="submitReservation()">✓ Confirmar Reserva</button>
+</div>
+
+<!-- DELIVERY -->
+<div class="overlay-screen" id="deliveryScreen">
+  <button class="overlay-back" onclick="goBackToCart()">← Volver</button>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">🚴 Datos de Delivery</h3>
+  <div class="form-group"><label>Dirección de entrega</label><input type="text" id="delAddr" placeholder="Calle, número, piso"></div>
+  <div class="form-group"><label>Barrio / Localidad</label><input type="text" id="delBarrio" placeholder="Ej: Palermo"></div>
+  <div class="form-group"><label>Referencias</label><input type="text" id="delRef" placeholder="Timbre, color puerta..."></div>
+  <div class="form-group"><label>Método de pago</label></div>
+  <div class="payment-option selected" onclick="selectPay(this)"><input type="radio" name="pay" checked>💳 Tarjeta</div>
+  <div class="payment-option" onclick="selectPay(this)"><input type="radio" name="pay">💵 Efectivo</div>
+  <div class="payment-option" onclick="selectPay(this)"><input type="radio" name="pay">📱 Mercado Pago</div>
+  <div class="payment-option" onclick="selectPay(this)"><input type="radio" name="pay">🏦 Transferencia</div>
+  <div class="cart-total" id="delTotal">Total: $0 ARS</div>
+  <button class="submit-btn" onclick="confirmOrder()">✓ Confirmar Pedido</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS={
+  entradas:[
+    {id:'e1',name:'Empanadas x6',desc:'6 und. carne, pollo, jamón y queso',price:800,img:'https://images.unsplash.com/photo-1604467707321-70d009801bf7?w=400&h=300&fit=crop'},
+    {id:'e2',name:'Provoleta',desc:'Queso provolone a la parrilla con orégano',price:1200,img:'https://images.unsplash.com/photo-1552595343-770065f2d470?w=400&h=300&fit=crop'},
+    {id:'e3',name:'Tabla de Quesos',desc:'Quesos artesanales, aceitunas y frutos secos',price:3500,img:'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&h=300&fit=crop'},
+    {id:'e4',name:'Bruschetta',desc:'Pan tostado, tomate fresco y albahaca',price:1800,img:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&h=300&fit=crop'}
+  ],
+  principales:[
+    {id:'p1',name:'Bife de Chorizo',desc:'300g con guarnición a elección',price:8500,img:'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop'},
+    {id:'p2',name:'Pasta Casera',desc:'Ravioles de ricota y espinaca bolognesa',price:6000,img:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop'},
+    {id:'p3',name:'Milanesa Napolitana',desc:'Con jamón, mozzarella y papas fritas',price:5500,img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop'},
+    {id:'p4',name:'Salmón Grillado',desc:'Con risotto de limón y espárragos',price:9500,img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop'}
+  ],
+  postres:[
+    {id:'d1',name:'Flan Casero',desc:'Con dulce de leche y crema',price:2500,img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop'},
+    {id:'d2',name:'Helado Artesanal',desc:'3 sabores a elección',price:2000,img:'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&h=300&fit=crop'},
+    {id:'d3',name:'Tiramisú',desc:'Clásico italiano con mascarpone',price:2800,img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop'},
+    {id:'d4',name:'Torta de Chocolate',desc:'Con ganache y frutos rojos',price:3000,img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop'}
+  ]
+};
+
+let cart=[];
+let currentScreen='chat';
+
+function getTime(){
+  const n=new Date();
+  return n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');
+}
+
+function scrollChat(){
+  const c=document.getElementById('chat');
+  setTimeout(()=>c.scrollTop=c.scrollHeight,50);
+}
+
+function addMsg(text,sender){
+  const div=document.createElement('div');
+  div.className='msg '+sender;
+  const b=document.createElement('div');
+  b.className='bubble '+sender;
+  b.innerHTML=`${text}<span class="time">${getTime()}<span class="check">✓✓</span></span>`;
+  div.appendChild(b);
+  document.getElementById('chat').appendChild(div);
+  scrollChat();
+}
+
+function showTyping(){
+  const div=document.createElement('div');
+  div.className='msg in';div.id='typing';
+  const b=document.createElement('div');
+  b.className='bubble in';
+  b.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+  div.appendChild(b);
+  document.getElementById('chat').appendChild(div);
+  scrollChat();
+}
+
+function removeTyping(){
+  const t=document.getElementById('typing');
+  if(t)t.remove();
+}
+
+function botReply(text,delay=800){
+  showTyping();
+  setTimeout(()=>{
+    removeTyping();
+    addMsg(text,'in');
+  },delay);
+}
+
+function sendQuickReply(text){
+  addMsg(text,'out');
+  processMsg(text);
+}
+
+function processMsg(msg){
+  const l=msg.toLowerCase().trim();
+  if(l.includes('hola')||l.includes('buenas')||l.includes('menú')||l.includes('menu')){
+    botReply('¡Hola! 👋 Bienvenido a Restaurante Soho 🍽️\n\n¿En qué puedo ayudarte?');
+    setTimeout(()=>{
+      const d=document.createElement('div');
+      d.className='quick-replies';
+      ['Ver menú','Hacer un pedido','Reservar mesa','Ver horarios'].forEach(q=>{
+        const b=document.createElement('button');
+        b.className='quick-reply';b.textContent=q;
+        b.onclick=()=>sendQuickReply(q);
+        d.appendChild(b);
+      });
+      document.getElementById('chat').appendChild(d);
+      scrollChat();
+    },1500);
+  }else if(l.includes('menú')||l.includes('menu')||l.includes('ver men')){
+    showCatalog();
+  }else if(l.includes('pedido')||l.includes('ordenar')||l.includes('comprar')){
+    botReply('¡Perfecto! Te muestro nuestro menú para que elijas 🍴');
+    setTimeout(()=>showCatalog(),1200);
+  }else if(l.includes('reserv')){
+    botReply('¡Genial! Te ayudo a reservar una mesa.');
+    setTimeout(()=>showReservation(),1200);
+  }else if(l.includes('horario')||l.includes('hora')||l.includes('abier')){
+    botReply('🕐 Nuestros horarios:\n\nLunes a Domingo\n12:00 - 00:00\n\n¡Estamos abiertos todos los días!');
+  }else if(l.includes('direc')||l.includes('ubicac')||l.includes('dónde')){
+    botReply('📍 Estamos en Paraguayo 4501, Palermo, Buenos Aires.\n\n¡Te esperamos!');
+  }else{
+    botReply('¡Gracias por tu mensaje! 😊\n\nEscribí "menú" para ver nuestros platos, "reservar" para una mesa, o "horarios" para ver cuándo abrimos.');
+  }
+}
+
+function sendMsg(){
+  const input=document.getElementById('msgInput');
+  const text=input.value.trim();
+  if(!text)return;
+  input.value='';
+  addMsg(text,'out');
+  processMsg(text);
+}
+
+function showCatalog(){
+  const d=document.createElement('div');
+  d.className='msg in';
+  const b=document.createElement('div');
+  b.className='bubble in';
+  b.style.maxWidth='90%';
+  
+  let h='<div class="catalog-section">';
+  h+='<div class="catalog-header">📋 Nuestro Menú</div>';
+  h+='<div class="catalog-tabs">';
+  ['Entradas','Principales','Postres'].forEach((c,i)=>{
+    h+=`<div class="catalog-tab ${i===0?'active':''}" onclick="switchCat('${c.toLowerCase()}',this)">${c}</div>`;
+  });
+  h+='</div><div class="catalog-items" id="catContent">';
+  PRODUCTS.entradas.forEach(p=>{
+    h+=`<div class="catalog-item">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="info">
+        <div class="name">${p.name}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="price">$${p.price.toLocaleString()} ARS</div>
+        <button class="add-btn" onclick="addToCart('${p.id}')">+ Agregar</button>
+      </div>
+    </div>`;
+  });
+  h+='</div></div>';
+  
+  b.innerHTML=h+`<span class="time">${getTime()}<span class="check">✓✓</span></span>`;
+  d.appendChild(b);
+  document.getElementById('chat').appendChild(d);
+  scrollChat();
+}
+
+function switchCat(cat,el){
+  document.querySelectorAll('.catalog-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const content=document.getElementById('catContent');
+  const prods=cat==='entradas'?PRODUCTS.entradas:cat==='principales'?PRODUCTS.principales:PRODUCTS.postres;
+  content.innerHTML=prods.map(p=>`
+    <div class="catalog-item">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="info">
+        <div class="name">${p.name}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="price">$${p.price.toLocaleString()} ARS</div>
+        <button class="add-btn" onclick="addToCart('${p.id}')">+ Agregar</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addToCart(id){
+  let p=null;
+  for(const c in PRODUCTS){const f=PRODUCTS[c].find(x=>x.id===id);if(f){p=f;break;}}
+  if(!p)return;
+  const ex=cart.find(c=>c.id===id);
+  if(ex)ex.qty++;
+  else cart.push({...p,qty:1});
+  updateCartBar();
+  botReply(`✅ Agregaste ${p.name} al carrito.\n\nEscribí "carrito" para ver tu pedido o seguí agregando platos.`);
+}
+
+function updateCartBar(){
+  const qty=cart.reduce((s,c)=>s+c.qty,0);
+  const total=cart.reduce((s,c)=>s+c.qty*c.price,0);
+  document.getElementById('cartCount').textContent=qty;
+  document.getElementById('cartTotalBar').textContent=total.toLocaleString();
+  document.getElementById('cartBar').className=qty>0?'cart-bar show':'cart-bar';
+}
+
+function showCart(){
+  if(cart.length===0){
+    botReply('Tu carrito está vacío. Escribí "menú" para ver nuestros platos.');
+    return;
+  }
+  currentScreen='cart';
+  renderCart();
+  toggleScreens();
+}
+
+function renderCart(){
+  const c=document.getElementById('cartItems');
+  c.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <img src="${i.img}" alt="${i.name}">
+      <div class="info"><div class="name">${i.name}</div><div class="price">$${i.price.toLocaleString()} ARS</div></div>
+      <div class="qty">
+        <button onclick="changeQty('${i.id}',-1)">−</button>
+        <span>${i.qty}</span>
+        <button onclick="changeQty('${i.id}',1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  const total=cart.reduce((s,c)=>s+c.qty*c.price,0);
+  document.getElementById('cartTotal').textContent='Total: $'+total.toLocaleString()+' ARS';
+  document.getElementById('delTotal').textContent='Total: $'+total.toLocaleString()+' ARS';
+}
+
+function changeQty(id,delta){
+  const i=cart.find(c=>c.id===id);
+  if(i){
+    i.qty+=delta;
+    if(i.qty<=0)cart=cart.filter(c=>c.id!==id);
+  }
+  renderCart();
+  updateCartBar();
+}
+
+function goToDelivery(){
+  currentScreen='delivery';
+  toggleScreens();
+}
+
+function showReservation(){
+  currentScreen='reservation';
+  toggleScreens();
+}
+
+function submitReservation(){
+  const n=document.getElementById('resName').value;
+  const d=document.getElementById('resDate').value;
+  const t=document.getElementById('resTime').value;
+  const g=document.getElementById('resGuests').value;
+  const notes=document.getElementById('resNotes').value;
+  if(!n||!d||!t||!g){alert('Completá todos los campos');return;}
+  currentScreen='chat';
+  toggleScreens();
+  botReply(`✅ ¡Reserva confirmada!\n\n👤 ${n}\n📅 ${d} a las ${t}\n👥 ${g}\n📝 ${notes||'Sin notas'}\n\n¡Te esperamos! 🍽️`);
+}
+
+function confirmOrder(){
+  const a=document.getElementById('delAddr').value;
+  const b=document.getElementById('delBarrio').value;
+  if(!a||!b){alert('Completá la dirección');return;}
+  const total=cart.reduce((s,c)=>s+c.qty*c.price,0);
+  const items=cart.map(c=>`• ${c.qty}x ${c.name}`).join('\n');
+  currentScreen='chat';
+  toggleScreens();
+  cart=[];
+  updateCartBar();
+  botReply(`🎉 ¡Pedido confirmado!\n\n${items}\n\n💰 Total: $${total.toLocaleString()} ARS\n📍 Entrega: ${a}, ${b}\n\n⏱️ Tiempo estimado: 35-45 min\n\n¡Gracias por elegir Soho!`);
+}
+
+function selectPay(el){
+  document.querySelectorAll('.payment-option').forEach(p=>p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function showProfile(){
+  currentScreen='profile';
+  toggleScreens();
+}
+
+function goBack(){
+  currentScreen='chat';
+  toggleScreens();
+}
+
+function goBackToCart(){
+  currentScreen='cart';
+  toggleScreens();
+}
+
+function toggleScreens(){
+  const overlays=['profileScreen','cartScreen','reservationScreen','deliveryScreen'];
+  if(currentScreen==='chat'){
+    document.getElementById('chat').style.display='flex';
+    document.getElementById('inputArea').style.display='flex';
+    updateCartBar();
+    overlays.forEach(s=>document.getElementById(s).classList.remove('show'));
+  }else{
+    document.getElementById('chat').style.display='none';
+    document.getElementById('inputArea').style.display='none';
+    document.getElementById('cartBar').className='cart-bar';
+    overlays.forEach(s=>document.getElementById(s).classList.remove('show'));
+    const map={profile:'profileScreen',cart:'cartScreen',reservation:'reservationScreen',delivery:'deliveryScreen'};
+    document.getElementById(map[currentScreen]).classList.add('show');
+  }
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// INIT - Welcome message + encryption notice
+setTimeout(()=>{
+  const enc=document.createElement('div');
+  enc.className='encryption';
+  enc.innerHTML='🔒 Los mensajes y llamadas están cifrados de extremo a extremo. Nadie fuera de este chat puede leerlos ni escucharlos.';
+  document.getElementById('chat').appendChild(enc);
+  scrollChat();
+},200);
+
+setTimeout(()=>{
+  const dateSep=document.createElement('div');
+  dateSep.className='date-sep';
+  dateSep.innerHTML='<span>Hoy</span>';
+  document.getElementById('chat').appendChild(dateSep);
+  
+  botReply('¡Hola! 👋 Bienvenido a Restaurante Soho 🍽️\n\n¿En qué puedo ayudarte hoy?');
+  setTimeout(()=>{
+    const d=document.createElement('div');
+    d.className='quick-replies';
+    ['Ver menú','Hacer un pedido','Reservar mesa','Ver horarios'].forEach(q=>{
+      const b=document.createElement('button');
+      b.className='quick-reply';b.textContent=q;
+      b.onclick=()=>sendQuickReply(q);
+      d.appendChild(b);
+    });
+    document.getElementById('chat').appendChild(d);
+    scrollChat();
+  },1800);
+},800);
+</script>
+</body>
+</html>
