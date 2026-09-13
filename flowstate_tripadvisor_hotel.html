@@ -116,7 +116,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* PHOTOS */
 .gallery{background:#fff;padding:16px;margin-bottom:8px}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:8px;overflow:hidden}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .gallery-item{aspect-ratio:1;background:#e0e0e0;cursor:pointer;overflow:hidden}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
 
@@ -135,10 +135,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .specs-table td:first-child{color:#888;width:45%}
 .specs-table td:last-child{color:#333;font-weight:500}
 
-.footer-space{height:40px}
+.footer-space{height:60px;background:#f2f2f2}
 
 /* LIGHTBOX */
-.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:3000;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:3000;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .lightbox.show{display:flex}
 .lightbox-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer}
 .lightbox-counter{position:absolute;top:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;font-weight:500}
@@ -151,7 +151,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </head>
 <body>
 
-<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración</div>
+<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración<br><small style="opacity:.7;margin-top:2px">Hoteles · Viajes · Hotelería</small></div>
 
 <div class="nav">
   <div class="nav-back"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
@@ -163,7 +163,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <div class="hero">
-  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hotel">
+  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&q=80" alt="Hotel">
   <div class="hero-gradient"></div>
   <div class="hero-photos">📷 9 fotos</div>
 </div>
@@ -215,19 +215,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <h2 class="section-title">Tipos de habitación</h2>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80&q=80" alt="">
     <div class="room-name">Habitación Standard</div>
     <div class="room-details">28m² · Cama king · Vista al jardín</div>
     <div class="room-price-row"><div><div class="room-price">$45.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
   </div>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80&q=80" alt="">
     <div class="room-name">Habitación Deluxe</div>
     <div class="room-details">38m² · Cama king premium · Balcón privado</div>
     <div class="room-price-row"><div><div class="room-price">$65.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
   </div>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80&q=80" alt="">
     <div class="room-name">Suite Premium</div>
     <div class="room-details">62m² · Sala de estar · Jacuzzi · Terraza</div>
     <div class="room-price-row"><div><div class="room-price">$85.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
@@ -329,15 +329,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="gallery">
     <h2 class="section-title">Galería de fotos</h2>
     <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLB(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(1)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(2)"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(3)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(4)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(5)"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(6)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(7)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(8)"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(1)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(2)"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(3)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(4)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(5)"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(6)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(7)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(8)"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&q=80&q=80" alt=""></div>
     </div>
   </div>
 </div>
@@ -355,7 +355,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <script>
 const photos=[
-{src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',cap:'Fachada principal al atardecer'},
+{src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&q=80',cap:'Fachada principal al atardecer'},
 {src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',cap:'Habitación Standard'},
 {src:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',cap:'Habitación Deluxe'},
 {src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',cap:'Suite Premium'},

@@ -216,7 +216,7 @@ body{
   height:70px;
   object-fit:cover;
 }
-.catalog-item .info{padding:5px}
+.catalog-item .info{padding:6px}
 .catalog-item .name{font-weight:600;font-size:11px}
 .catalog-item .desc{font-size:9px;color:var(--secondary);margin:1px 0}
 .catalog-item .price{font-size:11px;font-weight:700;color:var(--accent)}
@@ -392,7 +392,7 @@ body{
   align-items:center;
   gap:10px;
 }
-.cart-item img{width:44px;height:44px;border-radius:6px;object-fit:cover}
+.cart-item img{width:48px;height:48px;border-radius:8px;object-fit:cover;box-shadow:0 2px 4px rgba(0,0,0,.1)}
 .cart-item .info{flex:1}
 .cart-item .name{font-size:13px;font-weight:500}
 .cart-item .price{font-size:12px;color:var(--accent)}
@@ -450,10 +450,10 @@ body{
 </head>
 <body>
 
-<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración</div>
+<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración<br><small style="opacity:.7;margin-top:2px">Restaurantes · Gastronomía · Delivery</small></div>
 
 <div class="header">
-  <img class="avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop" alt="">
+  <img class="avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop&q=80" alt="">
   <div class="header-info">
     <div class="header-name" id="hName">Restaurante Soho</div>
     <div class="header-status" id="hStatus">en línea</div>
@@ -485,7 +485,7 @@ body{
 <div class="overlay-screen" id="profileScreen">
   <button class="overlay-back" onclick="goBack()">← Volver</button>
   <div style="text-align:center;padding:16px">
-    <img class="profile-avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=200&fit=crop" alt="">
+    <img class="profile-avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=200&fit=crop&q=80" alt="">
     <div class="profile-name">Restaurante Soho</div>
     <div class="profile-desc">🍽️ Cocina de autor en Palermo</div>
     <div class="profile-stats">
@@ -547,22 +547,22 @@ body{
 <script>
 const PRODUCTS={
   entradas:[
-    {id:'e1',name:'Empanadas x6',desc:'6 und. carne, pollo, jamón y queso',price:800,img:'https://images.unsplash.com/photo-1604467707321-70d009801bf7?w=400&h=300&fit=crop'},
-    {id:'e2',name:'Provoleta',desc:'Queso provolone a la parrilla con orégano',price:1200,img:'https://images.unsplash.com/photo-1552595343-770065f2d470?w=400&h=300&fit=crop'},
-    {id:'e3',name:'Tabla de Quesos',desc:'Quesos artesanales, aceitunas y frutos secos',price:3500,img:'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&h=300&fit=crop'},
-    {id:'e4',name:'Bruschetta',desc:'Pan tostado, tomate fresco y albahaca',price:1800,img:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&h=300&fit=crop'}
+    {id:'e1',name:'Empanadas x6',desc:'6 und. carne, pollo, jamón y queso',price:800,img:'https://images.unsplash.com/photo-1604467707321-70d009801bf7?w=400&h=300&fit=crop&q=80'},
+    {id:'e2',name:'Provoleta',desc:'Queso provolone a la parrilla con orégano',price:1200,img:'https://images.unsplash.com/photo-1552595343-770065f2d470?w=400&h=300&fit=crop&q=80'},
+    {id:'e3',name:'Tabla de Quesos',desc:'Quesos artesanales, aceitunas y frutos secos',price:3500,img:'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&h=300&fit=crop&q=80'},
+    {id:'e4',name:'Bruschetta',desc:'Pan tostado, tomate fresco y albahaca',price:1800,img:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&h=300&fit=crop&q=80'}
   ],
   principales:[
-    {id:'p1',name:'Bife de Chorizo',desc:'300g con guarnición a elección',price:8500,img:'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop'},
-    {id:'p2',name:'Pasta Casera',desc:'Ravioles de ricota y espinaca bolognesa',price:6000,img:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop'},
-    {id:'p3',name:'Milanesa Napolitana',desc:'Con jamón, mozzarella y papas fritas',price:5500,img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop'},
-    {id:'p4',name:'Salmón Grillado',desc:'Con risotto de limón y espárragos',price:9500,img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop'}
+    {id:'p1',name:'Bife de Chorizo',desc:'300g con guarnición a elección',price:8500,img:'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop&q=80'},
+    {id:'p2',name:'Pasta Casera',desc:'Ravioles de ricota y espinaca bolognesa',price:6000,img:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop&q=80'},
+    {id:'p3',name:'Milanesa Napolitana',desc:'Con jamón, mozzarella y papas fritas',price:5500,img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop&q=80'},
+    {id:'p4',name:'Salmón Grillado',desc:'Con risotto de limón y espárragos',price:9500,img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=300&fit=crop&q=80'}
   ],
   postres:[
-    {id:'d1',name:'Flan Casero',desc:'Con dulce de leche y crema',price:2500,img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop'},
-    {id:'d2',name:'Helado Artesanal',desc:'3 sabores a elección',price:2000,img:'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&h=300&fit=crop'},
-    {id:'d3',name:'Tiramisú',desc:'Clásico italiano con mascarpone',price:2800,img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop'},
-    {id:'d4',name:'Torta de Chocolate',desc:'Con ganache y frutos rojos',price:3000,img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop'}
+    {id:'d1',name:'Flan Casero',desc:'Con dulce de leche y crema',price:2500,img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop&q=80'},
+    {id:'d2',name:'Helado Artesanal',desc:'3 sabores a elección',price:2000,img:'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400&h=300&fit=crop&q=80'},
+    {id:'d3',name:'Tiramisú',desc:'Clásico italiano con mascarpone',price:2800,img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop&q=80'},
+    {id:'d4',name:'Torta de Chocolate',desc:'Con ganache y frutos rojos',price:3000,img:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop&q=80'}
   ]
 };
 
