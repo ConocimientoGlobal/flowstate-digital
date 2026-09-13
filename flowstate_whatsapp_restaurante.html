@@ -458,6 +458,10 @@ body{
     <div class="header-name" id="hName">Restaurante Soho</div>
     <div class="header-status" id="hStatus">en línea</div>
   </div>
+  <div style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#e8f0fe;border-radius:10px;font-size:12px;color:#1a73e8;font-weight:600;margin-left:auto">
+    <span style="font-size:16px">✓</span>
+    FlowState
+  </div>
   <div class="header-actions">
     <span onclick="toast('Videollamada no disponible')">📹</span>
     <span onclick="showProfile()">ℹ</span>
@@ -486,7 +490,7 @@ body{
   <button class="overlay-back" onclick="goBack()">← Volver</button>
   <div style="text-align:center;padding:16px">
     <img class="profile-avatar" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=200&fit=crop&q=80" alt="">
-    <div class="profile-name">Restaurante Soho</div>
+    <div class="profile-name" style="display:flex;align-items:center;gap:6px">Restaurante Soho <span style="font-size:9px;color:#00a884;background:#e6f4ea;padding:2px 6px;border-radius:8px;font-weight:600">Verificado</span></div>
     <div class="profile-desc">🍽️ Cocina de autor en Palermo</div>
     <div class="profile-stats">
       <div class="stat"><div class="val">4.6</div><div class="lbl">★ Rating</div></div>
@@ -501,7 +505,7 @@ body{
 <!-- CART -->
 <div class="overlay-screen" id="cartScreen">
   <button class="overlay-back" onclick="goBack()">← Volver</button>
-  <h3 style="padding:14px;font-size:17px;font-weight:600">🛒 Tu Carrito</h3>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">🛒 Tu Carrito <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Compras</span></h3>
   <div id="cartItems"></div>
   <div class="cart-total" id="cartTotal">Total: $0 ARS</div>
   <button class="submit-btn" onclick="goToDelivery()">Continuar al pedido →</button>
@@ -510,7 +514,7 @@ body{
 <!-- RESERVATION -->
 <div class="overlay-screen" id="reservationScreen">
   <button class="overlay-back" onclick="goBack()">← Volver</button>
-  <h3 style="padding:14px;font-size:17px;font-weight:600">📅 Reservar Mesa</h3>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">📅 Reservar Mesa <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Automatización</span></h3>
   <div class="form-group"><label>Nombre completo</label><input type="text" id="resName" placeholder="Tu nombre"></div>
   <div class="form-group"><label>Fecha</label><input type="date" id="resDate"></div>
   <div class="form-group"><label>Hora</label><input type="time" id="resTime"></div>
@@ -529,7 +533,7 @@ body{
 <!-- DELIVERY -->
 <div class="overlay-screen" id="deliveryScreen">
   <button class="overlay-back" onclick="goBackToCart()">← Volver</button>
-  <h3 style="padding:14px;font-size:17px;font-weight:600">🚴 Datos de Delivery</h3>
+  <h3 style="padding:14px;font-size:17px;font-weight:600">🚴 Datos de Delivery <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Pedidos</span></h3>
   <div class="form-group"><label>Dirección de entrega</label><input type="text" id="delAddr" placeholder="Calle, número, piso"></div>
   <div class="form-group"><label>Barrio / Localidad</label><input type="text" id="delBarrio" placeholder="Ej: Palermo"></div>
   <div class="form-group"><label>Referencias</label><input type="text" id="delRef" placeholder="Timbre, color puerta..."></div>
@@ -669,7 +673,9 @@ function showCatalog(){
   b.style.maxWidth='90%';
   
   let h='<div class="catalog-section">';
-  h+='<div class="catalog-header">📋 Nuestro Menú</div>';
+  h+='<div class="catalog-header" style="display:flex;align-items:center;justify-content:space-between">
+    <span>📋 Nuestro Menú</span>
+    <span style="font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 8px;border-radius:8px;font-weight:600">Catálogo</span>📋 Nuestro Menú</div>';
   h+='<div class="catalog-tabs">';
   ['Entradas','Principales','Postres'].forEach((c,i)=>{
     h+=`<div class="catalog-tab ${i===0?'active':''}" onclick="switchCat('${c.toLowerCase()}',this)">${c}</div>`;

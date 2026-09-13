@@ -92,6 +92,10 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div class="header">
+  <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;padding:6px 12px;background:#e8f0fe;border-radius:8px;font-size:11px;color:#1a73e8;font-weight:600;align-self:flex-start">
+    <span class="material-icons" style="font-size:14px">verified</span>
+    Optimizado por FlowState Digital
+  </div>
   <h1>Tienda Moda Palermo <span class="verified-badge">✓</span></h1>
   <div class="category">Tienda de ropa femenina · Palermo, Buenos Aires</div>
   <div class="rating-row">
@@ -124,12 +128,14 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div id="overview" class="tab-content active">
-  <div class="info-row" onclick="showToast('Abriendo mapa...')">
+  <div class="info-row" onclick="showToast('Abriendo mapa...')" style="position:relative">
+    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Ubicación</span>
     <span class="material-icons">location_on</span>
     <div class="info-text"><div class="info-label">Av. Santa Fe 1850, Palermo, Buenos Aires</div><div class="info-sub">CABA, Buenos Aires</div></div>
     <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="showToast('Horarios')">
+  <div class="info-row" onclick="showToast('Horarios')" style="position:relative">
+    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Horarios</span>
     <span class="material-icons">schedule</span>
     <div class="info-text"><div class="info-label">Abierto hasta las 19:00</div></div>
     <span class="material-icons arrow">expand_more</span>
@@ -143,12 +149,14 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     <tr><td>Sábado</td><td>10:00–14:00</td></tr>
     <tr><td>Domingo</td><td>Cerrado</td></tr>
   </table>
-  <div class="info-row" onclick="showToast('Llamando...')">
+  <div class="info-row" onclick="showToast('Llamando...')" style="position:relative">
+    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Contacto</span>
     <span class="material-icons">call</span>
     <div class="info-text"><div class="info-label">+54 11 4567-8901</div></div>
     <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="showToast('Abriendo web...')">
+  <div class="info-row" onclick="showToast('Abriendo web...')" style="position:relative">
+    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Web</span>
     <span class="material-icons">language</span>
     <div class="info-text"><div class="info-label">www.tiendamodapalermo.com.ar</div></div>
     <span class="material-icons arrow">chevron_right</span>
@@ -163,7 +171,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     <span class="tag"><span class="material-icons">checkroom</span> Probador</span>
   </div>
 
-  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Publicaciones de Google</h3>
+  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Publicaciones de Google <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Gestión de contenido</span></h3>
 
   <div class="post-card">
     <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80" alt="Colección verano">
@@ -185,7 +193,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     </div>
   </div>
 
-  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Preguntas y respuestas</h3>
+  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Preguntas y respuestas <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Respuestas personalizadas</span></h3>
 
   <div class="qa-item" onclick="this.classList.toggle('open')">
     <div class="qa-question">¿Tienen talles grandes? <span class="material-icons">expand_more</span></div>
@@ -202,7 +210,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div id="reviews" class="tab-content">
-  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Reseñas de clientes</h3>
+  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Reseñas de clientes <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Gestión de reseñas</span></h3>
 
   <div class="review-card">
     <div class="review-header">
@@ -259,7 +267,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div id="photos" class="tab-content">
-  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Fotos</h3>
+  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Fotos <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Sesión fotográfica</span></h3>
   <div class="photo-grid">
     <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80" onclick="openLightbox(0)" alt="Tienda">
     <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80&q=80" onclick="openLightbox(1)" alt="Interior">
