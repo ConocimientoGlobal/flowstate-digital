@@ -8,68 +8,90 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f2f2f2;color:#333;font-size:14px;max-width:430px;margin:0 auto;min-height:100vh;overflow-x:hidden;position:relative}
 
-/* BADGE */
-.badge{
+/* HEADER BADGE */
+.header-badge{
   position:fixed;top:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:430px;
-  background:#1a1a2e;color:#00e5ff;
-  text-align:center;padding:8px;font-size:10px;font-weight:600;letter-spacing:1px;
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);
+  color:#fff;
+  text-align:center;padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:1.5px;
   z-index:1000;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
 }
+.header-badge .logo{font-size:13px;font-weight:800;color:#34e0a1}
+.header-badge .tag{opacity:.7;font-weight:400;font-size:10px}
 
 /* NAV */
 .nav{
-  position:fixed;top:28px;left:50%;transform:translateX(-50%);
-  width:100%;max-width:430px;height:56px;
+  position:fixed;top:40px;left:50%;transform:translateX(-50%);
+  width:100%;max-width:430px;height:64px;
   background:#fff;display:flex;align-items:center;padding:0 16px;z-index:999;
-  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
   border-bottom:1px solid #f0f0f0;
 }
-.nav-back{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-back{width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;background:#f5f5f5}
 .nav-back svg{width:22px;height:22px;fill:#333}
-.nav-title{flex:1;text-align:center;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
-.nav-actions{display:flex;gap:4px}
-.nav-action{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-title{flex:1;text-align:center;font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.nav-actions{display:flex;gap:6px}
+.nav-action{width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;background:#f5f5f5}
 .nav-action svg{width:20px;height:20px;fill:#333}
 
 /* HERO */
-.hero{margin-top:84px;position:relative;width:100%;height:280px;overflow:hidden;background:#e0e0e0}
+.hero{margin-top:104px;position:relative;width:100%;height:340px;overflow:hidden;background:#e0e0e0}
 .hero img{width:100%;height:100%;object-fit:cover}
-.hero-gradient{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
-.hero-photos{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:500;padding:5px 10px;border-radius:16px;display:flex;align-items:center;gap:4px;cursor:pointer}
+.hero-gradient{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.hero-photos{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.7);color:#fff;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:6px;cursor:pointer}
 
 /* HOTEL CARD */
-.hotel-card{background:#fff;padding:16px;margin-bottom:2px}
-.hotel-name{font-size:22px;font-weight:700;color:#1a1a1a;line-height:1.2;margin-bottom:6px}
-.location-row{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.hotel-card{background:#fff;padding:20px;margin-bottom:2px}
+.hotel-name{font-size:24px;font-weight:800;color:#1a1a1a;line-height:1.2;margin-bottom:8px}
+.location-row{display:flex;align-items:center;gap:6px;margin-bottom:12px}
 .location-row svg{width:14px;height:14px;fill:#00aa6c}
 .location-row span{font-size:13px;color:#00aa6c;font-weight:500}
 
-.rating-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.rating-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .bubbles{display:flex;gap:2px}
 .bubble-rating{width:12px;height:12px;background:#34e0a1;border-radius:2px}
-.rating-text{font-size:14px;font-weight:600;color:#1a1a1a}
+.rating-text{font-size:15px;font-weight:700;color:#1a1a1a}
 .review-count{font-size:13px;color:#545454}
 .award{display:flex;align-items:center;gap:5px;background:#fef3e0;border:1px solid #f5c542;border-radius:8px;padding:5px 10px}
 .award span{font-size:11px;font-weight:700;color:#b2832b}
 
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
-.action-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;box-shadow:0 2px 4px rgba(0,0,0,.06)}
+.action-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;box-shadow:0 2px 4px rgba(0,0,0,.06)}
 .action-btn:hover{box-shadow:0 4px 8px rgba(0,0,0,.1);transform:translateY(-1px)}
 .action-btn.primary{background:#34e0a1;color:#1a1a1a;grid-column:1/-1}
 .action-btn.secondary{background:#fff;color:#1a1a1a;border:1.5px solid #d6d6d6}
 
+/* AREAS DE TRABAJO CARD */
+.areas-card{background:#fff;padding:20px;margin-bottom:8px}
+.areas-title{font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.areas-title .icon{font-size:18px}
+.areas-badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.areas-badge{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;font-size:12px;font-weight:600;color:#1a1a1a;border:1.5px solid #e8e8e8;background:#fafafa;transition:all .2s}
+.areas-badge:hover{border-color:#34e0a1;background:#f0faf5}
+.areas-badge .emoji{font-size:16px}
+
+/* SECTION BADGE */
+.section-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;color:#1a73e8;background:#e8f0fe;
+  padding:4px 10px;border-radius:10px;font-weight:700;
+  margin-left:8px;vertical-align:middle;
+}
+
 /* TABS */
-.tabs-container{background:#fff;position:sticky;top:80px;z-index:100;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.tabs-container{background:#fff;position:sticky;top:100px;z-index:100;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
 .tabs{display:flex;border-bottom:1px solid #e0e0e0}
-.tab{flex:1;text-align:center;padding:14px 0;font-size:13px;font-weight:600;color:#545454;cursor:pointer;position:relative}
+.tab{flex:1;text-align:center;padding:16px 0;font-size:13px;font-weight:600;color:#545454;cursor:pointer;position:relative}
 .tab.active{color:#1a1a1a}
 .tab.active::after{content:'';position:absolute;bottom:0;left:15%;right:15%;height:3px;background:#34e0a1;border-radius:3px 3px 0 0}
 
 /* SECTIONS */
-.section{display:none;background:#fff;padding:16px;margin-bottom:8px}
+.section{display:none;background:#fff;padding:20px;margin-bottom:8px}
 .section.active{display:block}
-.section-title{font-size:17px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+.section-title{font-size:18px;font-weight:800;color:#1a1a1a;margin-bottom:14px;display:flex;align-items:center}
 
 .desc-text{font-size:14px;line-height:1.6;color:#333;margin-bottom:14px}
 
@@ -81,25 +103,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .amenity-text{font-size:13px;color:#333}
 
 /* ROOMS */
-.room-card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.room-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
-.room-card img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
-.room-name{font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
-.room-details{font-size:12px;color:#545454;margin-bottom:8px}
+.room-card{background:#fff;border:1px solid #e8e8e8;border-radius:16px;padding:18px;margin-bottom:14px;cursor:pointer;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.room-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-2px)}
+.room-card img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.room-name{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.room-details{font-size:12px;color:#545454;margin-bottom:10px}
 .room-price-row{display:flex;align-items:baseline;justify-content:space-between}
-.room-price{font-size:20px;font-weight:700;color:#1a1a1a}
+.room-price{font-size:22px;font-weight:800;color:#1a1a1a}
 .room-price-note{font-size:11px;color:#545454}
-.room-cta{background:#34e0a1;color:#1a1a1a;font-size:13px;font-weight:700;padding:8px 16px;border-radius:20px;border:none;cursor:pointer}
+.room-cta{background:#34e0a1;color:#1a1a1a;font-size:13px;font-weight:700;padding:10px 20px;border-radius:20px;border:none;cursor:pointer}
 
 /* REVIEWS */
-.reviews-header{background:#fff;padding:16px;margin-bottom:8px}
+.reviews-header{background:#fff;padding:20px;margin-bottom:8px}
 .reviews-summary{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.reviews-big{font-size:48px;font-weight:800;color:#1a1a1a;line-height:1}
+.reviews-big{font-size:52px;font-weight:800;color:#1a1a1a;line-height:1}
 .reviews-stars{display:flex;gap:2px;margin-bottom:4px}
 .reviews-stars .star{width:14px;height:14px;fill:#34e0a1}
 .reviews-total{font-size:13px;color:#545454}
 
-.review-card{background:#fff;padding:18px;margin-bottom:2px;border-radius:0;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.review-card{background:#fff;padding:18px;margin-bottom:8px;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .review-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .review-avatar{width:40px;height:40px;border-radius:50%;background:#34e0a1;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
 .review-author{font-size:14px;font-weight:700;color:#1a1a1a}
@@ -115,13 +137,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .owner-response-text{font-size:12px;line-height:1.5;color:#545454}
 
 /* PHOTOS */
-.gallery{background:#fff;padding:16px;margin-bottom:8px}
+.gallery{background:#fff;padding:20px;margin-bottom:8px}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .gallery-item{aspect-ratio:1;background:#e0e0e0;cursor:pointer;overflow:hidden}
 .gallery-item img{width:100%;height:100%;object-fit:cover}
 
 /* LOCATION */
-.location-section{background:#fff;padding:16px;margin-bottom:8px}
+.location-section{padding:0 20px 20px;margin-bottom:8px;background:#fff}
 .location-address{font-size:14px;color:#333;margin-bottom:4px}
 .location-neighborhood{font-size:12px;color:#888;margin-bottom:12px}
 .map-placeholder{width:100%;height:140px;background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 50%,#a5d6a7 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -151,8 +173,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </head>
 <body>
 
-<div class="badge">PORTAFOLIO INTERACTIVO — Información ficticia con fines de demostración<br><small style="opacity:.7;margin-top:2px">Hoteles · Viajes · Hotelería</small></div>
+<!-- HEADER BADGE -->
+<div class="header-badge">
+  <span class="logo">◆ FLOWSTATE DIGITAL</span>
+  <span class="tag">— Optimizado profesionalmente</span>
+</div>
 
+<!-- NAV -->
 <div class="nav">
   <div class="nav-back"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg></div>
   <div class="nav-title">Hotel Boutique Palermo</div>
@@ -162,17 +189,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&q=80" alt="Hotel">
+  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=85" alt="Fachada del hotel">
   <div class="hero-gradient"></div>
   <div class="hero-photos">📷 9 fotos</div>
 </div>
 
+<!-- HOTEL CARD -->
 <div class="hotel-card">
-  <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;padding:8px 14px;background:#e8f0fe;border-radius:10px;font-size:12px;color:#1a73e8;font-weight:600;align-self:flex-start">
-    <span style="font-size:16px">✓</span>
-    Optimizado por FlowState Digital
-  </div>
   <h1 class="hotel-name">Hotel Boutique Palermo</h1>
   <div class="location-row">
     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -192,6 +217,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
+<!-- AREAS DE TRABAJO -->
+<div class="areas-card">
+  <div class="areas-title"><span class="icon">◆</span> ÁREAS DE TRABAJO FLOWSTATE</div>
+  <div class="areas-badge-grid">
+    <div class="areas-badge"><span class="emoji">✍️</span> Copywriting</div>
+    <div class="areas-badge"><span class="emoji">⚡</span> Optimización</div>
+    <div class="areas-badge"><span class="emoji">📸</span> Fotografía Profesional</div>
+    <div class="areas-badge"><span class="emoji">📍</span> Google Maps</div>
+    <div class="areas-badge"><span class="emoji">✅</span> Datos Verificados</div>
+    <div class="areas-badge"><span class="emoji">⭐</span> Gestión de Reseñas</div>
+  </div>
+</div>
+
+<!-- TABS -->
 <div class="tabs-container">
   <div class="tabs">
     <div class="tab active" data-tab="info" onclick="switchTab('info')">Información</div>
@@ -202,11 +241,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <!-- INFO TAB -->
 <div class="section active" id="tab-info">
-  <h2 class="section-title">Descripción <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Copywriting</span></h2>
+  <h2 class="section-title">Descripción <span class="section-badge">✍️ Copywriting</span></h2>
   <p class="desc-text">Hotel boutique de 15 habitaciones en Palermo Hollywood. Arquitectura moderna, servicio personalizado, desayuno buffet incluido, pileta climatizada y terraza panorámica con vistas al barrio.</p>
   <p class="desc-text">A pasos de los mejores bares, restaurantes y vida nocturna de Buenos Aires. Perfecto para viajeros que buscan confort, estilo y ubicación privilegiada.</p>
 
-  <h2 class="section-title">Servicios y comodidades <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Optimización</span></h2>
+  <h2 class="section-title">Servicios y comodidades <span class="section-badge">⚡ Optimización</span></h2>
   <div class="amenities">
     <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div><span>WiFi gratuito</span></div>
     <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M22 21c-1.11 0-1.73-.37-2.18-.64-.37-.22-.6-.36-1.15-.36-.55 0-.78.13-1.15.36-.46.27-1.07.64-2.18.64s-1.73-.37-2.18-.64c-.37-.22-.6-.36-1.15-.36-.55 0-.78.14-1.15.36-.46.27-1.07.64-2.18.64s-1.73-.37-2.18-.64c-.37-.23-.6-.36-1.15-.36s-.78.13-1.15.36c-.46.27-1.07.64-2.18.64v-2c.55 0 .78-.13 1.15-.36.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.23.6.36 1.15.36s.78-.13 1.15-.36c.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.22.6.36 1.15.36.55 0 .78-.14 1.15-.36.46-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.37.23.6.36 1.15.36v2z"/></svg></div><span>Pileta climatizada</span></div>
@@ -217,27 +256,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="amenity"><div class="amenity-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg></div><span>Spa & Wellness</span></div>
   </div>
 
-  <h2 class="section-title">Tipos de habitación <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Fotografía</span></h2>
+  <h2 class="section-title">Tipos de habitación <span class="section-badge">📸 Fotografía</span></h2>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=85" alt="Habitación Standard">
     <div class="room-name">Habitación Standard</div>
     <div class="room-details">28m² · Cama king · Vista al jardín</div>
     <div class="room-price-row"><div><div class="room-price">$45.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
   </div>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&q=85" alt="Habitación Deluxe">
     <div class="room-name">Habitación Deluxe</div>
     <div class="room-details">38m² · Cama king premium · Balcón privado</div>
     <div class="room-price-row"><div><div class="room-price">$65.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
   </div>
   <div class="room-card">
-    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80&q=80" alt="">
+    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&q=85" alt="Suite Premium">
     <div class="room-name">Suite Premium</div>
     <div class="room-details">62m² · Sala de estar · Jacuzzi · Terraza</div>
     <div class="room-price-row"><div><div class="room-price">$85.000 <span style="font-size:12px;font-weight:400">ARS</span></div><div class="room-price-note">por noche</div></div><button class="room-cta">Ver disponibilidad</button></div>
   </div>
 
-  <h2 class="section-title">Ubicación <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Google Maps</span></h2>
+  <h2 class="section-title">Ubicación <span class="section-badge">📍 Google Maps</span></h2>
   <div class="location-section">
     <div class="location-address">Honduras 5680, Palermo Hollywood</div>
     <div class="location-neighborhood">Buenos Aires, C1414 Argentina</div>
@@ -257,7 +296,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 
-  <h2 class="section-title">Información del hotel <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Datos verificados</span></h2>
+  <h2 class="section-title">Información del hotel <span class="section-badge">✅ Datos Verificados</span></h2>
   <table class="specs-table">
     <tr><td>Check-in</td><td>15:00 hrs</td></tr>
     <tr><td>Check-out</td><td>11:00 hrs</td></tr>
@@ -271,10 +310,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- REVIEWS TAB -->
 <div class="section" id="tab-reviews">
   <div class="reviews-header">
-  <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;padding:8px 14px;background:#e8f0fe;border-radius:10px;font-size:12px;color:#1a73e8;font-weight:600;align-self:flex-start">
-    <span style="font-size:16px">★</span>
-    Gestión de reseñas
-  </div>
+    <h2 class="section-title" style="margin-bottom:16px">Reseñas <span class="section-badge">⭐ Gestión de Reseñas</span></h2>
     <div class="reviews-summary">
       <div class="reviews-big">4,8</div>
       <div>
@@ -335,23 +371,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- PHOTOS TAB -->
 <div class="section" id="tab-photos">
   <div class="gallery">
-    <h2 class="section-title">Galería de fotos <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Sesión fotográfica</span></h2>
+    <h2 class="section-title">Galería de fotos <span class="section-badge">📷 Sesión Fotográfica</span></h2>
     <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLB(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(1)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(2)"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(3)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(4)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(5)"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(6)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(7)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=80&q=80" alt=""></div>
-      <div class="gallery-item" onclick="openLB(8)"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&q=80&q=80" alt=""></div>
+      <div class="gallery-item" onclick="openLB(0)"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=85" alt="Exterior del hotel"></div>
+      <div class="gallery-item" onclick="openLB(1)"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=85" alt="Habitación Standard"></div>
+      <div class="gallery-item" onclick="openLB(2)"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=85" alt="Habitación Deluxe"></div>
+      <div class="gallery-item" onclick="openLB(3)"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&q=85" alt="Suite Premium"></div>
+      <div class="gallery-item" onclick="openLB(4)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=85" alt="Pileta climatizada"></div>
+      <div class="gallery-item" onclick="openLB(5)"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=85" alt="Spa & Wellness"></div>
+      <div class="gallery-item" onclick="openLB(6)"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&q=85" alt="Restaurante gourmet"></div>
+      <div class="gallery-item" onclick="openLB(7)"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&q=85" alt="Bar & Lounge"></div>
+      <div class="gallery-item" onclick="openLB(8)"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=300&q=85" alt="Lobby y recepción"></div>
     </div>
   </div>
 </div>
 
 <div class="footer-space"></div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" onclick="closeLB()">✕</span>
   <div class="lightbox-counter" id="lbCount">1 / 9</div>
@@ -363,15 +400,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <script>
 const photos=[
-{src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&q=80',cap:'Fachada principal al atardecer'},
-{src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',cap:'Habitación Standard'},
-{src:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80',cap:'Habitación Deluxe'},
-{src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',cap:'Suite Premium'},
-{src:'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80',cap:'Pileta climatizada'},
-{src:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',cap:'Spa & Wellness'},
-{src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',cap:'Restaurante gourmet'},
-{src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',cap:'Bar & Lounge'},
-{src:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80',cap:'Lobby y recepción'}
+{src:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=85',cap:'Fachada principal del hotel'},
+{src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85',cap:'Habitación Standard — 28m²'},
+{src:'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=85',cap:'Habitación Deluxe — 38m²'},
+{src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=85',cap:'Suite Premium con jacuzzi'},
+{src:'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85',cap:'Pileta climatizada exterior'},
+{src:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=85',cap:'Spa & Wellness center'},
+{src:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=85',cap:'Restaurante gourmet'},
+{src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85',cap:'Bar & Lounge'},
+{src:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=85',cap:'Lobby y recepción'}
 ];
 let curP=0;
 
@@ -380,7 +417,7 @@ function switchTab(t){
   document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
   document.querySelector(`.tab[data-tab="${t}"]`).classList.add('active');
   document.getElementById('tab-'+t).classList.add('active');
-  window.scrollTo({top:80,behavior:'smooth'});
+  window.scrollTo({top:100,behavior:'smooth'});
 }
 
 function openLB(i){

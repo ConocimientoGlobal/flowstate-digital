@@ -4,83 +4,95 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Tienda Moda Palermo - Google Business Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:#202124;max-width:412px;margin:0 auto;min-height:100vh;overflow-x:hidden;position:relative;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.badge-disclaimer{background:#1a1a2e;color:#fff;text-align:center;padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:.8px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+body{font-family:'Inter',Roboto,Arial,sans-serif;background:#f8f9fa;color:#1a1a2e;max-width:412px;margin:0 auto;min-height:100vh;overflow-x:hidden;position:relative;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.badge-disclaimer{background:#1a1a2e;color:#fff;text-align:center;padding:12px 16px;font-size:11px;font-weight:600;letter-spacing:.8px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.12)}
 .badge-disclaimer span{color:#00e5ff;font-weight:700}
-.cover-photo{position:relative;width:100%;height:200px;background:url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&q=85') center/cover;box-shadow:inset 0 -60px 80px rgba(0,0,0,.4)}
-.profile-logo{width:80px;height:80px;border-radius:50%;border:4px solid #fff;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:36px;font-weight:700;position:absolute;bottom:-40px;left:20px;box-shadow:0 4px 12px rgba(0,0,0,.25);overflow:hidden}
-.profile-logo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.header{padding:50px 20px 16px;background:#fff;border-bottom:1px solid #e8eaed}
-.header h1{font-size:24px;font-weight:600;display:flex;align-items:center;gap:8px;color:#202124;letter-spacing:-.3px}
-.verified-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e8f0fe;font-size:12px;color:#1a73e8;font-weight:800;box-shadow:0 1px 3px rgba(26,115,232,.3)}
-.category{font-size:14px;color:#5f6368;margin-top:4px;font-weight:400}
-.rating-row{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:14px;color:#5f6368}
+.cover-photo{position:relative;width:100%;height:220px;background:url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&q=85') center/cover;box-shadow:inset 0 -80px 100px rgba(0,0,0,.5)}
+.profile-logo{width:84px;height:84px;border-radius:50%;border:4px solid #fff;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#db2777 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-size:38px;font-weight:700;position:absolute;bottom:-42px;left:20px;box-shadow:0 6px 24px rgba(79,70,229,.3),0 2px 8px rgba(0,0,0,.1);overflow:hidden}
+.header{padding:52px 20px 18px;background:#fff;border-bottom:1px solid #f0f0f0}
+.header-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,#e8f0fe,#f0f0ff);border-radius:20px;font-size:11px;color:#4f46e5;font-weight:600;border:1px solid #e0e0ff}
+.header-badge .material-icons{font-size:14px}
+.header h1{font-size:24px;font-weight:700;display:flex;align-items:center;gap:8px;color:#1a1a2e;letter-spacing:-.4px;margin-top:10px}
+.verified-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#e8f0fe;font-size:12px;color:#1a73e8;font-weight:800;box-shadow:0 1px 4px rgba(26,115,222,.25)}
+.category{font-size:14px;color:#6b7280;margin-top:6px;font-weight:400}
+.rating-row{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:14px;color:#6b7280}
 .stars{display:inline-flex;gap:2px}
-.star-svg{width:18px;height:18px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.1))}
-.rating-num{font-weight:700;color:#202124;font-size:15px}
-.open-badge{display:inline-flex;align-items:center;gap:5px;color:#1e8e3e;font-weight:600;font-size:13px;margin-top:6px;padding:4px 10px;background:#e6f4ea;border-radius:12px}
-.open-dot{width:8px;height:8px;border-radius:50%;background:#1e8e3e;box-shadow:0 0 0 3px rgba(30,142,62,.2)}
-.actions-scroll{display:flex;overflow-x:auto;gap:10px;padding:14px 20px;scrollbar-width:none;-ms-overflow-style:none;background:#fff;border-bottom:1px solid #e8eaed}
+.star-svg{width:18px;height:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.08))}
+.rating-num{font-weight:700;color:#1a1a2e;font-size:15px}
+.open-badge{display:inline-flex;align-items:center;gap:6px;color:#1e8e3e;font-weight:600;font-size:13px;margin-top:8px;padding:5px 12px;background:#e6f4ea;border-radius:16px}
+.open-dot{width:8px;height:8px;border-radius:50%;background:#1e8e3e;box-shadow:0 0 0 4px rgba(30,142,62,.15)}
+.actions-scroll{display:flex;overflow-x:auto;gap:10px;padding:14px 20px;scrollbar-width:none;-ms-overflow-style:none;background:#fff;border-bottom:1px solid #f0f0f0}
 .actions-scroll::-webkit-scrollbar{display:none}
-.action-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 16px;border:1px solid #dadce0;border-radius:16px;background:#fff;min-width:76px;cursor:pointer;font-family:inherit;font-size:11px;color:#1a73e8;font-weight:600;white-space:nowrap;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.action-btn:hover{background:#f8f9fa;box-shadow:0 2px 6px rgba(0,0,0,.08);transform:translateY(-1px)}
-.action-btn .material-icons{font-size:24px;color:#5f6368;margin-bottom:2px}
-.tabs{display:flex;border-bottom:1px solid #dadce0;position:sticky;top:35px;background:#fff;z-index:90}
-.tab{flex:1;padding:14px 8px;text-align:center;font-size:14px;font-weight:600;color:#5f6368;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s}
-.tab.active{color:#1a73e8;border-bottom-color:#1a73e8}
+.action-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 16px;border:1px solid #e5e7eb;border-radius:18px;background:#fff;min-width:78px;cursor:pointer;font-family:inherit;font-size:11px;color:#4f46e5;font-weight:600;white-space:nowrap;transition:all .25s;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.action-btn:hover{background:#f8f9ff;box-shadow:0 4px 12px rgba(79,70,229,.08);transform:translateY(-2px)}
+.action-btn .material-icons{font-size:24px;color:#6b7280;margin-bottom:2px}
+.areas-card{margin:14px 16px;padding:18px;background:#fff;border-radius:20px;box-shadow:0 3px 12px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);border:1px solid #f0f0f0}
+.areas-title{font-size:12px;font-weight:700;color:#1a1a2e;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.areas-title .material-icons{font-size:16px;color:#4f46e5}
+.areas-badges{display:flex;flex-wrap:wrap;gap:7px}
+.area-badge{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;background:#f5f3ff;color:#4f46e5;border-radius:24px;font-size:11px;font-weight:600;border:1px solid #ede9fe}
+.area-badge .material-icons{font-size:14px}
+.tabs{display:flex;border-bottom:1px solid #e5e7eb;position:sticky;top:37px;background:#fff;z-index:90}
+.tab{flex:1;padding:14px 8px;text-align:center;font-size:14px;font-weight:600;color:#6b7280;cursor:pointer;border-bottom:3px solid transparent;transition:all .25s}
+.tab.active{color:#4f46e5;border-bottom-color:#4f46e5}
 .tab-content{display:none;padding:20px}
 .tab-content.active{display:block}
-.info-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f1f3f4;cursor:pointer}
+.info-row{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #f3f4f6;cursor:pointer}
 .info-row:last-child{border-bottom:none}
-.info-row .material-icons{color:#5f6368;font-size:20px;flex-shrink:0;margin-top:1px}
+.info-row .material-icons{color:#9ca3af;font-size:20px;flex-shrink:0;margin-top:1px}
 .info-row .info-text{flex:1}
-.info-row .info-label{font-size:14px;color:#202124}
-.info-row .info-sub{font-size:12px;color:#5f6368;margin-top:2px}
-.info-row .material-icons.arrow{color:#dadce0;font-size:20px}
+.info-row .info-label{font-size:14px;color:#1a1a2e;font-weight:500}
+.info-row .info-sub{font-size:12px;color:#6b7280;margin-top:2px}
+.info-row .material-icons.arrow{color:#d1d5db;font-size:20px}
 .hours-table{width:100%;font-size:13px;margin-top:8px}
-.hours-table td{padding:6px 0;border-bottom:1px solid #f1f3f4}
-.hours-table td:first-child{color:#5f6368;width:100px}
-.hours-table tr.today td{font-weight:700;color:#1a73e8}
-.hours-table tr.today td:first-child{color:#1a73e8}
+.hours-table td{padding:7px 0;border-bottom:1px solid #f3f4f6}
+.hours-table td:first-child{color:#6b7280;width:100px}
+.hours-table tr.today td{font-weight:700;color:#4f46e5}
+.hours-table tr.today td:first-child{color:#4f46e5}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.tag{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#e8f0fe;color:#1a73e8;border-radius:16px;font-size:12px;font-weight:500}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:7px 14px;background:#eff6ff;color:#3b82f6;border-radius:18px;font-size:12px;font-weight:500;border:1px solid #dbeafe}
 .tag .material-icons{font-size:14px}
-.post-card{border:1px solid #dadce0;border-radius:12px;overflow:hidden;margin-bottom:16px}
-.post-card img{width:100%;height:180px;object-fit:cover}
-.post-card .post-body{padding:12px}
-.post-type{font-size:11px;font-weight:700;color:#1a73e8;text-transform:uppercase;letter-spacing:.5px}
-.post-title{font-size:15px;font-weight:500;margin:4px 0;color:#202124}
-.post-desc{font-size:13px;color:#5f6368;line-height:1.5}
-.post-cta{display:inline-block;margin-top:8px;font-size:13px;font-weight:500;color:#1a73e8;cursor:pointer}
-.qa-item{border-left:3px solid #1a73e8;background:#f8f9fa;padding:12px 16px;margin-bottom:8px;border-radius:0 8px 8px 0;cursor:pointer}
-.qa-question{font-size:14px;font-weight:500;color:#202124;display:flex;align-items:center;justify-content:space-between}
-.qa-answer{font-size:13px;color:#5f6368;margin-top:8px;display:none;line-height:1.5}
+.section-header{display:flex;align-items:center;gap:8px;margin:24px 0 12px;font-size:16px;font-weight:600;color:#1a1a2e}
+.section-badge{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;background:#f5f3ff;color:#4f46e5;border-radius:14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;border:1px solid #ede9fe}
+.post-card{border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;margin-bottom:18px;box-shadow:0 3px 10px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.03);transition:all .25s}
+.post-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+.post-card img{width:100%;height:190px;object-fit:cover}
+.post-card .post-body{padding:14px}
+.post-type{font-size:11px;font-weight:700;color:#4f46e5;text-transform:uppercase;letter-spacing:.6px}
+.post-title{font-size:15px;font-weight:600;margin:5px 0;color:#1a1a2e}
+.post-desc{font-size:13px;color:#6b7280;line-height:1.6}
+.post-cta{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:#4f46e5;cursor:pointer}
+.qa-item{border-left:3px solid #4f46e5;background:#f9fafb;padding:14px 18px;margin-bottom:10px;border-radius:0 14px 14px 0;cursor:pointer}
+.qa-question{font-size:14px;font-weight:600;color:#1a1a2e;display:flex;align-items:center;justify-content:space-between}
+.qa-answer{font-size:13px;color:#6b7280;margin-top:10px;display:none;line-height:1.6}
 .qa-item.open .qa-answer{display:block}
-.review-card{padding:12px 0;border-bottom:1px solid #f1f3f4}
+.review-card{padding:14px 0;border-bottom:1px solid #f3f4f6}
 .review-header{display:flex;align-items:center;gap:10px}
-.review-avatar{width:36px;height:36px;border-radius:50%;background:#1a73e8;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
-.review-name{font-size:14px;font-weight:500;color:#202124}
-.review-meta{font-size:12px;color:#5f6368}
-.review-stars{display:flex;gap:1px;margin:6px 0}
-.review-text{font-size:13px;color:#202124;line-height:1.5}
-.review-reply{border-left:3px solid #dadce0;padding:8px 12px;margin-top:8px;background:#f8f9fa;border-radius:0 6px 6px 0}
-.review-reply-label{font-size:11px;color:#5f6368;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-.review-reply-text{font-size:13px;color:#202124;margin-top:4px;line-height:1.5}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.photo-grid img{width:100%;height:100px;object-fit:cover;cursor:pointer;border-radius:2px}
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:1000;max-width:412px;left:50%;transform:translateX(-50%)}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
+.review-name{font-size:14px;font-weight:600;color:#1a1a2e}
+.review-meta{font-size:12px;color:#9ca3af}
+.review-stars{display:flex;gap:2px;margin:8px 0}
+.review-text{font-size:13px;color:#1a1a2e;line-height:1.6}
+.review-reply{border-left:3px solid #e5e7eb;padding:10px 14px;margin-top:10px;background:#f9fafb;border-radius:0 10px 10px 0}
+.review-reply-label{font-size:10px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.review-reply-text{font-size:13px;color:#1a1a2e;margin-top:4px;line-height:1.6}
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.photo-grid img{width:100%;height:85px;object-fit:cover;cursor:pointer;border-radius:10px;transition:all .25s}
+.photo-grid img:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:1000;max-width:412px;left:50%;transform:translateX(-50%)}
 .lightbox.active{display:flex}
-.lightbox img{max-width:90%;max-height:80%;object-fit:contain}
-.lightbox .lb-close{position:absolute;top:16px;right:16px;color:#fff;font-size:28px;cursor:pointer}
-.lightbox .lb-prev,.lightbox .lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:16px}
-.lightbox .lb-prev{left:8px}
-.lb-next{right:8px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:1001;display:none;animation:fadeIn .3s}
+.lightbox img{max-width:92%;max-height:82%;object-fit:contain;border-radius:8px}
+.lightbox .lb-close{position:absolute;top:18px;right:18px;color:#fff;font-size:30px;cursor:pointer}
+.lightbox .lb-prev,.lightbox .lb-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:38px;cursor:pointer;padding:18px}
+.lightbox .lb-prev{left:10px}
+.lb-next{right:10px}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:14px 28px;border-radius:14px;font-size:14px;font-weight:500;z-index:1001;display:none;animation:fadeIn .3s;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 .toast.show{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 </style>
 </head>
 <body>
@@ -92,8 +104,8 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div class="header">
-  <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;padding:6px 12px;background:#e8f0fe;border-radius:8px;font-size:11px;color:#1a73e8;font-weight:600;align-self:flex-start">
-    <span class="material-icons" style="font-size:14px">verified</span>
+  <div class="header-badge">
+    <span class="material-icons">verified</span>
     Optimizado por FlowState Digital
   </div>
   <h1>Tienda Moda Palermo <span class="verified-badge">✓</span></h1>
@@ -104,12 +116,29 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-svg" viewBox="0 0 24 24"><defs><linearGradient id="half"><stop offset="50%" stop-color="#fbbc04"/><stop offset="50%" stop-color="#dadce0"/></linearGradient></defs><path fill="url(#half)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><defs><linearGradient id="half"><stop offset="50%" stop-color="#fbbc04"/><stop offset="50%" stop-color="#e5e7eb"/></linearGradient></defs><path fill="url(#half)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </span>
     <span class="rating-num">4,7</span>
     <span>(198 reseñas)</span>
   </div>
   <div class="open-badge"><span class="open-dot"></span> Abierto ahora</div>
+</div>
+
+<div class="areas-card">
+  <div class="areas-title">
+    <span class="material-icons">layers</span>
+    ÁREAS DE TRABAJO FLOWSTATE
+  </div>
+  <div class="areas-badges">
+    <span class="area-badge"><span class="material-icons">location_on</span>Ubicación</span>
+    <span class="area-badge"><span class="material-icons">schedule</span>Horarios</span>
+    <span class="area-badge"><span class="material-icons">call</span>Contacto</span>
+    <span class="area-badge"><span class="material-icons">language</span>Web</span>
+    <span class="area-badge"><span class="material-icons">edit_note</span>Gestión de Contenido</span>
+    <span class="area-badge"><span class="material-icons">question_answer</span>Respuestas Personalizadas</span>
+    <span class="area-badge"><span class="material-icons">star_rate</span>Gestión de Reseñas</span>
+    <span class="area-badge"><span class="material-icons">photo_camera</span>Sesión Fotográfica</span>
+  </div>
 </div>
 
 <div class="actions-scroll">
@@ -128,18 +157,17 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div id="overview" class="tab-content active">
-  <div class="info-row" onclick="showToast('Abriendo mapa...')" style="position:relative">
-    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Ubicación</span>
+  <div class="info-row" onclick="showToast('Abriendo mapa...')">
     <span class="material-icons">location_on</span>
     <div class="info-text"><div class="info-label">Av. Santa Fe 1850, Palermo, Buenos Aires</div><div class="info-sub">CABA, Buenos Aires</div></div>
     <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="showToast('Horarios')" style="position:relative">
-    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Horarios</span>
+  <div class="info-row" onclick="showToast('Horarios')">
     <span class="material-icons">schedule</span>
     <div class="info-text"><div class="info-label">Abierto hasta las 19:00</div></div>
     <span class="material-icons arrow">expand_more</span>
   </div>
+
   <table class="hours-table">
     <tr><td>Lunes</td><td>9:00–19:00</td></tr>
     <tr><td>Martes</td><td>9:00–19:00</td></tr>
@@ -149,14 +177,13 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     <tr><td>Sábado</td><td>10:00–14:00</td></tr>
     <tr><td>Domingo</td><td>Cerrado</td></tr>
   </table>
-  <div class="info-row" onclick="showToast('Llamando...')" style="position:relative">
-    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Contacto</span>
+
+  <div class="info-row" onclick="showToast('Llamando...')">
     <span class="material-icons">call</span>
     <div class="info-text"><div class="info-label">+54 11 4567-8901</div></div>
     <span class="material-icons arrow">chevron_right</span>
   </div>
-  <div class="info-row" onclick="showToast('Abriendo web...')" style="position:relative">
-    <span style="position:absolute;top:-8px;right:0;font-size:9px;color:#1a73e8;background:#e8f0fe;padding:2px 6px;border-radius:8px;font-weight:600">Web</span>
+  <div class="info-row" onclick="showToast('Abriendo web...')">
     <span class="material-icons">language</span>
     <div class="info-text"><div class="info-label">www.tiendamodapalermo.com.ar</div></div>
     <span class="material-icons arrow">chevron_right</span>
@@ -171,10 +198,13 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     <span class="tag"><span class="material-icons">checkroom</span> Probador</span>
   </div>
 
-  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Publicaciones de Google <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Gestión de contenido</span></h3>
+  <div class="section-header">
+    Publicaciones de Google
+    <span class="section-badge"><span class="material-icons" style="font-size:11px">edit_note</span> Gestión de Contenido</span>
+  </div>
 
   <div class="post-card">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80" alt="Colección verano">
+    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=85" alt="Colección verano">
     <div class="post-body">
       <div class="post-type">Oferta</div>
       <div class="post-title">🔥 Colección Verano 2025</div>
@@ -184,7 +214,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
   </div>
 
   <div class="post-card">
-    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80" alt="Nuevo local">
+    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=85" alt="Interior tienda">
     <div class="post-body">
       <div class="post-type">Novedad</div>
       <div class="post-title">✨ Nuevo horario extendido</div>
@@ -193,7 +223,10 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
     </div>
   </div>
 
-  <h3 style="font-size:16px;font-weight:500;margin:24px 0 12px">Preguntas y respuestas <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Respuestas personalizadas</span></h3>
+  <div class="section-header">
+    Preguntas y respuestas
+    <span class="section-badge"><span class="material-icons" style="font-size:11px">question_answer</span> Respuestas Personalizadas</span>
+  </div>
 
   <div class="qa-item" onclick="this.classList.toggle('open')">
     <div class="qa-question">¿Tienen talles grandes? <span class="material-icons">expand_more</span></div>
@@ -210,7 +243,10 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 </div>
 
 <div id="reviews" class="tab-content">
-  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Reseñas de clientes <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Gestión de reseñas</span></h3>
+  <div class="section-header">
+    Reseñas de clientes
+    <span class="section-badge"><span class="material-icons" style="font-size:11px">star_rate</span> Gestión de Reseñas</span>
+  </div>
 
   <div class="review-card">
     <div class="review-header">
@@ -241,7 +277,7 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#dadce0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#e5e7eb" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
     <div class="review-text">Muy buena la ropa, precios accesibles. Lo único que mejoraría es que los fines de semana hay bastante gente y hay que hacer fila en el probador.</div>
     <div class="review-reply">
@@ -260,24 +296,26 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#dadce0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-svg" viewBox="0 0 24 24"><path fill="#e5e7eb" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     </div>
     <div class="review-text">Hermosa tienda, mucha variedad y buena atención de las vendedoras. Volveré seguro.</div>
   </div>
 </div>
 
 <div id="photos" class="tab-content">
-  <h3 style="font-size:16px;font-weight:500;margin-bottom:12px">Fotos <span style="font-size:11px;color:#1a73e8;background:#e8f0fe;padding:3px 8px;border-radius:10px;font-weight:600;margin-left:8px">Sesión fotográfica</span></h3>
+  <div class="section-header">
+    Fotos
+    <span class="section-badge"><span class="material-icons" style="font-size:11px">photo_camera</span> Sesión Fotográfica</span>
+  </div>
   <div class="photo-grid">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80" onclick="openLightbox(0)" alt="Tienda">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80&q=80" onclick="openLightbox(1)" alt="Interior">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80&q=80&q=80" onclick="openLightbox(2)" alt="Ropa">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80&q=80" onclick="openLightbox(3)" alt="Prendas">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80" onclick="openLightbox(4)" alt="Accesorios">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80" onclick="openLightbox(5)" alt="Vitrina">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80&q=80" onclick="openLightbox(6)" alt="Exterior">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80&q=80" onclick="openLightbox(7)" alt="Estantes">
-    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=80" onclick="openLightbox(8)" alt="Moda">
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&q=85" onclick="openLightbox(0)" alt="Escaparate">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=300&q=85" onclick="openLightbox(1)" alt="Interior">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300&q=85" onclick="openLightbox(2)" alt="Ropa">
+    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300&q=85" onclick="openLightbox(3)" alt="Accesorios">
+    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=85" onclick="openLightbox(4)" alt="Prendas">
+    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=300&q=85" onclick="openLightbox(5)" alt="Tienda">
+    <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=300&q=85" onclick="openLightbox(6)" alt="Exterior">
+    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=300&q=85" onclick="openLightbox(7)" alt="Estantes">
   </div>
 </div>
 
@@ -292,15 +330,14 @@ body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:
 
 <script>
 const photos=[
-  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800',
-  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800',
-  'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800',
-  'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800',
-  'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800',
-  'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800',
-  'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800',
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800'
+  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=85',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=85',
+  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85',
+  'https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&q=85',
+  'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&q=85',
+  'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&q=85',
+  'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&q=85',
+  'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=85'
 ];
 let currentLB=0;
 
