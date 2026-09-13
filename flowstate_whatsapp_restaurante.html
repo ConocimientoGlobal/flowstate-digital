@@ -588,22 +588,14 @@ body{
   </div>
 
   <!-- ÁREAS DE TRABAJO FLOWSTATE -->
-  <div class="areas-card">
-    <div class="areas-card-header">
-      <span style="font-size:14px">⚡</span>
-      Áreas de Trabajo FlowState
-    </div>
-    <div class="areas-badges">
-      <span class="badge-pill blue">📋 Catálogo Digital</span>
-      <span class="badge-pill purple">📅 Reservas Automatizadas</span>
-      <span class="badge-pill orange">🚴 Pedidos/Delivery</span>
-      <span class="badge-pill green">🤖 Respuestas Automáticas</span>
-    </div>
+  <div style="padding:16px;margin:0 16px 12px;background:#f5f3ff;border-radius:14px;border:1px solid #ede9fe">
+  <div style="font-size:11px;font-weight:700;color:#4f46e5;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">ÁREAS DE INTERVENCIÓN</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px">
+    <span style="font-size:10px;background:#fff;color:#4f46e5;padding:5px 10px;border-radius:10px;border:1px solid #ddd6fe;font-weight:600">📋 Catálogo</span>
+    <span style="font-size:10px;background:#fff;color:#4f46e5;padding:5px 10px;border-radius:10px;border:1px solid #ddd6fe;font-weight:600">📅 Reservas</span>
+    <span style="font-size:10px;background:#fff;color:#4f46e5;padding:5px 10px;border-radius:10px;border:1px solid #ddd6fe;font-weight:600">🚴 Delivery</span>
+    <span style="font-size:10px;background:#fff;color:#4f46e5;padding:5px 10px;border-radius:10px;border:1px solid #ddd6fe;font-weight:600">💬 Respuestas</span>
   </div>
-
-  <div class="profile-row"><span class="material-icons-outlined mi">place</span><div><div class="text">Paraguayo 4501, Palermo</div><div class="sub">Buenos Aires, Argentina</div></div></div>
-  <div class="profile-row"><span class="material-icons-outlined mi">schedule</span><div><div class="text">Lun-Dom 12:00-00:00</div><div class="sub">Abierto ahora</div></div></div>
-  <div class="profile-row"><span class="material-icons-outlined mi">phone</span><div><div class="text">+54 9 11 5678-4321</div><div class="sub">WhatsApp Business</div></div></div>
 </div>
 
 <!-- CART -->
@@ -623,7 +615,7 @@ body{
   <button class="overlay-back" onclick="goBack()">← Volver</button>
   <h3 style="padding:14px;font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px">
     📅 Reservar Mesa
-    <span class="badge-pill purple">Reservas Automatizadas</span>
+    <span class="badge-pill purple">Reservas</span>
   </h3>
   <div class="form-group"><label>Nombre completo</label><input type="text" id="resName" placeholder="Tu nombre"></div>
   <div class="form-group"><label>Fecha</label><input type="date" id="resDate"></div>
@@ -645,7 +637,7 @@ body{
   <button class="overlay-back" onclick="goBackToCart()">← Volver</button>
   <h3 style="padding:14px;font-size:17px;font-weight:600;display:flex;align-items:center;gap:8px">
     🚴 Datos de Delivery
-    <span class="badge-pill orange">Pedidos/Delivery</span>
+    <span class="badge-pill orange">Delivery</span>
   </h3>
   <div class="form-group"><label>Dirección de entrega</label><input type="text" id="delAddr" placeholder="Calle, número, piso"></div>
   <div class="form-group"><label>Barrio / Localidad</label><input type="text" id="delBarrio" placeholder="Ej: Palermo"></div>
@@ -786,7 +778,7 @@ function showCatalog(){
   b.style.maxWidth='90%';
   
   let h='<div class="catalog-section">';
-  h+='<div class="catalog-header"><span>📋 Nuestro Menú</span><span class="badge-pill blue">Catálogo Digital</span></div>';
+  h+='<div class="catalog-header"><span>📋 Nuestro Menú</span><span class="badge-pill blue">Catálogo</span></div>';
   h+='<div class="catalog-tabs">';
   ['Entradas','Principales','Postres'].forEach((c,i)=>{
     h+=`<div class="catalog-tab ${i===0?'active':''}" onclick="switchCat('${c.toLowerCase()}',this)">${c}</div>`;
