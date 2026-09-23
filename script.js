@@ -130,7 +130,7 @@ function initGBPDemo(businessId) {
   // Update header
   const headerTitle = document.querySelector('.header h1');
   if (headerTitle) {
-    headerTitle.innerHTML = `${business.name} <span class="verified-badge">✓</span>`;
+    headerTitle.innerHTML = `${business.name} <span class="verified-badge">Verificado</span>`;
   }
   
   const categoryEl = document.querySelector('.category');
@@ -189,7 +189,6 @@ function initGBPDemo(businessId) {
             `<svg class="star-svg" viewBox="0 0 24 24"><path fill="${i < Math.floor(business.rating) ? '#fbbc04' : '#e5e7eb'}" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`
           ).join('')}
           ${business.rating % 1 >= 0.5 ? '<svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' : ''}
-          ${business.rating % 1 < 0.5 && business.rating % 1 > 0 ? '<svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' : ''}
         </div>
         <div class="review-text">${review.text}</div>
         ${review.reply ? `
@@ -455,8 +454,6 @@ function initBookingDemo(businessId) {
         svg.parentNode.style.fill = index < Math.floor(business.rating) ? 'currentColor' : '#e0e0e0';
       });
     }
-    const ratingNumEl = propertyCard.querySelector('.property-rating')?.cloneNode(false);
-    // We'll just update the text after the SVGs
     const ratingContainer = propertyCard.querySelector('.property-rating');
     if (ratingContainer) {
       ratingContainer.innerHTML = `${Array(5).fill(0).map((_, i) => 
@@ -468,9 +465,9 @@ function initBookingDemo(businessId) {
     const priceEl = propertyCard.querySelector('.property-price');
     if (priceEl) {
       // For complex, we might show a range; for simplicity show first unit price if available
-      let priceText = '$45.000 ARS/nocha'; // default
+      let priceText = '$53 USD/nocha'; // default
       if (business.roomTypes && business.roomTypes.length > 0) {
-        priceText = business.roomTypes[0].price.replace('ARS', 'ARS').replace('/nocha', '/noche');
+        priceText = business.roomTypes[0].price;
       }
       priceEl.textContent = priceText;
     }
@@ -483,11 +480,11 @@ function initBookingDemo(businessId) {
       ).join('');
     }
     
-    // Update actions
+    // Update actions - replace alert with proper modals
     const actionBtns = propertyCard.querySelectorAll('.action-btn');
     if (actionBtns.length >= 2) {
-      actionBtns[0].onclick = () => alert('Detalles completos del alojamiento');
-      actionBtns[1].onclick = () => alert('Galería de fotos');
+      actionBtns[0].onclick = () => showModal('Detalles del alojamiento', getHotelDetailsHTML(business));
+      actionBtns[1].onclick = () => showModal('Galería de fotos', getGalleryHTML(business.images));
     }
     
     // Update CTA
@@ -767,9 +764,9 @@ function initTrivagoDemo(businessId) {
       // Update price
       const priceEl = card.querySelector('.property-price');
       if (priceEl) {
-        let priceText = '$45.000 ARS/nocha';
+        let priceText = '$53 USD/nocha';
         if (business.roomTypes && business.roomTypes.length > 0) {
-          priceText = business.roomTypes[0].price.replace('ARS', 'ARS').replace('/nocha', '/noche');
+          priceText = business.roomTypes[0].price;
         }
         priceEl.textContent = priceText;
       }
@@ -777,7 +774,7 @@ function initTrivagoDemo(businessId) {
       // Update price highlight (show from price)
       const priceHighlight = card.querySelector('.property-price.price-highlight');
       if (priceHighlight) {
-        priceHighlight.textContent = `Desde ${business.roomTypes && business.roomTypes.length > 0 ? business.roomTypes[0].price.replace('ARS', 'ARS').replace('/nocha', '/noche') : '$45.000 ARS/nocha'}`;
+        priceHighlight.textContent = `Desde ${business.roomTypes && business.roomTypes.length > 0 ? business.roomTypes[0].price : '$53 USD/nocha'}`;
       }
       
       // Update details
@@ -788,11 +785,11 @@ function initTrivagoDemo(businessId) {
         ).join('');
       }
       
-      // Update actions
+      // Update actions - replace alert with proper modals
       const actionBtns = card.querySelectorAll('.action-btn');
       if (actionBtns.length >= 2) {
-        actionBtns[0].onclick = () => alert(`Ver precio de ${business.name}`);
-        actionBtns[1].onclick = () => alert(`Ver detalles de ${business.name}`);
+        actionBtns[0].onclick = () => showModal(`Precio de ${business.name}`, getPriceHTML(business));
+        actionBtns[1].onclick = () => showModal(`Detalles de ${business.name}`, getDetailsHTML(business));
       }
     });
   }
@@ -821,7 +818,7 @@ function initTrivagoDemo(businessId) {
           <td>Precio por noche/persona</td>
           <td>${b1.roomTypes && b1.roomTypes.length > 0 ? b1.roomTypes[0].price : 'N/A'}</td>
           <td>${b2.roomTypes && b2.roomTypes.length > 0 ? b2.roomTypes[0].price : 'N/A'}</td>
-          <td>$25.000 ARS/persona</td>
+          <td>$29 USD/persona</td>
         </tr>
         <tr>
           <td>Valoración</td>
@@ -845,7 +842,7 @@ function initTrivagoDemo(businessId) {
           <td>Estacionamiento</td>
           <td>${b1.services.some(s => s.includes('Estacionamiento')) ? 'Sí' : 'No'}</td>
           <td>${b2.services.some(s => s.includes('Estacionamiento')) ? 'Sí' : 'No'}</td>
-          <td>No (street parking)</td>
+          <td>No (estacionamiento en calle)</td>
         </tr>
         <tr>
           <td>Pet friendly</td>
@@ -878,6 +875,163 @@ function initTrivagoDemo(businessId) {
   // Add platform navigation (for the selected business in comparison, if any)
   // For simplicity, we'll not add platform navigation in Trivago demo as it's a comparator
   // But we could add a small note.
+}
+
+// Helper function to create hotel details HTML
+function getHotelDetailsHTML(business) {
+  return `
+    <div class="modal-content">
+      <h3>${business.name}</h3>
+      <p><strong>Dirección:</strong> ${business.location}</p>
+      <p><strong>Teléfono:</strong> ${business.phone}</p>
+      <p><strong>Sitio web:</strong> <a href="${business.website}" target="_blank">${business.website}</a></p>
+      <p><strong>Descripción:</strong> ${business.description}</p>
+      <div class="modal-section">
+        <h4>Servicios:</h4>
+        <ul>
+          ${business.services.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+      </div>
+      ${business.roomTypes ? `
+      <div class="modal-section">
+        <h4>Tipos de habitación:</h4>
+        <ul>
+          ${business.roomTypes.map(room => `
+            <li>
+              <strong>${room.name}</strong> - ${room.size}, ${room.bed}, ${room.view} - ${room.price}
+              <ul>
+                ${room.amenities.map(a => `<li>${a}</li>`).join('')}
+              </ul>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+      ` : ''}
+      ${business.specs ? `
+      <div class="modal-section">
+        <h4>Especificaciones:</h4>
+        <ul>
+          ${business.specs.map(spec => `<li><strong>${spec.label}:</strong> ${spec.value}</li>`).join('')}
+        </ul>
+      </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+// Helper function to create gallery HTML
+function getGalleryHTML(images) {
+  return `
+    <div class="modal-content">
+      <h3>Galería de fotos</h3>
+      <div class="gallery-grid">
+        ${images.map(img => `<img src="${img}" alt="${business.name}">`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// Helper function to create price HTML
+function getPriceHTML(business) {
+  let priceHTML = `<h3>Precios de ${business.name}</h3>`;
+  if (business.roomTypes && business.roomTypes.length > 0) {
+    priceHTML += `
+      <div class="modal-content">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Tamaño</th>
+              <th>Cama</th>
+              <th>Vista</th>
+              <th>Precio/noche</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${business.roomTypes.map(room => `
+              <tr>
+                <td>${room.name}</td>
+                <td>${room.size}</td>
+                <td>${room.bed}</td>
+                <td>${room.view}</td>
+                <td>${room.price}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (business.units && business.units.length > 0) {
+    priceHTML += `
+      <div class="modal-content">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Unidad</th>
+              <th>Capacidad</th>
+              <th>Dormitorios</th>
+              <th>Baños</th>
+              <th>Precio/noche</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${business.units.map(unit => `
+              <tr>
+                <td>${unit.name}</td>
+                <td>${unit.capacity}</td>
+                <td>${unit.bedrooms}</td>
+                <td>${unit.bathrooms}</td>
+                <td>${unit.price}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+  return priceHTML;
+}
+
+// Helper function to create details HTML
+function getDetailsHTML(business) {
+  return `
+    <div class="modal-content">
+      <h3>Detalles de ${business.name}</h3>
+      <p><strong>Descripción:</strong> ${business.description}</p>
+      <div class="modal-section">
+        <h4>Servicios:</h4>
+        <ul>
+          ${business.services.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+      </div>
+      ${business.amenities ? `
+      <div class="modal-section">
+        <h4>Comodidades:</h4>
+        <div class["amenities-grid">
+          ${business.amenities.map(amenity => `
+            <div class="amenity-item">
+              ${amenity.svg}
+              <span>${amenity.icon}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+      ${business.highlights ? `
+      <div class="modal-section">
+        <h4>Destacados:</h4>
+        <div class="highlights-grid">
+          ${business.highlights.map(h => `
+            <div class="highlight-item">
+              <div class="highlight-number">${h.number}</div>
+              <div class="highlight-label">${h.label}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+    </div>
+  `;
 }
 
 // Add navigation between platforms for a business
@@ -987,6 +1141,116 @@ function addPlatformNavigation(businessId) {
   }
 }
 
+// Modal functions
+function showModal(title, content) {
+  // Remove any existing modal
+  const existingModal = document.getElementById('custom-modal');
+  if (existingModal) {
+    existingModal.remove();
+  }
+  
+  // Create modal backdrop
+  const backdrop = document.createElement('div');
+  backdrop.id = 'modal-backdrop';
+  backdrop.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  `;
+  
+  // Create modal container
+  const modalContainer = document.createElement('div');
+  modalContainer.id = 'custom-modal';
+  modalContainer.style.cssText = `
+    background: white;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    position: relative;
+  `;
+  
+  // Create modal header
+  const modalHeader = document.createElement('div');
+  modalHeader.style.cssText = `
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `;
+  
+  const modalTitle = document.createElement('h3');
+  modalTitle.textContent = title;
+  modalTitle.style.cssText = `
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #202124;
+  `;
+  
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '&times;';
+  closeBtn.style.cssText = `
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c757d;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `;
+  closeBtn.onclick = () => {
+    backdrop.remove();
+    modalContainer.remove();
+  };
+  
+  modalHeader.appendChild(modalTitle);
+  modalHeader.appendChild(closeBtn);
+  
+  // Create modal content
+  const modalContent = document.createElement('div');
+  modalContent.innerHTML = content;
+  modalContent.style.cssText = `
+    padding: 20px;
+  `;
+  
+  // Assemble modal
+  modalContainer.appendChild(modalHeader);
+  modalContainer.appendChild(modalContent);
+  backdrop.appendChild(modalContainer);
+  document.body.appendChild(backdrop);
+  
+  // Close on backdrop click
+  backdrop.onclick = (e) => {
+    if (e.target === backdrop) {
+      backdrop.remove();
+      modalContainer.remove();
+    }
+  };
+  
+  // Close on Escape key
+  document.addEventListener('keydown', function escHandler(e) {
+    if (e.key === 'Escape') {
+      backdrop.remove();
+      modalContainer.remove();
+      document.removeEventListener('keydown', escHandler);
+    }
+  });
+}
+
 // Utility function to get business data
 function getBusiness(id) {
   return window.getBusiness ? window.getBusiness(id) : null;
@@ -1001,4 +1265,4 @@ window.initTripAdvisorDemo = initTripAdvisorDemo;
 window.initBookingDemo = initBookingDemo;
 window.initAirbnbDemo = initAirbnbDemo;
 window.initTrivagoDemo = initTrivagoDemo;
-window.addPlatformNavigation = addPlatformNavigation;
+window.showModal = showModal;

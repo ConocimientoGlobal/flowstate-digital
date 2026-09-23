@@ -42,7 +42,7 @@ const businesses = [
         size: '28m²',
         bed: 'Cama king',
         view: 'Vista al jardín',
-        price: '$45.000 ARS',
+        price: '$53 USD',
         amenities: ['WiFi gratis', 'TV cable', 'Aire acondicionado', 'Baño privado'],
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80'
       },
@@ -51,7 +51,7 @@ const businesses = [
         size: '38m²',
         bed: 'Cama king premium',
         view: 'Balcón privado',
-        price: '$65.000 ARS',
+        price: '$76 USD',
         amenities: ['WiFi gratis', 'TV cable', 'Aire acondicionado', 'Baño privado', 'Minibar'],
         image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&q=80'
       },
@@ -60,7 +60,7 @@ const businesses = [
         size: '62m²',
         bed: 'Sala de estar + Jacuzzi',
         view: 'Terraza',
-        price: '$85.000 ARS',
+        price: '$100 USD',
         amenities: ['WiFi gratis', 'TV cable', 'Aire acondicionado', 'Baño privado', 'Jacuzzi', 'Terraza', 'Sala de estar'],
         image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80'
       }
@@ -72,7 +72,7 @@ const businesses = [
         meta: 'Buenos Aires · 12 reseñas',
         title: '¡Experiencia inolvidable!',
         text: 'El hotel superó todas mis expectativas. La habitación Deluxe es espectacular, con acabados de primera y una cama increíblemente cómoda. El desayuno es variado y delicioso. El personal es sumamente atento.',
-        trip: '💑 Viaje en pareja',
+        trip: 'Viaje en pareja',
         date: 'Septiembre 2026 · 3 noches',
         response: {
           label: 'Respuesta del establecimiento',
@@ -85,7 +85,7 @@ const businesses = [
         meta: 'Madrid, España · 28 reseñas',
         title: 'Excelente ubicación y servicio',
         text: 'Ubicado en una zona espectacular de Palermo. El restaurante del hotel es muy bueno y el spa es un lujo. La pileta climatizada es perfecta para relajarse.',
-        trip: '💼 Viaje de negocios',
+        trip: 'Viaje de negocios',
         date: 'Agosto 2026 · 5 noches',
         response: {
           label: 'Respuesta del establecimiento',
@@ -98,7 +98,7 @@ const businesses = [
         meta: 'Santiago, Chile · 5 reseñas',
         title: 'Muy lindo hotel, algunos detalles',
         text: 'El hotel es precioso y muy bien mantenido. El único punto a mejorar es el tiempo de espera del check-in. Fuera de eso, todo impecable.',
-        trip: '👨‍👩‍👧 Familia con niños',
+        trip: 'Familia con niños',
         date: 'Agosto 2026 · 4 noches',
         response: {
           label: 'Respuesta del establecimiento',
@@ -121,6 +121,55 @@ const businesses = [
       { label: 'Pisos', value: '4' },
       { label: 'Año construcción', value: '2019' },
       { label: 'Última renovación', value: '2024' }
+    ],
+    hours: {
+      'Lunes': '24 horas',
+      'Martes': '24 horas',
+      'Miércoles': '24 horas',
+      'Jueves': '24 horas',
+      'Viernes': '24 horas',
+      'Sábado': '24 horas',
+      'Domingo': '24 horas'
+    },
+    posts: [
+      {
+        type: 'OFERTA',
+        title: 'Desayuno gratis por reserva directa',
+        desc: 'Reserva directamente con nosotros y disfruta de desayuno buffet incluido durante toda tu estadía.',
+        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80',
+        time: 'Esta semana'
+      },
+      {
+        type: 'EVENTO',
+        title: 'Noche de vino y quesos',
+        desc: 'Todos los jueves: cata de vinos argentinos con quesos artesanales en nuestro terraza.',
+        image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80',
+        time: 'Jueves 20:00'
+      }
+    ],
+    qa: [
+      {
+        question: '¿Aceptan mascotas?',
+        answer: 'Sí, aceptamos mascotas de hasta 10 kg con costo adicional por limpieza profunda.'
+      },
+      {
+        question: '¿Incluye desayuno?',
+        answer: 'Sí, el desayuno buffet está incluido en todas las reservas.'
+      },
+      {
+        question: '¿Hay estacionamiento?',
+        answer: 'Contamos con estacionamiento privado y gratuito para nuestros huéspedes.'
+      },
+      {
+        question: '¿A qué hora es el check-in?',
+        answer: 'El check-in es a partir de las 15:00 horas.'
+      }
+    ],
+    highlights: [
+      { number: '15+', label: 'Años en operación' },
+      { number: '500+', label: 'Reseñas positivas' },
+      { number: '95%', label: 'Recomendación' },
+      { number: '24/7', label: 'Atención personalizada' }
     ]
   },
   {
@@ -170,7 +219,7 @@ const businesses = [
         bedrooms: 1,
         beds: '1 cama king',
         bathrooms: 1,
-        price: '$55.000 ARS',
+        price: '$65 USD',
         amenities: ['Desayuno incluido', 'WiFi gratis', 'Deck privado', 'Kayak incluido', 'Quincho compartido'],
         image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80'
       },
@@ -183,7 +232,7 @@ const businesses = [
         bedrooms: 2,
         beds: '2 camas dobles',
         bathrooms: 1,
-        price: '$75.000 ARS',
+        price: '$88 USD',
         amenities: ['Desayuno incluido', 'WiFi gratis', 'Deck privado', 'Kayak incluido', 'Quincho compartido', 'Parque infantil'],
         image: 'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80'
       },
@@ -196,7 +245,7 @@ const businesses = [
         bedrooms: 1,
         beds: '1 cama king',
         bathrooms: 1,
-        price: '$95.000 ARS',
+        price: '$112 USD',
         amenities: ['Desayuno gourmet incluido', 'WiFi gratis', 'Deck privado', 'Jacuzzi privado', 'Kayak incluido', 'Quincho privado', 'Vista panorámica'],
         image: 'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80'
       }
@@ -290,11 +339,11 @@ const businesses = [
       'Domingo': '12:00 - 23:00'
     },
     catalog: [
-      { id: 'menu-1', name: 'Asado Criollo', desc: 'Tradicional asado de tira con ensaladas y pan', price: 'ARS 2,500' },
-      { id: 'menu-2', name: 'Milanesa Napolitana', desc: 'Milanesa de carne con mozzarella, tomate, jamón', price: 'ARS 1,800' },
-      { id: 'menu-3', name: 'Salmón a la Parrilla', desc: 'Filete de salmón con vegetales asados y arroz', price: 'ARS 3,200' },
-      { id: 'menu-4', name: 'Hamburguesa Soho', desc: 'Carne artesanal, cheddar, bacon, huevo y papas fritas', price: 'ARS 2,200' },
-      { id: 'menu-5', name: 'Tarta de Ricotta', desc: 'Postre casero con frutos rojos y crema', price: 'ARS 450' }
+      { id: 'menu-1', name: 'Asado Criollo', desc: 'Tradicional asado de tira con ensaladas y pan', price: 'USD 29' },
+      { id: 'menu-2', name: 'Milanesa Napolitana', desc: 'Milanesa de carne con mozzarella, tomate, jamón', price: 'USD 21' },
+      { id: 'menu-3', name: 'Salmón a la Parrilla', desc: 'Filete de salmón con vegetales asados y arroz', price: 'USD 38' },
+      { id: 'menu-4', name: 'Hamburguesa Soho', desc: 'Carne artesanal, cheddar, bacon, huevo y papas fritas', price: 'USD 26' },
+      { id: 'menu-5', name: 'Tarta de Ricotta', desc: 'Postre casero con frutos rojos y crema', price: 'USD 5' }
     ],
     reviews: [
       {
@@ -326,7 +375,7 @@ const businesses = [
       'Promociones'
     ],
     automatedMessages: {
-      greeting: '¡Hola! 👋 Gracias por contactar a Restaurante Soho. ¿En qué podemos ayudarte?',
+      greeting: '¡Hola! Gracias por contactar a Restaurante Soho. ¿En qué podemos ayudarte?',
       away: 'Actualmente estamos atendiendo a otros clientes. Responderemos a la brevedad.',
       thanks: 'Gracias por elegirnos. ¡Que tenga un excelente día!'
     }

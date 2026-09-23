@@ -86,7 +86,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <option value="4">4 huéspedes</option>
         </select>
       </div>
-      <button class="search-btn" onclick="alert('Búsqueda simulada - En una versión completa mostraría resultados filtrados')">
+      <button class="search-btn" onclick="showModal('Búsqueda simulada', 'En una versión completa mostraría resultados filtrados')">
         <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M14.5 7.5a7 7 0 100 14 7 7 0 000-14z"/></svg>
       </button>
     </div>
@@ -111,21 +111,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <svg viewBox="0 0 24 24"><path fill="#e0e0e0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           4,8 (312 reseñas)
         </div>
-        <div class="property-price">$65.000 ARS/nocha</div>
+        <div class="property-price">$53 USD/nocha</div>
       </div>
-      <button class="action-btn primary" onclick="alert('Reserva simulada - En una versión completa mostraría formulario de reserva')">Reservar</button>
+      <button class="action-btn primary" onclick="showModal('Reserva simulada', 'En una versión completa mostraría formulario de reserva')">Reservar</button>
     </div>
     <div class="property-details">
-      <span class="property-detail">✓ Desayuno incluido</span>
+      <span class="property-detail">✓ Desayuno buffet incluido</span>
       <span class="property-detail">✓ Pileta climatizada</span>
       <span class="property-detail">✓ WiFi gratis</span>
       <span class="property-detail">✓ Terraza panorámica</span>
       <span class="property-detail">✓ Recepción 24hs</span>
       <span class="property-detail">✓ Estacionamiento</span>
+      <span class="property-detail">✓ Restaurante y bar</span>
+      <span class="property-detail">✓ Spa & Wellness</span>
+      <span class="property-detail">✓ Room service</span>
+      <span class="property-detail">✓ Aire acondicionado</span>
     </div>
     <div class="property-actions">
-      <button class="action-btn secondary" onclick="alert('Detalles completos del alojamiento')">Ver detalles</button>
-      <button class="action-btn secondary" onclick="alert('Galería de fotos')">Ver fotos</button>
+      <button class="action-btn secondary" onclick="showModal('Detalles del alojamiento', getHotelDetailsHTML(getBusinessFromQuery() || 'hotel-boutique-palermo'))">Ver detalles</button>
+      <button class="action-btn secondary" onclick="showModal('Galería de fotos', getGalleryHTML(getBusinessFromQuery() || 'hotel-boutique-palermo'))">Ver fotos</button>
     </div>
   </div>
   
