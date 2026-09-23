@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trivago Demo — Alojamientos en Delta Tigre</title>
+<script src="data.js"></script>
+<script src="script.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#2a2a2a;margin:0;min-height:100vh}
+.container{max-width:480px;margin:0 auto;padding:0 16px}
+.header{background:#fff;border-bottom:1px solid #e9ecef;display:flex;justify-content:space-between;align-items:center;padding:0 16px;height:56px;position:fixed;top:0;left:0;right:0;z-index:100}
+.header .logo{font-size:20px;font-weight:600;color:#0066ff}
+.header .back{color:#6c757d;display:flex;align-items:center;gap:4px;cursor:pointer}
+.search-bar{background:#fff;border-radius:10px;padding:16px;margin:16px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.search-fields{display:grid;grid-template-columns:1fr 1fr 1fr 80px;gap:8px}
+.search-field{display:flex;flex-direction:column}
+.search-field label{font-size:12px;color:#6c757d;margin-bottom:4px}
+.search-field input, .search-field select{padding:8px;border:1px solid #ced4da;border-radius:4px;font-size:14px}
+.search-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
+.search-btn{background:#0066ff;color:#fff;border:none;padding:0;border-radius:4px;cursor:pointer}
+.results-header{display:flex;justify-content:space-between;align-items:center;margin:24px 0 16px;padding:0 16px}
+.results-header h2{font-size:18px;font-weight:600;color:#202124}
+.results-header .count{color:#6c757d;font-size:14px}
+.results-header .sort{color:#6c757d;font-size:14px}
+.property-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e9ecef;transition:all .2s}
+.property-card:hover{transform:translateY(-4px);box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.property-card.active{border:2px solid #0066ff;box-shadow:0 0 0 4px rgba(0,102,255,.25)}
+.property-image{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px;position:relative}
+.property-badge{position:absolute;top:8px;left:8px;background:#0066ff;color:#fff;padding:2px 6px;border-radius:4px;font-size:12px}
+.property-info{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px}
+.property-info-left{flex:1}
+.property-name{font-size:18px;font-weight:600;color:#202124;margin-bottom:4px}
+.property-location{color:#6c757d;font-size:14px}
+.property-rating{display:flex;align-items:center;gap:4px;background:#fff8f1;padding:4px 8px;border-radius:16px;font-size:13px;color:#d35400}
+.property-rating svg{width:14px;height:14px}
+.property-price{background:#fff3cd;color:#856404;padding:4px 8px;border-radius:16px;font-weight:600}
+.property-details{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.property-detail{background:#f8f9fa;padding:4px 8px;border-radius:4px;font-size:13px;color:#495057}
+.property-actions{display:flex;gap:8px;margin-top:12px}
+.action-btn{flex:1;display:flex;justify-content:center;align-items:center;padding:10px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s}
+.action-btn.primary{background:#0066ff;color:#fff;border:none}
+.action-btn.secondary{background:#fff;color:#0066ff;border:1px solid #0066ff}
+.map-preview{width:100%;height:150px;background:#e9ecef;border-radius:8px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:#6c757d}
+.amenities{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.amenity{background:#e9ecef;padding:6px 10px;border-radius:4px;font-size:13px;color:#495057}
+.policies{margin-top:16px;padding-top:16px;border-top:1px solid #e9ecef}
+.policy-item{margin-bottom:8px}
+.policy-label{font-weight:600;color:#202124}
+.footer-brand{position:fixed;bottom:0;left:0;right:0;padding:12px;background:#f8f9fa;border-top:1px solid #e9ecef;text-align:center;font-size:12px;color:#6c757d}
+/* Comparison view */
+.comparison-view{display:none;background:#fff;border-radius:12px;padding:20px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e9ecef}
+.comparison-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #e9ecef}
+.comparison-header h2{font-size:20px;font-weight:600;color:#202124}
+.comparison-header .close{color:#6c757d;cursor:pointer;font-size:18px}
+.comparison-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.comparison-table th{text-align:left;padding:12px 8px;font-size:13px;font-weight:600;color:#6c757d;background:#f8f9fa;border-top-left-radius:4px;border-top-right-radius:4px}
+.comparison-table td{padding:12px 8px;font-size:13px;color:#495057;border-top:1px solid #e9ecef}
+.comparison-table td:first-child{border-top-left-radius:4px}
+.comparison-table td:last-child{border-top-right-radius:4px}
+.price-highlight{background:#fff3cd;padding:4px 8px;border-radius:4px;font-weight:600;color:#856404}
+.price-low{background:#d4edda;color:#155724;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="back" onclick="window.location.href='index.html'">
+    <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-6 6 6 6"/></svg>
+    Volver
+  </div>
+  <div class="logo">Trivago</div>
+</div>
+
+<div class="container">
+  <div class="search-bar">
+    <div class="search-fields">
+      <div class="search-field">
+        <label>Destino</label>
+        <input type="text" value="Delta Tigre, Buenos Aires" readonly>
+      </div>
+      <div class="search-field">
+        <label>Fecha de entrada</label>
+        <input type="date" value="2026-10-15">
+      </div>
+      <div class="search-field">
+        <label>Fecha de salida</label>
+        <input type="date" value="2026-10-18">
+      </div>
+      <div class="search-field">
+        <label>Huéspedes</label>
+        <select>
+          <option value="1">1 huésped</option>
+          <option value="2" selected>2 huéspedes</option>
+          <option value="3">3 huéspedes</option>
+          <option value="4">4 huéspedes</option>
+        </select>
+      </div>
+      <button class="search-btn" onclick="showResults()">
+        <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M14.5 7.5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+      </button>
+    </div>
+  </div>
+  
+  <div id="results-container">
+    <div class="results-header">
+      <h2>3 resultados encontrados</h2>
+      <div class="count">Del más barato al más caro</div>
+      <div class="sort">Ordenar por: <span>Mejor valoración</span></div>
+    </div>
+    
+    <div class="property-card" data-id="cabana-marea">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Cabaña Marea">
+      <div class="property-badge">Mejor precio</div>
+      <div class="property-info">
+        <div class="property-info-left">
+          <h3 class="property-name">Cabaña Marea</h3>
+          <div class="property-location">Delta Tigre, Buenos Aires</div>
+          <div class="property-rating">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="#e0e0e0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            4,8 (127 reseñas)
+          </div>
+          <div class="property-price price-low">$45.000 ARS/nocha</div>
+        </div>
+        <div class="property-price price-highlight">Desde $45.000 ARS/nocha</div>
+      </div>
+      <div class="property-details">
+        <span class="property-detail">✓ Desayuno incluido</span>
+        <span class="property-detail">✓ WiFi gratis</span>
+        <span class="property-detail">✓ Estacionamiento</span>
+        <span class="property-detail">✓ Pet friendly</span>
+        <span class="property-detail">✓ Kayak incluido</span>
+      </div>
+      <div class="property-actions">
+        <button class="action-btn primary" onclick="selectProperty('cabana-marea')">Ver precio</button>
+        <button class="action-btn secondary" onclick="alert('Ver detalles de Cabaña Marea')">Detalles</button>
+      </div>
+    </div>
+    
+    <div class="property-card" data-id="hotel-boutique-palermo">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hotel Boutique Palermo">
+      <div class="property-badge">Valoración destacada</div>
+      <div class="property-info">
+        <div class="property-info-left">
+          <h3 class="property-name">Hotel Boutique Palermo</h3>
+          <div class="property-location">Palermo Hollywood, Buenos Aires</div>
+          <div class="property-rating">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="#e0e0e0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            4,8 (312 reseñas)
+          </div>
+          <div class="property-price">$65.000 ARS/nocha</div>
+        </div>
+        <div class="property-price price-highlight">Desde $65.000 ARS/nocha</div>
+      </div>
+      <div class="property-details">
+        <span class="property-detail">✓ Desayuno buffet incluido</span>
+        <span class="property-detail">✓ Pileta climatizada</span>
+        <span class="property-detail">✓ WiFi gratis</span>
+        <span class="property-detail">✓ Terraza panorámica</span>
+        <span class="property-detail">✓ Recepción 24hs</span>
+      </div>
+      <div class="property-actions">
+        <button class="action-btn primary" onclick="selectProperty('hotel-boutique-palermo')">Ver precio</button>
+        <button class="action-btn secondary" onclick="alert('Ver detalles de Hotel Boutique Palermo')">Detalles</button>
+      </div>
+    </div>
+    
+    <div class="property-card" data-id="restaurant-soho">
+      <img src="https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=800&q=80" alt="Restaurante Soho">
+      <div class="property-badge">Experiencia gastronómica</div>
+      <div class="property-info">
+        <div class="property-info-left">
+          <h3 class="property-name">Restaurante Soho</h3>
+          <div class="property-location">Palermo Soho, Buenos Aires</div>
+          <div class="property-rating">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path fill="#e0e0e0" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            4,6 (89 reseñas)
+          </div>
+          <div class="property-price">$25.000 ARS/persona</div>
+        </div>
+        <div class="property-price price-highlight">Desde $25.000 ARS/persona</div>
+      </div>
+      <div class="property-details">
+        <span class="property-detail">✓ Menú completo</span>
+        <span class="property-detail">✓ WiFi gratis</span>
+        <span class="property-detail">✓ Reservas por WhatsApp</span>
+        <span class="property-detail">✓ Opciones veganas</span>
+        <span class="property-detail">✓ Delivery disponible</span>
+      </div>
+      <div class="property-actions">
+        <button class="action-btn primary" onclick="selectProperty('restaurant-soho')">Ver precio</button>
+        <button class="action-btn secondary" onclick="alert('Ver detalles de Restaurante Soho')">Detalles</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Comparison View (hidden by default) -->
+  <div id="comparison-view" class="comparison-view">
+    <div class="comparison-header">
+      <h2>Comparación de alojamientos</h2>
+      <span class="close" onclick="hideComparison()">×</span>
+    </div>
+    <div class="comparison-content">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Cabaña Marea</th>
+            <th>Hotel Boutique Palermo</th>
+            <th>Restaurante Soho</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tipo</td>
+            <td>Cabaña turística</td>
+            <td>Hotel boutique</td>
+            <td>Restaurante</td>
+          </tr>
+          <tr>
+            <td>Ubicación</td>
+            <td>Delta Tigre, Buenos Aires</td>
+            <td>Palermo Hollywood, Buenos Aires</td>
+            <td>Palermo Soho, Buenos Aires</td>
+          </tr>
+          <tr>
+            <td>Precio por noche/persona</td>
+            <td>$45.000 ARS</td>
+            <td>$65.000 ARS</td>
+            <td>$25.000 ARS</td>
+          </tr>
+          <tr>
+            <td>Valoración</td>
+            <td>4,8 (127 reseñas)</td>
+            <td>4,8 (312 reseñas)</td>
+            <td>4,6 (89 reseñas)</td>
+          </tr>
+          <tr>
+            <td>Desayuno incluido</td>
+            <td>Sí</td>
+            <td>Sí</td>
+            <td>No (servicio de comidas)</td>
+          </tr>
+          <tr>
+            <td>WiFi gratis</td>
+            <td>Sí</td>
+            <td>Sí</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td>Estacionamiento</td>
+            <td>Sí (privado)</td>
+            <td>Sí (disponible)</td>
+            <td>No (street parking)</td>
+          </tr>
+          <tr>
+            <td>Pet friendly</td>
+            <td>Sí (consultar)</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Check-in/Horario de apertura</td>
+            <td>24 horas</td>
+            <td>15:00 hrs</td>
+            <td>12:00 - 23:00</td>
+          </tr>
+          <tr>
+            <td>Check-out/Horario de cierre</td>
+            <td>24 horas</td>
+            <td>11:00 hrs</td>
+            <td>12:00 - 23:00</td>
+          </tr>
+          <tr>
+            <td>Experiencias incluidas</td>
+            <td>Kayak, asado, deck</td>
+            <td>Pileta, spa, terraza</td>
+            <td>Menú criollo, opciones gourmet</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align:center;margin-top:16px;">
+        <button class="action-btn primary" onclick="hideComparison()">Cerrar comparación</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-brand">
+  FlowState Digital · Demo conceptual · Datos ficticios
+</div>
+
+<script>
+let selectedProperty = null;
+
+function showResults() {
+  // Simulate search results - in this demo we just show the predefined results
+  document.getElementById('results-container').style.display = 'block';
+}
+
+function selectProperty(propertyId) {
+  selectedProperty = propertyId;
+  showComparison();
+}
+
+function showComparison() {
+  document.getElementById('comparison-view').style.display = 'block';
+  
+  // Highlight selected property card
+  document.querySelectorAll('.property-card').forEach(card => {
+    if (card.dataset.id === selectedProperty) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+}
+
+function hideComparison() {
+  document.getElementById('comparison-view').style.display = 'none';
+  document.querySelectorAll('.property-card').forEach(card => {
+    card.classList.remove('active');
+  });
+}
+
+// Handle Enter key in search fields
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    showResults();
+  }
+});
+</script>
+</body>
+</html>

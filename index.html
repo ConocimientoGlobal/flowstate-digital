@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlowState Digital — Presencia Digital para Hospitalidad</title>
+<script src="data.js"></script>
+<script src="script.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#333;font-size:16px;line-height:1.6}
@@ -35,6 +37,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .service p{font-size:12px;color:#666}
 .footer{text-align:center;padding:32px;font-size:12px;color:#888}
 .mascot{font-size:48px;margin-bottom:8px}
+/* New styles for enhanced navigation */
+.experience-grid, .business-grid {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+}
+.experience-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+.business-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+.exp-card, .biz-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid #e5e5e5;
+  text-align: center;
+}
+.exp-icon, .biz-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 0 auto 12px;
+}
+.exp-icon.gbp { background: #1a73e8; color: white; }
+.exp-icon.wa { background: #25d366; color: white; }
+.exp-icon.bk { background: #008389; color: white; }
+.exp-icon.ab { background: #ff0000; color: white; }
+.exp-icon.ta { background: #34e0a1; color: #1a1a1a; }
+.exp-icon.tv { background: #0066ff; color: white; }
+.biz-icon.cabana { background: #8b4513; color: white; }
+.biz-icon.rest { background: #d2691e; color: white; }
+.biz-icon.hotel { background: #2f4f4f; color: white; }
+.exp-card h3, .biz-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #202124;
+}
+.exp-card p, .biz-card p {
+  font-size: 14px;
+  color: #555;
+}
 </style>
 </head>
 <body>
@@ -56,36 +107,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <div class="container">
-  <div class="section-title">Portafolio Interactivo — Hospitalidad</div>
-  <div class="portfolio">
-    <div class="card">
-      <div class="card-icon gbp">G</div>
-      <div class="card-body">
-        <h3>Google Business Profile <span class="badge">Cabaña · Delta Tigre</span></h3>
-        <p>Perfil optimizado de cabaña turística con fotos profesionales, reseñas gestionadas, publicaciones de novedades, horarios, Q&A y menú de experiencias.</p>
-        <a class="btn gbp" href="flowstate_gbp_comercio.html">Ver Mockup →</a>
-      </div>
+  <div class="section-title">Experiencias Interactivas</div>
+  <div class="experience-grid">
+    <div class="exp-card">
+      <div class="exp-icon gbp">G</div>
+      <h3>Google Business Profile</h3>
+      <p>Perfil optimizado con fotos, reseñas, publicaciones y Q&A</p>
+      <a class="btn gbp" href="flowstate_gbp_comercio.html">Explorar →</a>
     </div>
-
-    <div class="card">
-      <div class="card-icon wa">✆</div>
-      <div class="card-body">
-        <h3>WhatsApp Business <span class="badge">Restaurante Turístico</span></h3>
-        <p>Chat funcional con catálogo de menú, sistema de reservas de mesa, flujo de atención al huésped, mensajes automáticos y FAQ de check-in.</p>
-        <a class="btn wa" href="flowstate_whatsapp_restaurante.html">Ver Mockup →</a>
-      </div>
+    <div class="exp-card">
+      <div class="exp-icon wa">✆</div>
+      <h3>WhatsApp Business</h3>
+      <p>Chat funcional con catálogo, reservas y atención</p>
+      <a class="btn wa" href="flowstate_whatsapp_restaurante.html">Explorar →</a>
     </div>
-
-    <div class="card">
-      <div class="card-icon ta">★</div>
-      <div class="card-body">
-        <h3>TripAdvisor <span class="badge">Hotel Boutique</span></h3>
-        <p>Hotel boutique con bubble ratings, galería de fotos profesionales, reseñas con respuesta del dueño y tipos de habitación.</p>
-        <a class="btn ta" href="flowstate_tripadvisor_hotel.html">Ver Mockup →</a>
-      </div>
+    <div class="exp-card">
+      <div class="exp-icon bk">📖</div>
+      <h3>Booking.com</h3>
+      <p>Lista de alojamientos con filtros y detalle de propiedades</p>
+      <a class="btn" href="booking-demo.html">Explorar →</a>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon ab">🏠</div>
+      <h3>Airbnb</h3>
+      <p>Anuncio de alojamiento con galería y calendario</p>
+      <a class="btn" href="airbnb-demo.html">Explorar →</a>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon ta">⭐</div>
+      <h3>TripAdvisor</h3>
+      <p>Perfil con reseñas, respuestas y galería de fotos</p>
+      <a class="btn ta" href="flowstate_tripadvisor_hotel.html">Explorar →</a>
+    </div>
+    <div class="exp-card">
+      <div class="exp-icon tv">📊</div>
+      <h3>Trivago</h3>
+      <p>Comparador de precios y características</p>
+      <a class="btn" href="trivago-demo.html">Explorar →</a>
     </div>
   </div>
-
+  
+  <div class="section-title">Negocios Demostración</div>
+  <div class="business-grid">
+    <div class="biz-card">
+      <div class="biz-icon cabana">🏡</div>
+      <h3>Cabaña Marea</h3>
+      <p>Delta Tigre - Alojamiento turístico</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon rest">🍴</div>
+      <h3>Restaurante Soho</h3>
+      <p>Palermo Soho - Gastronomía turística</p>
+    </div>
+    <div class="biz-card">
+      <div class="biz-icon hotel">🏨</div>
+      <h3>Hotel Boutique Palermo</h3>
+      <p>Palermo Hollywood - Hotel boutique</p>
+    </div>
+  </div>
+  
   <div class="section-title" style="margin-top:40px">Servicios para Hospitalidad</div>
   <div class="services-grid">
     <div class="service">
@@ -113,7 +193,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <p>Informes mensuales: métricas de Google, WhatsApp, Booking/Airbnb, evolución de reseñas, recomendaciones de mejoras.</p>
     </div>
   </div>
-
+  
   <div style="text-align:center;margin-top:40px;padding:20px;background:#f0fdfa;border-radius:12px;border:1px solid #ccfbf1">
     <p style="font-size:14px;color:#0d9488;font-weight:500">🎯 ¿Tenés un hospedaje,restaurante o experiencia turística?</p>
     <p style="font-size:13px;color:#666;margin-top:6px">Consulta gratuita y sin compromiso. Te respondemos en menos de 24 horas.</p>
