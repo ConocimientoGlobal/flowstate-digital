@@ -3,189 +3,6 @@
 
 const businesses = [
   {
-    id: 'cabana-marea',
-    name: 'Cabaña Marea',
-    type: 'cabana',
-    location: 'Delta Tigre, Buenos Aires',
-    description: 'Cabaña de madera con quincho y deck, ideal para descansar en contacto con la naturaleza.',
-    category: 'Cabaña · Delta Tigre, Buenos Aires',
-    rating: 4.8,
-    reviewCount: 127,
-    openStatus: 'Abierto ahora',
-    phone: '+54 9 11 5555-1234',
-    website: 'https://cabanamarea.example.com',
-    images: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
-      'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80',
-      'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80',
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80',
-      'https://images.unsplash.com/photo-1533833267-531156086e45?w=400&q=80',
-      'https://images.unsplash.com/photo-1551836022-5d184e12b341?w=400&q=80'
-    ],
-    services: [
-      'Desayuno casero incluido',
-      'WiFi gratis',
-      'Estacionamiento privado',
-      'Pet friendly (hasta 15 kg)',
-      'Kayak guiado',
-      'Asado los sábados'
-    ],
-    hours: {
-      'Lunes': '24 horas',
-      'Martes': '24 horas',
-      'Miércoles': '24 horas',
-      'Jueves': '24 horas',
-      'Viernes': '24 horas',
-      'Sábado': '24 horas',
-      'Domingo': '24 horas'
-    },
-    posts: [
-      {
-        type: 'ACTIVIDAD',
-        title: 'Nuevo paseo en kayak guiado',
-        desc: 'Explora los canales del Tigre con nuestro guía local. Incluye equipo y seguro.',
-        time: 'Hoy',
-        image: 'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80'
-      },
-      {
-        type: 'GASTRONOMÍA',
-        title: 'Asado del fin de semana',
-        desc: 'Todos los sábados: asado criollo con ensaladas caseras y vino de producción local.',
-        time: 'Ayer',
-        image: 'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80'
-      }
-    ],
-    reviews: [
-      {
-        avatar: 'MG',
-        name: 'María G.',
-        meta: 'Hace 2 meses · 5 estrellas',
-        text: 'Maravillosa experiencia. La cabaña es exactamente como en las fotos, muy limpia y el atención fue excelente. El desayuno casero fue un plus. Volveremos pronto!',
-        reply: {
-          label: 'Cabaña Marea',
-          text: 'Gracias María! Nos alegra que haya disfrutado su estadía. Los esperamos de vuelta para otra aventura en el Delta.'
-        }
-      },
-      {
-        avatar: 'JP',
-        name: 'Juan P.',
-        meta: 'Hace 1 mes · 5 estrellas',
-        text: 'Increíble lugar para desconectar. El silencio y la naturaleza son perfectos. El anfitrión nos dio excelentes recomendaciones de restaurantes cercanos. 100% recomendado.',
-        reply: {
-          label: 'Cabaña Marea',
-          text: 'Gracias Juan! Trabajamos para ofrecer experiencias auténticas de descanso y conexión con la naturaleza.'
-        }
-      },
-      {
-        avatar: 'LM',
-        name: 'Laura M.',
-        meta: 'Hace 3 semanas · 5 estrellas',
-        text: 'Ideal para parejas o pequeñas familias. La cama muy cómoda, el baño impecable y el deck perfecto para tomar mate al atardecer. Muy recomendado.',
-        reply: {
-          label: 'Cabaña Marea',
-          text: 'Gracias Laura! Nos llena de alegría saber que tuvieron una estadía tranquila y reconfortante.'
-        }
-      }
-    ],
-    qa: [
-      {
-        question: '¿Aceptan mascotas?',
-        answer: 'Sí, aceptamos mascotas de hasta 15 kg con costo adicional por limpieza.'
-      },
-      {
-        question: '¿Incluye desayuno?',
-        answer: 'Sí, el desayuno casero está incluido en todas las reservas.'
-      },
-      {
-        question: '¿Hay estacionamiento?',
-        answer: 'Contamos con estacionamiento privado y gratuito para nuestros huéspedes.'
-      }
-    ],
-    highlights: [
-      { number: '100+', label: 'Fotos' },
-      { number: '50+', label: 'Reseñas' },
-      { number: '12', label: 'Meses abierto' },
-      { number: '24/7', label: 'Atención' }
-    ]
-  },
-  {
-    id: 'restaurant-soho',
-    name: 'Restaurante Soho',
-    type: 'restaurant',
-    location: 'Palermo Soho, Buenos Aires',
-    description: 'Restaurante de comida criolla con opciones gourmet y ambiente turístico.',
-    category: 'Restaurante · Palermo Soho, Buenos Aires',
-    rating: 4.6,
-    reviewCount: 89,
-    openStatus: 'Abierto ahora',
-    phone: '+54 9 11 4444-5678',
-    website: 'https://restaurantesoho.example.com',
-    images: [
-      'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=800&q=80',
-      'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=800&q=80',
-      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80',
-      'https://images.unsplash.com/photo-1533833267-531156086e45?w=800&q=80'
-    ],
-    services: [
-      'Desayuno, almuerzo y cena',
-      'WiFi gratis',
-      'Reservas por WhatsApp',
-      'Menú infantil',
-      'Opciones veganas',
-      'Delivery dentro de Palermo'
-    ],
-    hours: {
-      'Lunes': '12:00 - 23:00',
-      'Martes': '12:00 - 23:00',
-      'Miércoles': '12:00 - 23:00',
-      'Jueves': '12:00 - 23:00',
-      'Viernes': '12:00 - 00:00',
-      'Sábado': '12:00 - 00:00',
-      'Domingo': '12:00 - 23:00'
-    },
-    catalog: [
-      { id: 'menu-1', name: 'Asado Criollo', desc: 'Tradicional asado de tira con ensaladas y pan', price: 'ARS 2,500' },
-      { id: 'menu-2', name: 'Milanesa Napolitana', desc: 'Milanesa de carne con mozzarella, tomate, jamón', price: 'ARS 1,800' },
-      { id: 'menu-3', name: 'Salmón a la Parrilla', desc: 'Filete de salmón con vegetales asados y arroz', price: 'ARS 3,200' },
-      { id: 'menu-4', name: 'Hamburguesa Soho', desc: 'Carne artesanal, cheddar, bacon, huevo y papas fritas', price: 'ARS 2,200' },
-      { id: 'menu-5', name: 'Tarta de Ricotta', desc: 'Postre casero con frutos rojos y crema', price: 'ARS 450' }
-    ],
-    reviews: [
-      {
-        avatar: 'Ana',
-        name: 'Ana Martínez',
-        meta: 'Hace 1 semana · 5 estrellas',
-        text: 'Comida excelente, atención rápida y ambiente muy agradable. Volveremos.',
-        reply: {
-          label: 'Restaurante Soho',
-          text: 'Gracias Ana! Nos alegra saber que disfrutó su visita. Los esperamos nuevamente.'
-        }
-      },
-      {
-        avatar: 'Carlos',
-        name: 'Carlos López',
-        meta: 'Hace 2 semanas · 4 estrellas',
-        text: 'Buena comida, pero un poco ruidoso en horario pico. Las porciones son generosas.',
-        reply: {
-          label: 'Restaurante Soho',
-          text: 'Gracias Carlos. Tomamos nota para mejorar el ambiente en horarios pico.'
-        }
-      }
-    ],
-    quickReplies: [
-      'Menú del día',
-      'Hacer reserva',
-      'Horarios',
-      'Ubicación',
-      'Promociones'
-    ],
-    automatedMessages: {
-      greeting: '¡Hola! 👋 Gracias por contactar a Restaurante Soho. ¿En qué podemos ayudarte?',
-      away: 'Actualmente estamos atendiendo a otros clientes. Responderemos a la brevedad.',
-      thanks: 'Gracias por elegirnos. ¡Que tenga un excelente día!'
-    }
-  },
-  {
     id: 'hotel-boutique-palermo',
     name: 'Hotel Boutique Palermo',
     type: 'hotel',
@@ -291,7 +108,7 @@ const businesses = [
     ],
     amenities: [
       { icon: 'WiFi gratuito', svg: 'M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z' },
-      { icon: 'Pileta climatizada', svg: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z' },
+      { icon: 'Pileta climatizada', svg: 'M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z' },
       { icon: 'Estacionamiento', svg: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z' },
       { icon: 'Recepción 24hs', svg: 'M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z' },
       { icon: 'Restaurante', svg: 'M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9zM7.43 7L5.66 5h12.69l-1.78 2H7.43z' },
@@ -305,6 +122,214 @@ const businesses = [
       { label: 'Año construcción', value: '2019' },
       { label: 'Última renovación', value: '2024' }
     ]
+  },
+  {
+    id: 'complejo-cabanas-marea',
+    name: 'Complejo Cabañas Marea Delta',
+    type: 'cabana_complex',
+    location: 'Delta de Tigre, Buenos Aires',
+    description: 'Complejo turístico de cabañas de madera en el Delta Tigre, ideal para descansar en contacto con la naturaleza. Cuenta con múltiples unidades equipadas para una experiencia auténtica de turismo rural.',
+    category: 'Complejo de cabañas · Delta de Tigre, Buenos Aires',
+    rating: 4.7,
+    reviewCount: 89,
+    openStatus: 'Abierto ahora',
+    phone: '+54 9 11 5555-1234',
+    website: 'https://cabanas-marea.example.com',
+    images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
+      'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=800&q=80',
+      'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=800&q=80',
+      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80'
+    ],
+    services: [
+      'Desayuno casero incluido',
+      'WiFi gratis',
+      'Estacionamiento privado',
+      'Acceso directo al río',
+      'Kayak incluido',
+      'Quincho para asados',
+      'Deck privado en cada unidad',
+      'Pet friendly (consultar)'
+    ],
+    hours: {
+      'Lunes': '24 horas',
+      'Martes': '24 horas',
+      'Miércoles': '24 horas',
+      'Jueves': '24 horas',
+      'Viernes': '24 horas',
+      'Sábado': '24 horas',
+      'Domingo': '24 horas'
+    },
+    units: [
+      {
+        id: 'cabana-sauce',
+        name: 'Cabaña Sauce',
+        description: 'Cabaña acogedora con vista al río, ideal para parejas.',
+        size: '35m²',
+        capacity: '2 huéspedes',
+        bedrooms: 1,
+        beds: '1 cama king',
+        bathrooms: 1,
+        price: '$55.000 ARS',
+        amenities: ['Desayuno incluido', 'WiFi gratis', 'Deck privado', 'Kayak incluido', 'Quincho compartido'],
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80'
+      },
+      {
+        id: 'cabana-ceibo',
+        name: 'Cabaña Ceibo',
+        description: 'Cabaña familiar con espacio adicional y vista al lago.',
+        size: '45m²',
+        capacity: '4 huéspedes',
+        bedrooms: 2,
+        beds: '2 camas dobles',
+        bathrooms: 1,
+        price: '$75.000 ARS',
+        amenities: ['Desayuno incluido', 'WiFi gratis', 'Deck privado', 'Kayak incluido', 'Quincho compartido', 'Parque infantil'],
+        image: 'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80'
+      },
+      {
+        id: 'cabana-arrayan',
+        name: 'Cabaña Arrayán',
+        description: 'Cabaña premium con jacuzzi privado y vista panorámica.',
+        size: '55m²',
+        capacity: '2 huéspedes',
+        bedrooms: 1,
+        beds: '1 cama king',
+        bathrooms: 1,
+        price: '$95.000 ARS',
+        amenities: ['Desayuno gourmet incluido', 'WiFi gratis', 'Deck privado', 'Jacuzzi privado', 'Kayak incluido', 'Quincho privado', 'Vista panorámica'],
+        image: 'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80'
+      }
+    ],
+    reviews: [
+      {
+        avatar: 'MG',
+        name: 'María G.',
+        meta: 'Hace 2 meses · 5 estrellas',
+        text: 'Maravillosa experiencia. La cabaña es exactamente como en las fotos, muy limpia y el atención fue excelente. El desayuno casero fue un plus. Volveremos pronto!',
+        reply: {
+          label: 'Complejo Cabañas Marea Delta',
+          text: 'Gracias María! Nos alegra que haya disfrutado su estadía. Los esperamos de vuelta para otra aventura en el Delta.'
+        }
+      },
+      {
+        avatar: 'JP',
+        name: 'Juan P.',
+        meta: 'Hace 1 mes · 5 estrellas',
+        text: 'Increíble lugar para desconectar. El silencio y la naturaleza son perfectos. El anfitrión nos dio excelentes recomendaciones de restaurantes cercanos. 100% recomendado.',
+        reply: {
+          label: 'Complejo Cabañas Marea Delta',
+          text: 'Gracias Juan! Trabajamos para ofrecer experiencias auténticas de descanso y conexión con la naturaleza.'
+        }
+      },
+      {
+        avatar: 'LM',
+        name: 'Laura M.',
+        meta: 'Hace 3 semanas · 5 estrellas',
+        text: 'Ideal para parejas o pequeñas familias. La cama muy cómoda, el baño impecable y el deck perfecto para tomar mate al atardecer. Muy recomendado.',
+        reply: {
+          label: 'Complejo Cabañas Marea Delta',
+          text: 'Gracias Laura! Nos llena de alegría saber que tuvieron una estadía tranquila y reconfortante.'
+        }
+      }
+    ],
+    qa: [
+      {
+        question: '¿Aceptan mascotas?',
+        answer: 'Sí, aceptamos mascotas de hasta 15 kg con costo adicional por limpieza.'
+      },
+      {
+        question: '¿Incluye desayuno?',
+        answer: 'Sí, el desayuno casero está incluido en todas las reservas.'
+      },
+      {
+        question: '¿Hay estacionamiento?',
+        answer: 'Contamos con estacionamiento privado y gratuito para nuestros huéspedes.'
+      }
+    ],
+    highlights: [
+      { number: '50+', label: 'Fotos' },
+      { number: '30+', label: 'Reseñas' },
+      { number: '8', label: 'Años operativo' },
+      { number: '24/7', label: 'Atención' }
+    ]
+  },
+  {
+    id: 'restaurant-soho',
+    name: 'Restaurante Soho',
+    type: 'restaurant',
+    location: 'Palermo Soho, Buenos Aires',
+    description: 'Restaurante de comida criolla con opciones gourmet y ambiente turístico.',
+    category: 'Restaurante · Palermo Soho, Buenos Aires',
+    rating: 4.6,
+    reviewCount: 89,
+    openStatus: 'Abierto ahora',
+    phone: '+54 9 11 4444-5678',
+    website: 'https://restaurantesoho.example.com',
+    images: [
+      'https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=800&q=80',
+      'https://images.unsplash.com/photo-1544551763-46a013d702dc?w=800&q=80',
+      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80',
+      'https://images.unsplash.com/photo-1533833267-531156086e45?w=800&q=80'
+    ],
+    services: [
+      'Desayuno, almuerzo y cena',
+      'WiFi gratis',
+      'Reservas por WhatsApp',
+      'Menú infantil',
+      'Opciones veganas',
+      'Delivery dentro de Palermo'
+    ],
+    hours: {
+      'Lunes': '12:00 - 23:00',
+      'Martes': '12:00 - 23:00',
+      'Miércoles': '12:00 - 23:00',
+      'Jueves': '12:00 - 23:00',
+      'Viernes': '12:00 - 00:00',
+      'Sábado': '12:00 - 00:00',
+      'Domingo': '12:00 - 23:00'
+    },
+    catalog: [
+      { id: 'menu-1', name: 'Asado Criollo', desc: 'Tradicional asado de tira con ensaladas y pan', price: 'ARS 2,500' },
+      { id: 'menu-2', name: 'Milanesa Napolitana', desc: 'Milanesa de carne con mozzarella, tomate, jamón', price: 'ARS 1,800' },
+      { id: 'menu-3', name: 'Salmón a la Parrilla', desc: 'Filete de salmón con vegetales asados y arroz', price: 'ARS 3,200' },
+      { id: 'menu-4', name: 'Hamburguesa Soho', desc: 'Carne artesanal, cheddar, bacon, huevo y papas fritas', price: 'ARS 2,200' },
+      { id: 'menu-5', name: 'Tarta de Ricotta', desc: 'Postre casero con frutos rojos y crema', price: 'ARS 450' }
+    ],
+    reviews: [
+      {
+        avatar: 'Ana',
+        name: 'Ana Martínez',
+        meta: 'Hace 1 semana · 5 estrellas',
+        text: 'Comida excelente, atención rápida y ambiente muy agradable. Volveremos.',
+        reply: {
+          label: 'Restaurante Soho',
+          text: 'Gracias Ana! Nos alegra saber que disfrutó su visita. Los esperamos nuevamente.'
+        }
+      },
+      {
+        avatar: 'Carlos',
+        name: 'Carlos López',
+        meta: 'Hace 2 semanas · 4 estrellas',
+        text: 'Buena comida, pero un poco ruidoso en horario pico. Las porciones son generosas.',
+        reply: {
+          label: 'Restaurante Soho',
+          text: 'Gracias Carlos. Tomamos nota para mejorar el ambiente en horarios pico.'
+        }
+      }
+    ],
+    quickReplies: [
+      'Menú del día',
+      'Hacer reserva',
+      'Horarios',
+      'Ubicación',
+      'Promociones'
+    ],
+    automatedMessages: {
+      greeting: '¡Hola! 👋 Gracias por contactar a Restaurante Soho. ¿En qué podemos ayudarte?',
+      away: 'Actualmente estamos atendiendo a otros clientes. Responderemos a la brevedad.',
+      thanks: 'Gracias por elegirnos. ¡Que tenga un excelente día!'
+    }
   }
 ];
 
@@ -313,7 +338,17 @@ function getBusiness(id) {
   return businesses.find(b => b.id === id) || null;
 }
 
+// Helper function to get unit by id within a complex
+function getUnit(complexId, unitId) {
+  const complex = getBusiness(complexId);
+  if (complex && complex.units) {
+    return complex.units.find(unit => unit.id === unitId) || null;
+  }
+  return null;
+}
+
 // Export for use in other scripts (if using modules)
 // In this plain JS environment, we'll just attach to window
 window.businesses = businesses;
 window.getBusiness = getBusiness;
+window.getUnit = getUnit;
