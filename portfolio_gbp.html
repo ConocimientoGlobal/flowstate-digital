@@ -1,1083 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Google Business Profile — FlowState Digital</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap');
-
-    :root {
-      --gbp-blue: #1a73e8;
-      --gbp-blue-hover: #174ea6;
-      --gbp-blue-light: #e8f0fe;
-      --gbp-red: #d93025;
-      --gbp-yellow: #f9ab00;
-      --gbp-green: #1e8e3e;
-      --gbp-green-light: #e6f4ea;
-      --gbp-text-primary: #202124;
-      --gbp-text-secondary: #5f6368;
-      --gbp-text-hint: #80868b;
-      --gbp-bg: #ffffff;
-      --gbp-surface: #f8f9fa;
-      --gbp-divider: #dadce0;
-      --gbp-border: #e8eaed;
-      --gbp-shadow: 0 1px 2px rgba(60,64,67,0.1);
-      --gbp-shadow-elevated: 0 4px 12px rgba(60,64,67,0.15);
-      --gbp-radius: 8px;
-      --gbp-radius-pill: 500px;
-    }
-
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Google Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f5f5f5;
-      color: var(--gbp-text-primary);
-      font-size: 14px;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Phone Frame */
-    .phone {
-      max-width: 390px;
-      margin: 0 auto;
-      background: var(--gbp-bg);
-      min-height: 100vh;
-      box-shadow: var(--gbp-shadow-elevated);
-      position: relative;
-    }
-
-    /* Status Bar */
-    .status-bar {
-      height: 24px;
-      background: var(--gbp-surface);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .status-bar .time {
-      font-weight: 600;
-    }
-
-    .status-bar .icons {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-
-    .status-bar .icons svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* App Bar */
-    .app-bar {
-      height: 56px;
-      background: var(--gbp-bg);
-      border-bottom: 1px solid var(--gbp-border);
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .app-bar-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--gbp-text-secondary);
-    }
-
-    .app-bar-icon:hover {
-      background: var(--gbp-surface);
-    }
-
-    .app-bar-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .app-bar-title {
-      flex: 1;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-      margin-left: 8px;
-    }
-
-    /* Cover Photo */
-    .cover-photo {
-      height: 160px;
-      position: relative;
-      overflow: hidden;
-      background: #e8eaed;
-    }
-
-    .cover-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Business Info */
-    .business-info {
-      padding: 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-    }
-
-    .business-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .business-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 2px solid var(--gbp-bg);
-      box-shadow: var(--gbp-shadow);
-      margin-top: -28px;
-      position: relative;
-      z-index: 2;
-      background: var(--gbp-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 500;
-      color: var(--gbp-blue);
-      flex-shrink: 0;
-    }
-
-    .business-name-section {
-      flex: 1;
-      padding-top: 4px;
-    }
-
-    .business-name {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-      letter-spacing: -0.2px;
-      margin-bottom: 2px;
-    }
-
-    .business-category {
-      font-size: 12px;
-      color: var(--gbp-text-secondary);
-    }
-
-    .business-rating {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 6px;
-    }
-
-    .rating-stars {
-      color: var(--gbp-yellow);
-      font-size: 13px;
-      letter-spacing: -1px;
-    }
-
-    .rating-count {
-      font-size: 12px;
-      color: var(--gbp-text-secondary);
-    }
-
-    .business-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--gbp-green);
-      margin-left: 8px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gbp-green);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    /* Action Buttons */
-    .action-buttons {
-      display: flex;
-      gap: 8px;
-      padding: 8px 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .action-buttons::-webkit-scrollbar {
-      display: none;
-    }
-
-    .action-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding: 8px 16px;
-      min-width: 64px;
-      border: 1px solid var(--gbp-border);
-      border-radius: var(--gbp-radius-pill);
-      background: var(--gbp-bg);
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--gbp-text-secondary);
-      font-size: 11px;
-      font-weight: 500;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .action-btn:hover {
-      background: var(--gbp-surface);
-      border-color: var(--gbp-blue);
-      color: var(--gbp-blue);
-    }
-
-    .action-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Quick Info */
-    .quick-info {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-    }
-
-    .info-chip {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
-      cursor: pointer;
-      color: var(--gbp-text-primary);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .info-chip:hover {
-      color: var(--gbp-blue);
-    }
-
-    .info-chip svg {
-      width: 18px;
-      height: 18px;
-      color: var(--gbp-text-secondary);
-      flex-shrink: 0;
-    }
-
-    .info-chip-content {
-      flex: 1;
-    }
-
-    .info-chip-label {
-      font-size: 10px;
-      color: var(--gbp-text-hint);
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .info-chip-value {
-      font-size: 13px;
-      color: var(--gbp-text-primary);
-    }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      border-bottom: 1px solid var(--gbp-divider);
-      background: var(--gbp-bg);
-      position: sticky;
-      top: 56px;
-      z-index: 99;
-    }
-
-    .tab {
-      flex: 1;
-      padding: 12px 16px;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--gbp-text-secondary);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-
-    .tab:hover {
-      background: var(--gbp-surface);
-    }
-
-    .tab.active {
-      color: var(--gbp-blue);
-      border-bottom-color: var(--gbp-blue);
-    }
-
-    /* Sections */
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    /* Section Title */
-    .section-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-      padding: 16px 16px 8px;
-      letter-spacing: 0.1px;
-    }
-
-    /* About */
-    .about-description {
-      font-size: 13px;
-      color: var(--gbp-text-secondary);
-      padding: 0 16px 16px;
-      line-height: 1.6;
-    }
-
-    .amenities-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      padding: 0 16px 16px;
-    }
-
-    .amenity-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--gbp-text-secondary);
-    }
-
-    .amenity-item svg {
-      width: 16px;
-      height: 16px;
-      color: var(--gbp-green);
-    }
-
-    /* Hours Table */
-    .hours-table {
-      padding: 0 16px 16px;
-    }
-
-    .hours-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      font-size: 13px;
-      border-bottom: 1px solid var(--gbp-surface);
-    }
-
-    .hours-row:last-child {
-      border-bottom: none;
-    }
-
-    .hours-day {
-      color: var(--gbp-text-primary);
-      font-weight: 500;
-    }
-
-    .hours-hours {
-      color: var(--gbp-text-secondary);
-    }
-
-    .hours-row.today .hours-day {
-      color: var(--gbp-blue);
-      font-weight: 600;
-    }
-
-    .hours-row.today .hours-hours {
-      color: var(--gbp-blue);
-    }
-
-    /* Reviews */
-    .reviews-summary {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-    }
-
-    .reviews-score-card {
-      text-align: center;
-    }
-
-    .reviews-score {
-      font-size: 48px;
-      font-weight: 400;
-      color: var(--gbp-text-primary);
-      line-height: 1;
-    }
-
-    .reviews-stars-large {
-      color: var(--gbp-yellow);
-      font-size: 16px;
-      letter-spacing: -2px;
-      margin: 4px 0;
-    }
-
-    .reviews-count {
-      font-size: 11px;
-      color: var(--gbp-text-secondary);
-    }
-
-    .reviews-bars {
-      flex: 1;
-    }
-
-    .review-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .review-bar-label {
-      font-size: 11px;
-      color: var(--gbp-text-secondary);
-      width: 12px;
-    }
-
-    .review-bar-track {
-      flex: 1;
-      height: 4px;
-      background: var(--gbp-surface);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .review-bar-fill {
-      height: 100%;
-      background: var(--gbp-yellow);
-      border-radius: 2px;
-    }
-
-    .review-item {
-      padding: 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-    }
-
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .reviewer-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--gbp-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .reviewer-info {
-      flex: 1;
-    }
-
-    .reviewer-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-    }
-
-    .review-date {
-      font-size: 11px;
-      color: var(--gbp-text-hint);
-    }
-
-    .review-stars {
-      color: var(--gbp-yellow);
-      font-size: 11px;
-      letter-spacing: -1px;
-      margin-bottom: 4px;
-    }
-
-    .review-text {
-      font-size: 13px;
-      color: var(--gbp-text-secondary);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .review-photos {
-      display: flex;
-      gap: 4px;
-      margin-top: 8px;
-    }
-
-    .review-photo {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--gbp-radius);
-      overflow: hidden;
-    }
-
-    .review-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .owner-response {
-      margin-top: 8px;
-      padding: 10px;
-      background: var(--gbp-surface);
-      border-radius: var(--gbp-radius);
-      font-size: 12px;
-      color: var(--gbp-text-secondary);
-    }
-
-    .owner-response-label {
-      font-size: 10px;
-      color: var(--gbp-text-hint);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin-bottom: 4px;
-    }
-
-    /* Photos Grid */
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      padding: 0 16px 16px;
-    }
-
-    .photo-item {
-      aspect-ratio: 1;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.2s;
-    }
-
-    .photo-item:hover img {
-      transform: scale(1.02);
-    }
-
-    /* Posts (Google Updates) */
-    .post-card {
-      border: 1px solid var(--gbp-border);
-      border-radius: var(--gbp-radius);
-      margin: 0 16px 12px;
-      overflow: hidden;
-    }
-
-    .post-image {
-      height: 160px;
-      overflow: hidden;
-    }
-
-    .post-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .post-content {
-      padding: 12px;
-    }
-
-    .post-label {
-      font-size: 10px;
-      color: var(--gbp-text-hint);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin-bottom: 4px;
-    }
-
-    .post-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-      margin-bottom: 4px;
-    }
-
-    .post-description {
-      font-size: 12px;
-      color: var(--gbp-text-secondary);
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
-    .post-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gbp-blue);
-      text-decoration: none;
-    }
-
-    .post-cta:hover {
-      text-decoration: underline;
-    }
-
-    /* Q&A */
-    .qa-item {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--gbp-divider);
-    }
-
-    .qa-item:last-child {
-      border-bottom: none;
-    }
-
-    .qa-question {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--gbp-text-primary);
-      margin-bottom: 6px;
-    }
-
-    .qa-answer {
-      font-size: 13px;
-      color: var(--gbp-text-secondary);
-      line-height: 1.5;
-    }
-
-    .qa-meta {
-      font-size: 11px;
-      color: var(--gbp-text-hint);
-      margin-top: 6px;
-    }
-
-    /* CTA Footer */
-    .cta-footer {
-      background: var(--gbp-blue);
-      padding: 20px 16px;
-      text-align: center;
-      color: #fff;
-    }
-
-    .cta-title {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .cta-text {
-      font-size: 12px;
-      opacity: 0.9;
-      margin-bottom: 12px;
-    }
-
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      background: #fff;
-      color: var(--gbp-blue);
-      border-radius: var(--gbp-radius-pill);
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .cta-btn:hover {
-      background: #f0f0f0;
-    }
-
-    /* Badge */
-    .portfolio-badge {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 6px 12px;
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 0.3px;
-    }
-
-    .portfolio-badge span {
-      color: #00d4ff;
-    }
-
-    /* Responsive */
-    @media (min-width: 481px) {
-      .phone {
-        margin-top: 20px;
-        border-radius: 12px;
-        overflow: hidden;
-        height: 85vh;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cabaña Marea - Google</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Google Sans',Roboto,Arial,sans-serif;background:#f5f5f5;color:#202124;margin:0;min-height:100vh}
+.container{max-width:412px;margin:0 auto;padding:0 16px}
+.phone-frame{background:#fff;border-radius:24px;box-shadow:0 4px 24px rgba(0,0,0,.12);overflow:hidden;position:relative;min-height:100vh;display:flex;flex-direction:column}
+.status-bar{height:24px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#f8f9fa;font-size:11px;font-weight:500;color:#5f6368}
+.status-bar .time{font-weight:600}
+.status-bar .icons{display:flex;gap:4px;align-items:center}
+.status-bar .icons svg{width:14px;height:14px;fill:#80868b}
+.app-bar{height:56px;background:#fff;display:flex;align-items:center;padding:0 8px;border-bottom:1px solid #e8eaed;position:sticky;top:0;z-index:100}
+.app-bar-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#5f6368}
+.app-bar-icon:hover{background:#f8f9fa}
+.app-bar-icon svg{width:20px;height:20px;fill:currentColor}
+.app-bar-title{flex:1;font-size:16px;font-weight:500;color:#202124;margin-left:8px}
+.cover-photo{height:160px;position:relative;background:#e8eaed;overflow:hidden}
+.cover-photo img{width:100%;height:100%;object-fit:cover}
+.business-info{padding:16px;border-bottom:1px solid #dadce0}
+.business-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.business-avatar{width:56px;height:56px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 2px rgba(60,64,67,.1);margin-top:-28px;position:relative;z-index:2;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:500;color:#1a73e8;flex-shrink:0}
+.business-info-text{flex:1}
+.business-name{font-size:20px;font-weight:500;color:#202124;margin-bottom:4px}
+.business-category{font-size:14px;color:#5f6368}
+.rating-section{display:flex;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap}
+.stars{display:inline-flex;gap:2px}
+.star-svg{width:18px;height:18px}
+.rating-number{font-weight:700;color:#202124;font-size:15px}
+.review-count{font-size:13px;color:#5f6368;margin-left:4px}
+.open-status{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:#e6f4ea;border-radius:12px;font-size:13px;color:#1e8e3e;font-weight:500}
+.open-dot{width:6px;height:6px;border-radius:50%;background:#1e8e3e}
+.action-buttons{display:flex;overflow-x:auto;gap:8px;padding:12px 16px;scrollbar-width:none;background:#fff;border-bottom:1px solid #f0f0f0}
+.action-buttons::-webkit-scrollbar{display:none}
+.action-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid #e5e7eb;border-radius:18px;background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#374151;white-space:nowrap;transition:all .2s}
+.action-btn:hover{background:#f9fafb;border-color:#d1d5db}
+.action-btn .material-icons{font-size:18px;color:#6b7280}
+.action-btn.primary{background:#1a73e8;color:#fff;border-color:transparent}
+.action-btn.primary:hover{background:#174ea6}
+.photos-section{padding:16px}
+.section-title{font-size:14px;font-weight:500;color:#202124;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-title .material-icons{font-size:16px;color:#1a73e8}
+.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.photos-grid img{width:100%;height:90px;object-fit:cover;border-radius:8px;cursor:transition:transform .2s}
+.photos-grid img:hover{transform:scale(1.05)}
+.posts-section{padding:16px}
+.post-card{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.post-card img{width:100%;height:120px;object-fit:cover}
+.post-body{padding:12px}
+.post-type{font-size:10px;font-weight:700;color:#1a73e8;text-transform:uppercase;letter-spacing:.4px}
+.post-title{font-size:14px;font-weight:600;margin:4px 0;color:#202124}
+.post-desc{font-size:12px;color:#5f6368;line-height:1.4}
+.post-time{font-size:11px;color:#9ca3af;margin-top:6px}
+.reviews-section{padding:16px}
+.review-card{padding:12px 0;border-bottom:1px solid #f3f4f6}
+.review-card:last-child{border-bottom:none}
+.review-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.review-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#1a73e8,#0d47a1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+.review-info{flex:1}
+.review-name{font-size:13px;font-weight:600;color:#202124}
+.review-meta{font-size:11px;color:#9ca3af}
+.review-stars{display:flex;gap:1px;margin:6px 0}
+.review-text{font-size:12px;color:#202124;line-height:1.4;margin-top:4px}
+.review-reply{border-left:3px solid #e5e7eb;padding:8px 12px;margin-top:8px;background:#f9fafb;border-radius:0 8px 8px 0;font-size:11px}
+.review-reply-label{font-size:9px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.review-reply-text{font-size:12px;color:#202124;margin-top:2px;line-height:1.4}
+.questions-section{padding:16px}
+.qa-item{border-left:3px solid #1a73e8;background:#f9fafb;padding:12px 14px;margin-bottom:8px;border-radius:0 12px 12px 0;cursor:pointer}
+.qa-question{font-size:13px;font-weight:600;color:#202124;display:flex;align-items:center;justify-content:space-between;gap:4px}
+.qa-question .material-icons{font-size:18px;color:#9ca3af}
+.qaanswer{font-size:12px;color:#5f6368;margin-top:8px;display:none;line-height:1.4}
+.qa-item.open .qaanswer{display:block}
+.highlights-section{padding:16px}
+.highlights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:12px}
+.highlight-item{text-align:center}
+.highlight-number{font-size:20px;font-weight:700;color:#1a73e8;display:block}
+.highlight-label{font-size:11px;color:#5f6368;text-transform:uppercase;letter-spacing:.5px}
+.attribution{font-size:10px;color:#9ca3af;text-align:center;padding:16px 8px}
+</style>
 </head>
 <body>
 
-<!-- Portfolio Badge -->
-<div class="portfolio-badge">
-  <span>PORTAFOLIO FICTICIO</span> — Réplica de Google Business Profile optimizada por FlowState Digital
-</div>
-
-<div class="phone">
-
-  <!-- Status Bar -->
+<div class="phone-frame">
   <div class="status-bar">
-    <span class="time">9:41</span>
+    <div>10:47</div>
     <div class="icons">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-      <span style="font-size: 11px; font-weight: 600;">100%</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M20 6L9 17l-5-5"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M19 21V10a2 2 0 00-2-2h2a2 2 0 002 2v11"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m0 0l4-4-4-4 4-4 4 4-4 4-4 4z"/></svg>
     </div>
   </div>
 
-  <!-- App Bar -->
   <div class="app-bar">
-    <div class="app-bar-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    </div>
-    <div class="app-bar-title">FlowState Digital</div>
-    <div class="app-bar-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
-    </div>
-    <div class="app-bar-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-    </div>
+    <div class="app-bar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5v-6h4v6z"/></svg></div>
+    <div class="app-bar-title">Cabaña Marea</div>
+    <div class="app-bar-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12 8c-4.5 0-7 2.75-7 5.25s2.5 5.25 7 5.25 7-2.75 7-5.25z"/></svg></div>
   </div>
 
-  <!-- Cover Photo -->
   <div class="cover-photo">
-    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Boutique" onerror="this.parentElement.style.background='linear-gradient(135deg, #1a3a6b, #0d47a1)'">
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Vista de la cabaña">
   </div>
 
-  <!-- Business Info -->
   <div class="business-info">
     <div class="business-header">
-      <div class="business-avatar">H</div>
-      <div class="business-name-section">
-        <div class="business-name">Hotel Boutique Palermo</div>
-        <div class="business-category">Hotel boutique · Buenos Aires, Argentina</div>
-        <div class="business-rating">
-          <span class="rating-stars">★★★★★</span>
-          <span class="rating-count">4.8 (312)</span>
-          <span class="business-status">
-            <span class="status-dot"></span>
-            Abierto
-          </span>
-        </div>
+      <div class="business-avatar">CM</div>
+      <div class="business-info-text">
+        <div class="business-name">Cabaña Marea</div>
+        <div class="business-category">Cabaña · Delta Tigre, Buenos Aires</div>
       </div>
+    </div>
+    <div class="rating-section">
+      <div class="stars">
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="rating-number">4.8</div>
+      <div class="review-count">(127)</div>
+      <div class="open-status"><span class="open-dot"></span>Abierto ahora</div>
     </div>
   </div>
 
-  <!-- Action Buttons -->
   <div class="action-buttons">
-    <a class="action-btn" href="tel:+541145678900">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      <span>Llamar</span>
-    </a>
-    <a class="action-btn" href="https://wa.me/5491123456789">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/></svg>
-      <span>Mensaje</span>
-    </a>
-    <a class="action-btn" href="https://www.google.com/maps">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      <span>Cómo llegar</span>
-    </a>
-    <a class="action-btn" href="https://www.hotelboutiquepalermo.com">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-      <span>Sitio web</span>
-    </a>
-    <a class="action-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
-      <span>Guardar</span>
-    </a>
-    <a class="action-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z"/></svg>
-      <span>Compartir</span>
-    </a>
+    <button class="action-btn"><span class="material-icons">directions</span>Cómo llegar</button>
+    <button class="action-btn"><span class="material-icons">phone</span>Llamar</button>
+    <button class="action-btn"><span class="material-icons">chat</span>WhatsApp</button>
+    <button class="action-btn primary"><span class="material-icons">send</span>Reservar</button>
   </div>
 
-  <!-- Quick Info -->
-  <div class="quick-info">
-    <a class="info-chip" href="https://www.google.com/maps">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      <div class="info-chip-content">
-        <div class="info-chip-label">Dirección</div>
-        <div class="info-chip-value">Honduras 5680, Palermo, Buenos Aires</div>
-      </div>
-    </a>
-    <a class="info-chip" href="tel:+541145678900">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      <div class="info-chip-content">
-        <div class="info-chip-label">Teléfono</div>
-        <div class="info-chip-value">+54 11 4567-8900</div>
-      </div>
-    </a>
-    <a class="info-chip">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-      <div class="info-chip-content">
-        <div class="info-chip-label">Horario</div>
-        <div class="info-chip-value">9:00–18:00 · Abierto ahora</div>
-      </div>
-    </a>
-  </div>
-
-  <!-- Tabs -->
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('about', this)">Información</div>
-    <div class="tab" onclick="switchTab('reviews', this)">Reseñas</div>
-    <div class="tab" onclick="switchTab('photos', this)">Fotos</div>
-  </div>
-
-  <!-- About Section -->
-  <div id="about" class="section active">
-    <div class="section-title">Acerca de</div>
-    <div class="about-description">
-      Hotel boutique de 15 habitaciones en el corazón de Palermo Hollywood. Arquitectura moderna que combina diseño contemporáneo con el encanto del barrio. Servicio personalizado, desayuno buffet incluido y experiencias únicas.
+  <div class="photos-section">
+    <div class="section-title">
+      <span class="material-icons">photo_library</span>
+      Fotos
     </div>
-
-    <div class="section-title">Servicios</div>
-    <div class="amenities-grid">
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        WiFi gratuito
-      </div>
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Aire acondicionado
-      </div>
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Pileta
-      </div>
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Estacionamiento
-      </div>
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Recepción 24hs
-      </div>
-      <div class="amenity-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Accesible
-      </div>
-    </div>
-
-    <div class="section-title">Horarios</div>
-    <div class="hours-table">
-      <div class="hours-row today">
-        <span class="hours-day">Lunes</span>
-        <span class="hours-hours">9:00–18:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Martes</span>
-        <span class="hours-hours">9:00–18:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Miércoles</span>
-        <span class="hours-hours">9:00–18:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Jueves</span>
-        <span class="hours-hours">9:00–18:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Viernes</span>
-        <span class="hours-hours">9:00–18:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Sábado</span>
-        <span class="hours-hours">10:00–14:00</span>
-      </div>
-      <div class="hours-row">
-        <span class="hours-day">Domingo</span>
-        <span class="hours-hours">Cerrado</span>
-      </div>
-    </div>
-
-    <div class="section-title">Publicaciones de Google</div>
-    
-    <div class="post-card">
-      <div class="post-image">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Oferta">
-      </div>
-      <div class="post-content">
-        <div class="post-label">Oferta especial</div>
-        <div class="post-title">¡20% OFF en reservas de última hora!</div>
-        <div class="post-description">Aprovechá esta semana con 20% de descuento en reservas por WhatsApp. Válido para 2 noches o más.</div>
-        <a class="post-cta">Reservar ahora →</a>
-      </div>
-    </div>
-
-    <div class="post-card">
-      <div class="post-image">
-        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80" alt="Novedad">
-      </div>
-      <div class="post-content">
-        <div class="post-label">Novedad</div>
-        <div class="post-title">Terraza panorámica inaugurada</div>
-        <div class="post-description">Les presentamos nuestra nueva terraza en el piso 5 con vistas a Palermo.</div>
-        <a class="post-cta">Ver más fotos →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Reviews Section -->
-  <div id="reviews" class="section">
-    <div class="reviews-summary">
-      <div class="reviews-score-card">
-        <div class="reviews-score">4.8</div>
-        <div class="reviews-stars-large">★★★★★</div>
-        <div class="reviews-count">312 reseñas</div>
-      </div>
-      <div class="reviews-bars">
-        <div class="review-bar-row">
-          <span class="review-bar-label">5</span>
-          <div class="review-bar-track"><div class="review-bar-fill" style="width: 78%"></div></div>
-        </div>
-        <div class="review-bar-row">
-          <span class="review-bar-label">4</span>
-          <div class="review-bar-track"><div class="review-bar-fill" style="width: 14%"></div></div>
-        </div>
-        <div class="review-bar-row">
-          <span class="review-bar-label">3</span>
-          <div class="review-bar-track"><div class="review-bar-fill" style="width: 5%"></div></div>
-        </div>
-        <div class="review-bar-row">
-          <span class="review-bar-label">2</span>
-          <div class="review-bar-track"><div class="review-bar-fill" style="width: 2%"></div></div>
-        </div>
-        <div class="review-bar-row">
-          <span class="review-bar-label">1</span>
-          <div class="review-bar-track"><div class="review-bar-fill" style="width: 1%"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="review-item">
-      <div class="review-header">
-        <div class="reviewer-avatar">MG</div>
-        <div class="reviewer-info">
-          <div class="reviewer-name">María García</div>
-          <div class="review-date">Hace 2 semanas</div>
-        </div>
-      </div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">Excelente atención y ubicación perfecta. Las habitaciones son hermosas y el desayuno espectacular. El proceso de reserva por WhatsApp fue rapidísimo.</div>
-      <div class="owner-response">
-        <div class="owner-response-label">Respuesta del negocio</div>
-        Muchas gracias María! Nos encantó recerla. Tu opinión nos ayuda a seguir mejorando. ¡Te esperamos de vuelta pronto!
-      </div>
-    </div>
-
-    <div class="review-item">
-      <div class="review-header">
-        <div class="reviewer-avatar">JP</div>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Juan Pérez</div>
-          <div class="review-date">Hace 1 mes</div>
-        </div>
-      </div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">Me encontré con este hotel por Google Maps y la verdad que superó todas mis expectativas. El personal muy atento y las instalaciones de primer nivel.</div>
-    </div>
-
-    <div class="review-item">
-      <div class="review-header">
-        <div class="reviewer-avatar">LC</div>
-        <div class="reviewer-info">
-          <div class="reviewer-name">Laura Castillo</div>
-          <div class="review-date">Hace 2 meses</div>
-        </div>
-      </div>
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">La mejor experiencia en Buenos Aires. Reservamos todo por WhatsApp en minutos, sin complicaciones. El hotel es tal como se ve en las fotos.</div>
-    </div>
-  </div>
-
-  <!-- Photos Section -->
-  <div id="photos" class="section">
     <div class="photos-grid">
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=300&q=80" alt=""></div>
-      <div class="photo-item"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=300&q=80" alt=""></div>
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Exterior de la cabaña">
+      <img src="https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80" alt="Kayak en el río">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80" alt="Asado en el quincho">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&q=80" alt="Deck con vista al atardecer">
+      <img src="https://images.unsplash.com/photo-1533833267-531156086e45?w=400&q=80" alt="Interior acogedor">
+      <img src="https://images.unsplash.com/photo-1551836022-5d184e12b341?w=400&q=80" alt="Baño moderno">
     </div>
   </div>
 
-  <!-- CTA Footer -->
-  <div class="cta-footer">
-    <div class="cta-title">¿Querés resultados así para tu negocio?</div>
-    <div class="cta-text">FlowState Digital optimiza tu presencia digital</div>
-    <a href="https://wa.me/5491123456789" class="cta-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-      Contactar por WhatsApp
-    </a>
+  <div class="posts-section">
+    <div class="section-title">
+      <span class="material-icons">post_add</span>
+      Novedades
+    </div>
+    <div class="post-card">
+      <img src="https://images.unsplash.com/photo-1551632811-561809d1b0fd?w=400&q=80" alt="Paseo en kayak">
+      <div class="post-body">
+        <div class="post-type">ACTIVIDAD</div>
+        <h3 class="post-title">Nuevo paseo en kayak guiado</h3>
+        <p class="post-desc">Explora los canales del Tigre con nuestro guía local. Incluye equipo y seguro.</p>
+        <div class="post-time">Hoy</div>
+      </div>
+    </div>
+    <div class="post-card">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013d702dc?w=400&q=80" alt="Asado especial">
+      <div class="post-body">
+        <div class="post-type">GASTRONOMÍA</div>
+        <h3 class="post-title">Asado del fin de semana</h3>
+        <p class="post-desc">Todos los sábados: asado criollo con ensaladas caseras y vino de producción local.</p>
+        <div class="post-time">Ayer</div>
+      </div>
+    </div>
   </div>
 
-</div>
+  <div class="reviews-section">
+    <div class="section-title">
+      <span class="material-icons">grade</span>
+      Reseñas
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">MG</div>
+        <div class="review-info">
+          <div class="review-name">María G.</div>
+          <div class="review-meta">Hace 2 meses · 5 estrellas</div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="review-text">Maravillosa experiencia. La cabaña es exactamente como en las fotos, muy limpia y el atención fue excelente. El desayuno casero fue un plus. Volveremos pronto!</div>
+      <div class="review-reply">
+        <div class="review-reply-label">Cabaña Marea</div>
+        <div class="review-reply-text">Gracias María! Nos alegra que haya disfrutado su estadía. Los esperamos de vuelta para otra aventura en el Delta.</div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">JP</div>
+        <div class="review-info">
+          <div class="review-name">Juan P.</div>
+          <div class="review-meta">Hace 1 mes · 5 estrellas</div>
+        </div>
+      </div>
+      <div class="review-stars">
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star-svg" viewBox="0 0 24 24"><path fill="#fbbc04" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="review-text">Increíble lugar para desconectar. El silencio y la naturaleza son perfectos. El anfitrión nos dio excelentes recomendaciones de restaurantes cercanos. 100% recomendado.</div>
+      <div class="review-reply">
+        <div class="review-reply-label">Cabaña Marea</div>
+        <div class="review-reply-text">Gracias Juan! Trabajamos para ofrecer experiencias auténticas de descanso y conexión con la naturaleza.</div>
+      </div>
+    </div>
+  </div>
 
-<script>
-  function switchTab(tabId, element) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    element.classList.add('active');
-  }
-</script>
+  <div class="questions-section">
+    <div class="section-title">
+      <span class="material-icons">question_answer</span>
+      Preguntas y respuestas
+    </div>
+    <div class="qa-item">
+      <div class="qa-question">
+        ¿Aceptan mascotas?
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="qaanswer">Sí, aceptamos mascotas de hasta 15 kg con costo adicional por limpieza.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-question">
+        ¿Incluye desayuno?
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="qaanswer">Sí, el desayuno casero está incluido en todas las reservas.</div>
+    </div>
+    <div class="qa-item">
+      <div class="qa-question">
+        ¿Hay estacionamiento?
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="qaanswer">Contamos con estacionamiento privado y gratuito para nuestros huéspedes.</div>
+    </div>
+  </div>
+
+  <div class="highlights-section">
+    <div class="section-title">
+      <span class="material-icons">highlight</span>
+      Destacados
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <div class="highlight-number">100+</div>
+        <div class="highlight-label">Fotos</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-number">50+</div>
+        <div class="highlight-label">Reseñas</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-number">12</div>
+        <div class="highlight-label">Meses abierto</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-number">24/7</div>
+        <div class="highlight-label">Atención</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Mockup de Google Business Profile • Información ficticia para portafolio
+  </div>
+</div>
 
 </body>
 </html>
